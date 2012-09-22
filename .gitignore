@@ -1,4 +1,4 @@
 .pydevproject
 .project
 *.swp
-**/*.pyc
+*.pyc
