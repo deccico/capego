@@ -1,0 +1,18 @@
+#install notes for Ubuntu 12.04
+
+#django install
+sudo pip install django
+
+#postgresql
+#source: https://help.ubuntu.com/community/PostgreSQL
+sudo apt-get install postgresql
+sudo -u postgres createuser --superuser $USER
+sudo -u postgres psql
+postgres=# \password $USER
+createdb capego
+sudo apt-get install postgresql-server-dev-all
+sudo apt-get install python-dev
+
+#python postgres binding
+sudo pip install psycopg2
+
