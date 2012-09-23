@@ -10,9 +10,9 @@ class Language(models.Model):
 #object that we can listen (nothing to do with the pattern)
 class Listener(models.Model):
     def __unicode__(self):
-       return "%s-%s-%s" % (self.language, self.title, self.url)
+       return "%s - %s" % (self.language, self.title)
 
-    url = models.URLField()
+    url = models.CharField(max_length=500)
     title = models.CharField(max_length=200)
     description = models.TextField(max_length=1024, blank=True)
     pub_date = models.DateTimeField('date published',auto_now_add=True)
@@ -27,4 +27,6 @@ class Accent(models.Model):
 
     name = models.CharField(max_length=50)
     language = models.ForeignKey(Language)
+
+#class Subtitle(models.Model):
 
