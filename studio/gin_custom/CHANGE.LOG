@@ -1,0 +1,9 @@
+==== Gin Admin Template ====
+** Version 1.0
+	Init new layout
+** Version 1.1
+	Fixed search box position
+	Update some stylesheet make template better
+** Version 1.2
+	Fixed main container height with available browser height (Update main.js)
+	Include bootstrap Glyphicons for beginer customer
