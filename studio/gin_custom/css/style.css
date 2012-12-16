@@ -445,3 +445,8 @@ a.m-stats-item:hover{
 		z-index: 9000;
 	}
 }
+
+.status-correct 
+{
+  color: blue;
+}
