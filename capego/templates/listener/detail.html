@@ -3,3 +3,11 @@
     <li>{{listener.language}}</li>
     <li>{{listener.url}}</li>
 </ul>
+
+{% load static %}
+ 
+{% get_static_prefix as STATIC_PREFIX %}
+ 
+<!--Here we are just showing how easy is to recover static resources . -->
+Test image
+<img src="{{ STATIC_PREFIX }}django.png" />

@@ -16,3 +16,9 @@ sudo apt-get install python-dev
 #python postgres binding
 sudo pip install psycopg2
 
+#------------------------
+
+sudo pip install bellatrix --upgrade
+hg clone ssh://hg@bitbucket.org/deccico/bellatrix_configs
+
+folow https://bitbucket.org/deccico/bellatrix_configs/src/451799f064b44e6f2bf65cab438dce824c750f19/bellatrix_configs/ubuntu_django_nginx_gunicorn.py?at=default
