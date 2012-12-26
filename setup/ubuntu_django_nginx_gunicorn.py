@@ -9,7 +9,7 @@ The available set of commands can be found in https://bitbucket.org/adeccico/bel
 
 env = "django_app"
 project_name = "app"
-django_app_dir = "/home/ubuntu/django_app"
+django_app_dir = "/home/adrian/django_app"
 
 def configureNginx():
     #prepare directories
@@ -30,7 +30,7 @@ def appendTemplateDir(settings_file):
     return cmd
 
 import logging
-import os
+#import os
 
 #common variables
 user = "ubuntu"             #user of the ami's 
@@ -45,22 +45,22 @@ from bellatrix.lib import cmds
 #list of cmds to execute
 commands = []
 commands = cmds.install_pip() 
-commands += cmds.pip_install("virtualenv") 
+#commands += cmds.pip_install("virtualenv") 
 commands += cmds.install_nginx() 
-commands += cmds.createVirtualEnv(env) 
-commands += cmds.installPackageInVirtualEnv(env, package="django", verification_command="django-admin.py --version")
-commands += cmds.installPackageInVirtualEnv(env, package="gunicorn")
+#commands += cmds.createVirtualEnv(env) 
+#commands += cmds.installPackageInVirtualEnv(env, package="django", verification_command="django-admin.py --version")
+#commands += cmds.installPackageInVirtualEnv(env, package="gunicorn")
 
-commands += cmds.executeInVirtualEnv(env, cmds.create_django_project(project_name, dir_name=env + os.path.sep))
+#commands += cmds.executeInVirtualEnv(env, cmds.create_django_project(project_name, dir_name=env + os.path.sep))
 commands += configureNginx()
 
 #setting up Django app
-commands += appendTemplateDir(django_app_dir + "/app/app/settings.py")
-commands += cmds.wget("https://bitbucket.org/deccico/django_gunicorn/raw/tip/django_app/urls.py", django_app_dir + "/app/app/urls.py")
-commands += cmds.wget("https://bitbucket.org/deccico/django_gunicorn/raw/1587f68db41e/templates/test_static.html", \
-                      django_app_dir + "/templates/test_static.html")
-commands += cmds.wget("https://bitbucket.org/deccico/django_gunicorn/raw/tip/static/django.png", \
-                      django_app_dir + "/static/django.png")
+#commands += appendTemplateDir(django_app_dir + "/app/app/settings.py")
+#commands += cmds.wget("https://bitbucket.org/deccico/django_gunicorn/raw/tip/django_app/urls.py", django_app_dir + "/app/app/urls.py")
+#commands += cmds.wget("https://bitbucket.org/deccico/django_gunicorn/raw/1587f68db41e/templates/test_static.html", \
+#                      django_app_dir + "/templates/test_static.html")
+#commands += cmds.wget("https://bitbucket.org/deccico/django_gunicorn/raw/tip/static/django.png", \
+#                      django_app_dir + "/static/django.png")
 
 
 ##setting up Upstart to automatically launch Django application 
