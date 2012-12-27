@@ -1,5 +1,5 @@
 from django.contrib import admin
-from listener.models import *
+from models import Language, Listener, Accent
 
 admin.site.register(Listener)
 admin.site.register(Language)

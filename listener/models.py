@@ -17,9 +17,12 @@ class Listener(models.Model):
     description = models.TextField(max_length=1024, blank=True)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    broken = models.BooleanField()
     language = models.ForeignKey(Language)
     length = models.SmallIntegerField(blank=True, null=True) #lenght in seconds
+    dialog = models.TextField(max_length=8192, blank=True)
+    
+    def get_dialog(self, dialog):
+        return dialog
 
 class Accent(models.Model):
     def __unicode__(self):

@@ -1,17 +1,13 @@
 No, money down! 
-http://vimeo.com/52752274
+http://vimeo.com/55706253
 
-Hutz: All right, gentlemen, I'll take your case. But I'm going to have
-      to ask for a thousand-dollar retainer.
-Bart: A thousand dollars? But your ad says "No money down".
-       [shows his paper ad: "Works on contingency basis. No money
-        down."]
-Hutz: Oh! They got this all screwed up...
-       [makes a few corrections: "Works on contingency basis? No, money
-        down!"]
-Bart: So you _don't_ work on a contingency basis?
-Hutz: No, money down! Oops, it shouldn't have this Bar Association logo
-      here either.
+[{0:'Hutz',1:'Bart'},
+              [0,"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer."],
+              [1,'A thousand dollars? But your ad says "No money down".'],
+              [0,"Oh! They got this all screwed up..."],
+              [0,"So you don't work on a contingency basis?"],
+              [1,"No, money down! Oops, it shouldn't have this Bar Association logo here either."],
+              ]
 -----------------------------------------
 "The Simpsons" Radioactive Man (1995)
 
