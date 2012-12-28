@@ -23,7 +23,9 @@
 
 <script>
 	var xmlhttp;
-	var url_check = "../check/1/";
+	var path = window.location.pathname.split("/");
+	var video_id = path[path.length - 2]; 
+	var url_check = "../check/" + video_id + "/";
 	function loadXMLDoc(url, cfunc) {
 		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
@@ -31,7 +33,6 @@
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		xmlhttp.onreadystatechange = cfunc;
-		//alert("getting " + url);
 		xmlhttp.open("GET", url, true);
 		xmlhttp.send();
 	}
@@ -51,7 +52,7 @@
 	<div class="navbar navbar-fixed-top m-header">
 		<div class="navbar-inner m-inner">
 			<div class="container-fluid">
-				<a class="brand m-brand" href="./index.html">Capego</a>
+				<a class="brand m-brand" href="/index.html">Capego</a>
 
 				<form class="form-search m-search span5">
 					<input type="text" placeholder="Type to search"

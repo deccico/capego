@@ -1,0 +1,141 @@
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+    <script src="http://malsup.github.com/jquery.form.js"></script>     
+	<script>
+	    //function that will disable form's button so that user cannot send multiple requests to our function. 
+	    //It takes boolean value and id of the form.
+	    var disableSubmit = function(val, id){
+	        $(id + ' input[type=submit]').attr('disabled', val);
+	    };   
+	    
+	    //the fun starts here. On click of 'form-submit' button we run a function
+	    $('.form-submit').click(function() {
+	        //we are storing form object, form id, form's action and form message div id in variables
+	        var form = $(this).parents("form:first");
+	        var id = '#' + form.attr('id');
+	        var action = form.attr('action');
+	        var form_message = id + '-message';
+	        
+	        //now we're disabling submitting buttons
+	        disableSubmit(true, id);
+	
+			//in form's message div add 'Adding...' text as well as change it's class 
+	        $(form_message).removeClass().addClass('loading').html('Adding...').fadeIn();        
+	        //submit form
+	
+	        $(this).parents("form:first").ajaxSubmit({
+	            dataType: "json",
+	            "success": function(data) {
+	                //on successfull submission run this code. First hide message
+	                $(form_message).hide();
+	
+					//change class of message div to 'type' returned by our view and insert 'message' also returned by json serializer
+	                $(form_message).removeClass().addClass(data['type']).html(data['message']).fadeIn('slow');
+	                //allow submitting of form's buttons
+	                disableSubmit(false, id);
+	
+	                //if email was successfully added
+	                if(data['type'] == 'success'){
+	                    
+	                    //clear all the form's inputs that are not of submission, button, hidden or reset type
+	                    $(':input', id).not(':button, :submit, :reset, :hidden').val('');
+	                }               
+	            }
+	        });
+	        return false;
+	    });    
+	</script>
+------------------------------------------
+<form action="{% url newsletter_add %}" 
+    method="post" 
+    class="form-newsletter" 
+    id="form-newsletter">
+        <input name="email" type="text" class="form-text">
+        <input type="submit" value="Add" class="form-submit">
+</form>
+
+------------------------------------
+class NewsletterForm(forms.Form):
+    email = forms.EmailField(label=_("E-mail address"))
+
+class NewsletterEmails(models.Model):
+    email = models.EmailField(_(u"E-mail address"),)
+
+urlpatterns = patterns('',
+    url(r'^newsletter_add/$', newsletter_add, name="newsletter_add"),
+)
+
+------------------------------------
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.utils import simplejson
+from django.utils.functional import Promise
+from django.utils.encoding import force_unicode
+from models import NewsletterEmails
+from forms import NewsletterForm
+
+#here is some magic. We need to write custom JSON encoder, since sometimes
+#serializing lazy strings can cause errors. 
+#You need to write it only once and then can reuse in any app
+
+class LazyEncoder(simplejson.JSONEncoder):
+    """Encodes django's lazy i18n strings.
+    """
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_unicode(obj)
+        return obj
+
+#here the view function starts
+def newsletter_add(request):
+
+    #as usual when processing forms we check if the method was POST/GET
+    if request.method == "POST":
+
+        #we get email address from request variables      
+        adr = request.POST['email']
+        e = None
+
+        #we process address only if it's longer than 6 characters.
+        #this assures us than we won't waste server time on
+        #addresses like 'oeui' or 'u@u.u' 
+        if len(adr) > 6:
+            
+            #create form instance and fill it with data. In this case it will only be the email address
+            form = NewsletterForm(data=request.POST)
+            
+            #let django perform the validation
+            if form.is_valid():
+
+                #check if the email address is not already in our database
+                try:
+                    e = NewsletterEmails.objects.get(email = adr)
+                    message = _(u"Email already added.")
+                    type = "error"
+                except NewsletterEmails.DoesNotExist:
+
+                    if DoesNotExist exception was caught we add the address 'safe-mode' using try/catch
+                    try:
+                        e = NewsletterEmails(email = adr)
+                    except DoesNotExist:
+                        pass
+                    message = _(u"Email added.")
+                    type = "success"
+                    e.save()
+            else:
+                message = _(u"Bad address.")
+                type = "error"                
+        else:
+            message = _(u"Too short address.")
+            type = "error"
+
+    #we don't need to do this but it's good practice to check the source of request. If it comes from ajax call we build the response.
+
+    if request.is_ajax():
+        #let built in simplejson package serialize our data. It means we transform everything to simple strings.
+        result = simplejson.dumps({
+            "message": message,
+            "type": type,
+        }, cls=LazyEncoder)
+
+        #return the response
+        return HttpResponse(result, mimetype='application/javascript')

@@ -7,4 +7,5 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^listen/', include('listener.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('listener.urls')),
 )

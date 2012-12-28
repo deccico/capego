@@ -6,7 +6,10 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <ul>
 {% for listen in latest_listener_list %}
-        <li>{{ listen.title }} - {{ listen.id }}</li>
+        <li>
+        	<a href="/listen/{{ listen.id }}"> {{ listen.title }}   
+        	</a>
+        </li>
 {% endfor %}
 </ul>
 </body>
