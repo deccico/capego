@@ -71,5 +71,4 @@ class Accent(models.Model):
     name = models.CharField(max_length=50)
     language = models.ForeignKey(Language)
 
-#class Subtitle(models.Model):
 

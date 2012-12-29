@@ -9,7 +9,6 @@ def check(request, listener_id):
 
 def getDialog(listener_id):
     l = Listener.objects.get(id=listener_id)
-    #return l.dialog
     return l.get_formatted_dialog(l.dialog)
  
 # 

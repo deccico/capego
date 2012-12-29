@@ -23,9 +23,7 @@
 
 <script>
 	var xmlhttp;
-	var path = window.location.pathname.split("/");
-	var video_id = path[path.length - 2]; 
-	var url_check = "../check/" + video_id + "/";
+	var url_check = "../check/{{ listener.id }}/";
 	function loadXMLDoc(url, cfunc) {
 		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
@@ -120,7 +118,7 @@
 				<div class="row-fluid">
 					<ul class="thumbnails m-media-container">
 						<li class="span4"><iframe
-								src="http://player.vimeo.com/video/55706253?badge=0" width="457"
+								src="{{ listener.url }}" width="457"
 								height="343" frameborder="0" webkitAllowFullScreen
 								mozallowfullscreen allowFullScreen></iframe></li>
 						<li class="span4">
