@@ -30,7 +30,10 @@ class Listener(models.Model):
         [1,"No, money down! Oops, it."], ]        
         """
         dialog = json.loads(dialog)
-        characters = dialog[0]
+        characters = {}
+        for i in range(len(dialog[0])):
+            characters[i] = dialog[0][i]
+
         html_output = """<table class="table table-striped table-condensed" id="dialog">
             <thead>
                 <tr>
