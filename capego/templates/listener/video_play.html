@@ -32,31 +32,22 @@
 		}
 		xmlhttp.onreadystatechange = cfunc;
 		xmlhttp.open("GET", url, true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send();
 	}
-	function refreshData() {
-		loadXMLDoc(
-				url_check,
-				function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("dialog").innerHTML = xmlhttp.responseText;
-					}
-				});
-	}
-	function correctData(e, ctrl) {
+
+	function correct_data(e, ctrl) {
         // look for window.event in case event isn't passed in
         if (typeof e == 'undefined' && window.event) { e = window.event; }
         if (e.keyCode == 13)
         {
-            //ctrl.value = "I've been pressed...";
-            //alert(ctrl.id);
     		loadXMLDoc(
-    				url_check + ctrl.id + "/" ,
+    				url_check + ctrl.id + "/" + ctrl.value + "/",
     				function() {
     					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
     						ctrl.value = xmlhttp.responseText;
     					}
-    				});
+    				}); 
         }		
 	}
 </script>

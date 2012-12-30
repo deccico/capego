@@ -103,7 +103,7 @@ class Listener(models.Model):
                             <td>%s</td></tr>
                             """ % (characters[d[0]],
                                    """
-                                   <input id="%s" type="text" onkeyup="correctData(event,%s)" 
+                                   <input id="%s" type="text" onkeyup="correct_data(event,%s)" 
                                    class="span11 search-query" 
                                    placeholder="Please enter %s dialog line here"></input>""" 
                                    % (dialog_id_text, dialog_id_text, characters[d[0]]))
