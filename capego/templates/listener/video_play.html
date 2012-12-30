@@ -43,6 +43,22 @@
 					}
 				});
 	}
+	function correctData(e, ctrl) {
+        // look for window.event in case event isn't passed in
+        if (typeof e == 'undefined' && window.event) { e = window.event; }
+        if (e.keyCode == 13)
+        {
+            //ctrl.value = "I've been pressed...";
+            //alert(ctrl.id);
+    		loadXMLDoc(
+    				url_check + ctrl.id + "/" ,
+    				function() {
+    					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    						ctrl.value = xmlhttp.responseText;
+    					}
+    				});
+        }		
+	}
 </script>
 </head>
 
@@ -127,7 +143,7 @@
 									<div class="page-header">
 										<h2>Video dialog</h2>
 									</div>
-									{{ listener.formatted_dialog|safe }}
+									{{ listener.dialog_to_complete|safe }}
 								</section>
 							</div>
 						</li>
