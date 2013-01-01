@@ -1,10 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.core.context_processors import csrf
+import json
 
 from models import Listener
+import corrector
 
-line_field = "line"
+cor = corrector.Corrector()
 
 #here the view function starts
 def check(request, listener_id, line_id, line):
@@ -12,6 +12,8 @@ def check(request, listener_id, line_id, line):
 
 
 def get_dialog(listener_id, line_id, line):
-    l = Listener.objects.get(id=listener_id)
-    return "corrected %s" % (l)
+    d = Listener.objects.get(id=listener_id).dialog
+    good_one = json.loads(d)[int(line_id)][1]
+    corrected = cor.correct_dialog(good_one, line)
+    return corrected
  
