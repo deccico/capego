@@ -85,15 +85,19 @@ class Formatter():
         for d in fdialog[1:]:
             dialog_id += 1
             dialog_id_text = "line_id%s" % (dialog_id)
+            span_id_text = "span_id%s" % (dialog_id)
             html_output += """
                             <tr><td><strong>%s:</strong></td>
                             <td>%s</td></tr>
                             """ % (characters[d[0]],
                                    """
-                                   <input id="%s" type="text" onkeyup="correct_data(event,%s)" 
+                                   <span id="%s">
+                                   <input id="%s" type="text" onkeyup="correct_data(event,%s,%s)" 
                                    class="span11 search-query" 
-                                   placeholder="Please enter %s dialog line here"></input>""" 
-                                   % (dialog_id_text, dialog_id_text, characters[d[0]]))
+                                   placeholder="Please enter %s dialog line here">
+                                   </input></span>""" 
+                                   % (span_id_text, dialog_id_text, 
+                                      span_id_text, dialog_id_text, characters[d[0]]))
         html_output += """
                         </tbody>
                         <tfoot>
