@@ -11,18 +11,25 @@ class Corrector():
         self.RE_REMOVE_CHARS = "\W"
         self.WORD_SEP = [" ", ".",",","'"]
         self.re_remove = re.compile(self.RE_REMOVE_CHARS)
-        self.EQUIV = {"ll": "will"}
+        self.EQUIV = {"ll": "will", "m":"am"}
     
     def correct_dialog(self, good_one, user_input):
+        """
+        from the user dialog and correct dialog
+        returns a list of [[result, user_input_word]..[]]
+        """
         good_one = self.strip_signs(good_one)
         user_input = self.strip_signs(user_input)
         out = []
         for i in range(len(user_input)):
-            wu = self.get_word(user_input[i])
-            gw = self.get_word(good_one[i])
+            wu = self.get_word(user_input[i]) #worduser
+            gw = self.get_word(good_one[i])     #goodword
             result = (wu==gw)
             out.append([result,wu])        
-        return self.format_line(out) 
+        #add an incomplete mark to the user input
+        if len(user_input) < len(good_one):
+            out.append([False,""]) 
+        return out 
     
     def strip_signs(self, line):
         lines = self.re_remove.split(line)

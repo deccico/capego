@@ -23,10 +23,6 @@ class Listener(models.Model):
     dialog = models.TextField(max_length=8192, blank=True)
     
     aformatter = formatter.Formatter()
-
-    @property
-    def dialog_corrected(self):
-        return self.aformatter.dialog_corrected(self.dialog)
     
     @property
     def dialog_to_complete(self):

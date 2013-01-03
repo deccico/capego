@@ -36,18 +36,19 @@
 		xmlhttp.send();
 	}
 
-	function correct_data(e, div_ctrl, input_ctrl) {
+	function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl) 
+	{
         // look for window.event in case event isn't passed in
-        if (typeof e == 'undefined' && window.event) 
+        if (typeof e == 'undefined' && window.event)
         { e = window.event; }
         if (e.keyCode == 13)
         {
     		loadXMLDoc(
     				url_check + input_ctrl.id + "/" 
-    				+ input_ctrl.value + "/",
+    				+ span_correct_ctrl.innerHTML + input_ctrl.value + "/",
     				function() {
     					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    						div_ctrl.innerHTML = xmlhttp.responseText;
+    						span_ctrl.innerHTML = xmlhttp.responseText;
     					}
     				}); 
         }		
