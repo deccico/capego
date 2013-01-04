@@ -43,9 +43,12 @@
         { e = window.event; }
         if (e.keyCode == 13)
         {
-    		loadXMLDoc(
+    		input_text = span_correct_ctrl.innerHTML + input_ctrl.value;
+    		if (input_text.length < 1)
+    			return;
+        	loadXMLDoc(
     				url_check + input_ctrl.id + "/" 
-    				+ span_correct_ctrl.innerHTML + input_ctrl.value + "/",
+    				+ input_text + "/",
     				function() {
     					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
     						span_ctrl.innerHTML = xmlhttp.responseText;
