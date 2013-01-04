@@ -12,6 +12,7 @@ class Corrector():
         self.WORD_SEP = [" ", ".",",","'"]
         self.re_remove = re.compile(self.RE_REMOVE_CHARS)
         self.EQUIV = {"ll": "will", "m":"am"}
+        self.ALL_GOOD = ["oh", "ah", "eh", "mmmh"]
     
     def correct_dialog(self, good_one, user_input):
         """
@@ -24,8 +25,10 @@ class Corrector():
         for i in range(len(user_input)):
             wu = self.get_word(user_input[i]) #worduser
             gw = self.get_word(good_one[i])     #goodword
-            result = (wu==gw)
-            out.append([result,wu])        
+            if gw in self.ALL_GOOD:
+                out.append([True, gw])
+            else:        
+                out.append([wu==gw, wu])        
         #add an incomplete mark to the user input
         if len(user_input) < len(good_one):
             out.append([False,""]) 
