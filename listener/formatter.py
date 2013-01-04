@@ -96,6 +96,7 @@ class Formatter():
                 html_out += """
                             <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s)" 
                             class="span11 search-query" 
+                            placeholder = "Please enter the rest of the dialog here."
                             value="%s">
                             </input>
                             """  % (dialog_id_text, 
