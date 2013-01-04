@@ -22,17 +22,21 @@ class Corrector():
         good_one = self.strip_signs(good_one)
         user_input = self.strip_signs(user_input)
         out = []
+        is_correct = True
         for i in range(len(user_input)):
             wu = self.get_word(user_input[i]) #worduser
             gw = self.get_word(good_one[i])     #goodword
             if gw in self.ALL_GOOD:
                 out.append([True, gw])
-            else:        
-                out.append([wu==gw, wu])        
+            else:
+                result = (wu==gw)        
+                out.append([result, wu])
+                is_correct = is_correct and result        
         #add an incomplete mark to the user input
         if len(user_input) < len(good_one):
-            out.append([False,""]) 
-        return out 
+            out.append([False,""])
+            is_correct = False 
+        return is_correct,out 
     
     def strip_signs(self, line):
         lines = self.re_remove.split(line)

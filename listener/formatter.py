@@ -77,12 +77,14 @@ class Formatter():
                         """
         return html_output
     
-    def line_corrected(self, line, dialog_id):
+    def line_corrected(self, is_correct, line, dialog_id):
         """
         from corrected dialog [[result, user_input_word]..[]]
         to html output
         """
-        html_out = '<span id="%s%s">' % (self.SPAN_CORRECT_PREFIX, dialog_id)
+        html_out = '<div class="%s">' % ("status-correct" if is_correct else "")
+        html_out += '<span><i class="%s"></i> </span>' % ("icon-ok" if is_correct else "") 
+        html_out += '<span id="%s%s">' % (self.SPAN_CORRECT_PREFIX, dialog_id)
 
         close_correct_span = True
         for i in range(len(line)):
@@ -108,5 +110,6 @@ class Formatter():
                 break
         if close_correct_span:
             html_out += "</span>"
+        html_out += "</div>"
         return html_out
     
