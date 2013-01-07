@@ -43,7 +43,7 @@
         { e = window.event; }
         if (e.keyCode == 13)
         {
-    		input_text = span_correct_ctrl.innerHTML + input_ctrl.value;
+    		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
     		if (input_text.length < 1)
     			return;
         	loadXMLDoc(
