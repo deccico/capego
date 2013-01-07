@@ -6,8 +6,10 @@ http://vimeo.com/55706253
               [1,'A thousand dollars? But your ad says "No money down".'],
               [0,"Oh! They got this all screwed up..."],
               [0,"So you don't work on a contingency basis?"],
-              [1,"No, money down! Oops, it shouldn't have this Bar Association logo here either."],
+              [1,"No, money down! Oops, I shouldn't have this Bar Association logo here either."],
               ]
+
+              
 -----------------------------------------
 "The Simpsons" Radioactive Man (1995)
 
