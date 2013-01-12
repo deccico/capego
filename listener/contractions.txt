@@ -1,7 +1,10 @@
-#contractions list that will evntually be loaded
+#contractions list that will eventually be loaded
+#accepted formats:
+# a'b c d
+# a'b c crctcrct   <-- crctcrct is a special key in this case
 
 aren't    are not
-can't    cannot
+can't    cannot crctcrct
 couldn't    could not
 didn't    did not
 doesn't    does not

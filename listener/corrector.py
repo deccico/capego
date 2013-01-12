@@ -4,8 +4,12 @@ Created on 01/01/2013
 @author: adrian
 '''
 
+from django.conf import settings
+
+# import the logging library
 import logging
-logger = logging.getLogger(__name__)
+# Get an instance of a logger
+logger = logging.getLogger(settings.APP_NAME)
 
 import re
 
@@ -16,9 +20,9 @@ class Corrector():
         self.WORD_SEP = [" ", ".",",","'"]
         self.re_remove = re.compile("\W")
         self.re_correct = re.compile("^crct(.*)crct$")
-        self.EQUIV = {"ll": "will", "m":"am"}
         self.ALL_GOOD = ["oh", "ah", "eh", "mmmh", "oops"]
-        self.contractions = listener.contractions.contractions_dict
+        self.CONTRACTION_ALL_GOOD = "crctcrct"
+        self.contractions = listener.contractions
     
     def correct_dialog(self, good_one, user_input):
         """
@@ -30,8 +34,8 @@ class Corrector():
         out = []
         is_correct = True
         for i in range(len(user_input)):
-            wu = self.get_word(user_input[i])   #worduser
-            gw = self.get_word(good_one[i])     #goodword
+            wu = user_input[i]   #worduser
+            gw = good_one[i]     #goodword
             if gw in self.ALL_GOOD:
                 out.append([True, gw])
             else:
@@ -61,22 +65,19 @@ class Corrector():
             out += l + " "
         return out
     
-    #todo: use memoize pattern
-    def get_word(self,word):
-        return word if word not in self.EQUIV.keys() else self.EQUIV[word]
-    
     def format_line(self, line):
         #todo this function
         return self.list_to_string([w[1] for w in line])            
 
 
     def is_good_contraction(self, user_input, good_one, i):
-        wu = self.get_word(user_input[i])
-        gw = self.get_word(good_one[i]) 
-        next_gw = None if len(good_one) < (i+2) else self.get_word(good_one[i+1]) 
-        prev_gw = self.get_word(good_one[i-1]) #we get the same word if len(list) == 1
-        next_wu = None if len(user_input) < (i+2) else self.get_word(user_input[i+1])
-        prev_wu = self.get_word(user_input[i-1]) #we get the same word if len(list) == 1
+        logger.debug("user_input:%s, good_on:%s, i:%s" % (user_input, good_one, i))
+        wu = user_input[i]
+        gw = good_one[i] 
+        next_gw = None if len(good_one) < (i+2) else good_one[i+1] 
+        prev_gw = good_one[i-1] #we get the same word if len(list) == 1
+        next_wu = None if len(user_input) < (i+2) else user_input[i+1]
+        prev_wu = user_input[i-1] #we get the same word if len(list) == 1
         
         #verify if the contraction has the structure:
         #[aren] = [t,are,not] or
@@ -88,12 +89,17 @@ class Corrector():
                     ]
         ctrc = self.contractions 
         for chk in to_check:
-            if chk[0] in ctrc.keys():
-                k = chk[0]
-                if chk[1] == ctrc[k][0]:
-                    if chk[2] == ctrc[k][1]:
-                        if chk[3] == ctrc[k][2]:
-                            return True
+            for con in ctrc:
+                logger.debug("checking '%s' vs '%s'" % (chk, con))
+                if chk == con:
+                    return True
+                if self.CONTRACTION_ALL_GOOD in con:
+                    is_good=True
+                    for i in range(len(to_check)):
+                        if chk[i] != con[i] and con[i]!=self.CONTRACTION_ALL_GOOD:
+                            is_good=False
+                    if is_good:
+                        return True 
 
         return False
         
