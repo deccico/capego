@@ -4,7 +4,12 @@ Created on 01/01/2013
 @author: adrian
 '''
 
+import logging
+logger = logging.getLogger(__name__)
+
 import re
+
+import listener
 
 class Corrector():
     def __init__(self):
@@ -13,6 +18,7 @@ class Corrector():
         self.re_correct = re.compile("^crct(.*)crct$")
         self.EQUIV = {"ll": "will", "m":"am"}
         self.ALL_GOOD = ["oh", "ah", "eh", "mmmh", "oops"]
+        self.contractions = listener.contractions.contractions_dict
     
     def correct_dialog(self, good_one, user_input):
         """
@@ -61,32 +67,33 @@ class Corrector():
     
     def format_line(self, line):
         #todo this function
-        return self.list_to_string([w[1] for w in line])
+        return self.list_to_string([w[1] for w in line])            
+
 
     def is_good_contraction(self, user_input, good_one, i):
         wu = self.get_word(user_input[i])
         gw = self.get_word(good_one[i]) 
         next_gw = None if len(good_one) < (i+2) else self.get_word(good_one[i+1]) 
         prev_gw = self.get_word(good_one[i-1]) #we get the same word if len(list) == 1
-        next_uw = None if len(user_input) < (i+2) else self.get_word(user_input[i+1])
-        prev_uw = self.get_word(user_input[i-1]) #we get the same word if len(list) == 1
-
-        if gw == "shouldn" and wu == "should" and next_uw == "not":
-            return True
-        if gw == "haven" and wu == "have" and next_uw == "not":
-            return True
-        if wu == "shouldn" and gw == "should" and next_gw == "not":
-            return True
-        if wu == "haven" and gw == "have" and next_gw == "not":
-            return True
-        if wu == "t" and gw == "not" and prev_uw == ["shouldn"] and prev_gw in ["should"]:
-            return True
-        if wu == "t" and gw == "not" and prev_uw == ["haven"] and prev_gw in ["have"]:
-            return True
-        if gw == "t" and wu == "not" and prev_gw == ["shouldn"] and prev_uw in ["should"]:
-            return True
-        if gw == "t" and wu == "not" and prev_gw == ["haven"] and prev_uw in ["have"]:
-            return True
-        return False
+        next_wu = None if len(user_input) < (i+2) else self.get_word(user_input[i+1])
+        prev_wu = self.get_word(user_input[i-1]) #we get the same word if len(list) == 1
         
+        #verify if the contraction has the structure:
+        #[aren] = [t,are,not] or
+        #[are] = [not,aren,t]
+        to_check = [[wu, next_wu, gw, next_gw],
+                    [gw, next_gw, wu, next_wu],
+                    [prev_wu, wu, prev_gw, gw],
+                    [prev_gw, gw, prev_wu, wu]
+                    ]
+        ctrc = self.contractions 
+        for chk in to_check:
+            if chk[0] in ctrc.keys():
+                k = chk[0]
+                if chk[1] == ctrc[k][0]:
+                    if chk[2] == ctrc[k][1]:
+                        if chk[3] == ctrc[k][2]:
+                            return True
+
+        return False
         
