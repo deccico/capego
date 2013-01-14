@@ -464,3 +464,7 @@ a.m-stats-item:hover{
           border-radius: 4px;
 }
 
+.small-btn
+{
+  padding: 1px 5px 1px;	
+}

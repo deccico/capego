@@ -44,9 +44,15 @@ class Formatter():
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
             html_output += """
-                            <tr><td><strong>%s:</strong></td>
+                            <tr><td>%s<strong>%s:</strong></div>%s
+                            <button id="%s" class="btn small-btn" 
+                            title="Help me with the next word"><i class="icon-chevron-right"></i></button>
+                            </div></td>
                             <td>%s</td></tr>
-                            """ % (characters[d[0]],
+                            """ % ('<div style="float:left;width:50%;">',
+                                   characters[d[0]],
+                                   '<div style="float: right; text-align: right; width: 50%;">',
+                                   'btn-suggest-%s' % dialog_id,
                                    """
                                    <span id="%s">
                                    <span id="%s"></span>
@@ -54,7 +60,7 @@ class Formatter():
                                    onkeyup="correct_data(event,%s,%s,%s)" 
                                    class="span11 search-query" 
                                    placeholder="Please enter %s dialog line here">
-                                   </input></span>""" 
+                                   </input></button></span>""" 
                                    % (span_id_text,
                                       span_correct_id_text, 
                                       dialog_id_text, 
