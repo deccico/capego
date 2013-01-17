@@ -23,7 +23,6 @@
 
 <script>
 	var xmlhttp;
-	var url_check = "../check/{{ listener.id }}/";
 	function loadXMLDoc(url, cfunc) {
 		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
@@ -46,6 +45,7 @@
     		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
     		if (input_text.length < 1)
     			return;
+			var url_check = "../check/{{ listener.id }}/";
         	loadXMLDoc(
     				url_check + input_ctrl.id + "/" 
     				+ input_text + "/",
@@ -55,6 +55,22 @@
     					}
     				}); 
         }		
+	}
+	
+	function correct_next_word(e, span_ctrl, input_ctrl, span_correct_ctrl)
+	{
+   		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
+   		if (input_text.length < 1)
+   			return;
+		var url_check = "../correct_next_word/{{ listener.id }}/";
+       	loadXMLDoc(
+   				url_check + input_ctrl.id + "/" 
+   				+ input_text + "/",
+   				function() {
+   					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   						span_ctrl.innerHTML = xmlhttp.responseText;
+   					}
+   				}); 
 	}
 </script>
 </head>

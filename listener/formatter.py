@@ -43,16 +43,20 @@ class Formatter():
             dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
+            btn_next_word = 'onclick="correct_next_word(event,%s,%s,%s)">' % (span_id_text, dialog_id_text, span_correct_id_text)
+            #btn_next_word = 'onclick="alert()"'
             html_output += """
                             <tr><td>%s<strong>%s:</strong></div>%s
                             <button id="%s" class="btn small-btn" 
-                            title="Help me with the next word"><i class="icon-chevron-right"></i></button>
+                            title="Help me with the next word" %s
+                            <i class="icon-eye-open"></i></button>
                             </div></td>
                             <td>%s</td></tr>
                             """ % ('<div style="float:left;width:50%;">',
                                    characters[d[0]],
                                    '<div style="float: right; text-align: right; width: 50%;">',
                                    'btn-suggest-%s' % dialog_id,
+                                   btn_next_word,
                                    """
                                    <span id="%s">
                                    <span id="%s"></span>

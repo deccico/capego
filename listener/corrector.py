@@ -25,10 +25,6 @@ class Corrector():
         self.contractions = listener.contractions
     
     def correct_dialog(self, good_one, user_input):
-        """
-        from the user dialog and correct dialog
-        returns a list of [[result, user_input_word]..[]]
-        """
         good_one = self.strip_signs(good_one)
         user_input = self.strip_signs(user_input)
         out = []
@@ -59,17 +55,7 @@ class Corrector():
         lines = [l.lower() for l in lines if len(l)>0] 
         return lines
 
-    def list_to_string(self, list_line):
-        out = ""
-        for l in list_line:
-            out += l + " "
-        return out
     
-    def format_line(self, line):
-        #todo this function
-        return self.list_to_string([w[1] for w in line])            
-
-
     def is_good_contraction(self, user_input, good_one, i):
         logger.debug("user_input:%s, good_on:%s, i:%s" % (user_input, good_one, i))
         wu = user_input[i]
@@ -102,4 +88,14 @@ class Corrector():
                         return True 
 
         return False
+    
+    def correct_next_word(self, good_one, user_input):
+        is_correct,out = self.correct_dialog(good_one, user_input)
+        good_one = self.strip_signs(good_one)
+        for i in range(len(out)):
+            if not out[i][0]:
+                out[i][0] = [True, good_one[i]]
+                if (i+1)==len(out):
+                    is_correct = True
+        return is_correct,out
         
