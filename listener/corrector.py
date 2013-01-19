@@ -86,16 +86,21 @@ class Corrector():
                             is_good=False
                     if is_good:
                         return True 
-
         return False
-    
+
     def correct_next_word(self, good_one, user_input):
         is_correct,out = self.correct_dialog(good_one, user_input)
         good_one = self.strip_signs(good_one)
         for i in range(len(out)):
             if not out[i][0]:
-                out[i][0] = [True, good_one[i]]
-                if (i+1)==len(out):
-                    is_correct = True
+                out[i] = [True, self.get_good_word(good_one[i])]
+                break
+        is_correct = out[-1][0] and len(out) == len(good_one)
+        if not is_correct:
+            out.append([False,""])
         return is_correct,out
+
+    def get_good_word(self, good_word):
+        r=self.re_correct.match(good_word)
+        return r.group(1) if r else good_word
         
