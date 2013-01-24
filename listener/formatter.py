@@ -43,11 +43,10 @@ class Formatter():
             dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
-            btn_next_word = 'onclick="correct_next_word(event,%s,%s,%s)">' % (span_id_text, dialog_id_text, span_correct_id_text)
-            #btn_next_word = 'onclick="alert()"'
+            btn_next_word = 'onclick="send_correction(%s,%s,%s,true)">' % (span_id_text, dialog_id_text, span_correct_id_text)
             html_output += """
                             <tr><td>%s<strong>%s:</strong></div>%s
-                            <button id="%s" class="btn small-btn" 
+                            <button id="%s" tabIndex="-1" class="btn small-btn" 
                             title="Help me with the next word" %s
                             <i class="icon-eye-open"></i></button>
                             </div></td>
@@ -77,14 +76,14 @@ class Formatter():
                         <tfoot>
                             <tr>
                                 <td colspan="6">
-                                    <button class="btn btn-primary" onclick="refreshData()">
+                                    <button id="btn_correct" class="btn btn-primary" onclick="correct_everything(%s)">
                                         Submit answers
                                     </button>
                                 </td>
                             </tr>
                         </tfoot>
                         </table>        
-                        """
+                        """ % (len(fdialog[1:]))
         return html_output
     
     def line_corrected(self, is_correct, line, dialog_id):

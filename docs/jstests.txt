@@ -1,0 +1,6 @@
+eval("line_id1").value="all righto";
+eval("line_id2").value="a thousand";
+eval("line_id3").value="ahh they got all";
+eval("line_id4").value="so you";
+eval("line_id5").value="no mokey";
+eval("btn_correct").click();

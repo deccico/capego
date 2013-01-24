@@ -22,13 +22,17 @@
     <![endif]-->
 
 <script>
-	var xmlhttp;
-	function loadXMLDoc(url, cfunc) {
+	function getXmlHttp(){
+		var xmlhttp;
 		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
 		} else {// code for IE6, IE5
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
+		return xmlhttp;
+	}
+	
+	function loadXMLDoc(xmlhttp, url, cfunc) {	
 		xmlhttp.onreadystatechange = cfunc;
 		xmlhttp.open("GET", url, true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -42,40 +46,52 @@
         { e = window.event; }
         if (e.keyCode == 13)
         {
-    		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
-    		if (input_text.length < 1)
-    			return;
-			var url_check = "../check/{{ listener.id }}/";
-        	loadXMLDoc(
-    				url_check + input_ctrl.id + "/" 
-    				+ input_text + "/",
-    				function() {
-    					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    						span_ctrl.innerHTML = xmlhttp.responseText;
-    					}
-    				}); 
+        	send_correction(span_ctrl, input_ctrl, span_correct_ctrl, false);
         }		
 	}
-	
-	function correct_next_word(e, span_ctrl, input_ctrl, span_correct_ctrl)
+
+	function send_correction(span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word)
 	{
-   		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
-		if (input_text.length < 1)
+		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
+		if (is_correct_next_word && input_text.length < 1)
 			input_text = "*****";
-		var url_check = "../correct_next_word/{{ listener.id }}/";
-       	loadXMLDoc(
-   				url_check + input_ctrl.id + "/" 
-   				+ input_text + "/",
-   				function() {
-   					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-   						span_ctrl.innerHTML = xmlhttp.responseText;
-   					}
-   				}); 
+		if (input_text.length < 1)
+			return;
+		var url_check = (is_correct_next_word? "../correct_next_word/{{ listener.id }}/":
+												"../check/{{ listener.id }}/");
+		xmlhttp = getXmlHttp();
+    	loadXMLDoc(
+    			xmlhttp,
+				url_check + input_ctrl.id + "/" 
+				+ input_text + "/",
+				function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						span_ctrl.innerHTML = xmlhttp.responseText;
+					}
+				}); 
+	}
+		
+	function correct_everything(num_dialogs)
+	{
+		for (var i=1; i<num_dialogs+1;i++)
+		{
+			send_correction(
+					document.getElementById("span_id" + i), 
+					document.getElementById("line_id" + i),
+					document.getElementById("span_correct_id" + i),
+					false);
+			
+		}		
+	}
+	
+	function FocusOnInput()
+	{
+	     document.getElementById("line_id1").focus();
 	}
 </script>
 </head>
 
-<body>
+<body onload="FocusOnInput()">
 	<div class="navbar navbar-fixed-top m-header">
 		<div class="navbar-inner m-inner">
 			<div class="container-fluid">
