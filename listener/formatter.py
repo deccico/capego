@@ -43,7 +43,7 @@ class Formatter():
             dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
-            btn_next_word = 'onclick="send_correction(%s,%s,%s,true)">' % (span_id_text, dialog_id_text, span_correct_id_text)
+            btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true)">' % (span_id_text, dialog_id_text, span_correct_id_text)
             html_output += """
                             <tr><td>%s<strong>%s:</strong></div>%s
                             <button id="%s" tabIndex="-1" class="btn small-btn" 
