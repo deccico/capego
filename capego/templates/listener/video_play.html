@@ -23,34 +23,42 @@
 
 <script>
 	function getXmlHttp(){
-		var xmlhttp;
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		return xmlhttp;
+		var httpRequest;
+	    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+	        httpRequest = new XMLHttpRequest();
+	      } else if (window.ActiveXObject) { // IE
+	        try {
+	          httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+	        } 
+	        catch (e) {
+	          try {
+	            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+	          } 
+	          catch (e) {}
+	        }
+	      }
+	    return httpRequest;
 	}
 	
 	function loadXMLDoc(xmlhttp, url, cfunc) {	
 		xmlhttp.onreadystatechange = cfunc;
+		url += new Date().getTime() + "/";
 		xmlhttp.open("GET", url, true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send();
 	}
 
-	function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl) 
-	{
+	function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl){
         // look for window.event in case event isn't passed in
         if (typeof e == 'undefined' && window.event)
         { e = window.event; }
         if (e.keyCode == 13)
         {
-        	send_correction(span_ctrl, input_ctrl, span_correct_ctrl, false);
+        	send_correction(getXmlHttp(), span_ctrl, input_ctrl, span_correct_ctrl, false);
         }		
 	}
 
-	function send_correction(span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word)
+	function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word)
 	{
 		input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
 		if (is_correct_next_word && input_text.length < 1)
@@ -59,7 +67,6 @@
 			return;
 		var url_check = (is_correct_next_word? "../correct_next_word/{{ listener.id }}/":
 												"../check/{{ listener.id }}/");
-		xmlhttp = getXmlHttp();
     	loadXMLDoc(
     			xmlhttp,
 				url_check + input_ctrl.id + "/" 
@@ -76,6 +83,7 @@
 		for (var i=1; i<num_dialogs+1;i++)
 		{
 			send_correction(
+					getXmlHttp(),
 					document.getElementById("span_id" + i), 
 					document.getElementById("line_id" + i),
 					document.getElementById("span_correct_id" + i),

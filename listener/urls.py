@@ -12,7 +12,7 @@ urlpatterns = patterns('',
        DetailView.as_view(
            model=Listener,
            template_name='listener/video_play.html')),
-    url(r'^check/(?P<listener_id>\d+)/line_id(?P<line_id>\d+)/(?P<line>.+)/$', 'listener.views.check'),
-    url(r'^correct_next_word/(?P<listener_id>\d+)/line_id(?P<line_id>\d+)/(?P<line>.+)/$', 'listener.views.correct_next_word'),
+    url(r'^check/(?P<listener_id>\d+)/line_id(?P<line_id>\d+)/(?P<line>.+)/.*/$', 'listener.views.check'),
+    url(r'^correct_next_word/(?P<listener_id>\d+)/line_id(?P<line_id>\d+)/(?P<line>.+)/.*/$', 'listener.views.correct_next_word'),
 )
 
