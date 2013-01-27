@@ -14,9 +14,11 @@ logger = logging.getLogger(settings.APP_NAME)
 import os
 import re
 
+import corrector
 
 class Contractions:
     def __init__(self):
+        self.cor = corrector.Corrector()
         contractions_file = os.path.dirname(os.path.realpath(__file__)) 
         contractions_file += os.sep + "contractions.txt" 
         self.contractions_dict = self.get_contractions(contractions_file)
@@ -34,27 +36,17 @@ class Contractions:
                 continue
             if re.match("\s*#",l):
                 continue
-            #from "what'll    what will; what shall" 
-            #get [what'll,what will; what shall]
+
             l = l.split(" ",1)
             if len(l) < 2:
                 logger.warning("line '%s' doesn't contain a valid contraction" % line)
                 continue
 
-            #from what'll
-            #get [what,ll]
-            k = l[0].split("'")
-            if len(k) != 2:
-                logger.warning("line '%s' doesn't contain a valid contraction" % line)
-                continue
+            k = [self.cor.get_word(l[0])]
             values = l[1].strip().split(";")
-            #from "what will; what shall" 
-            #get [what will,what shall]
+
             for v in values:
                 v = [x.strip() for x in v.strip().split(" ")]
-                if len(v) != 2:
-                    logger.warning("line %s doesn't contain a valid contraction" % line)
-                    continue
                 contractions.append(k+v)
                 contractions.append(v+k)
         logger.info("Contractions processed: %s" % len(contractions))

@@ -5,6 +5,7 @@
 
 aren't    are not
 can't    cannot crctcrct
+can't    can not
 couldn't    could not
 didn't    did not
 doesn't    does not

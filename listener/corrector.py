@@ -19,77 +19,105 @@ class Corrector():
     def __init__(self):
         self.WORD_SEP = [" ", ".",",","'"]
         self.re_remove = re.compile("\W")
-        self.re_correct = re.compile("^crct(.*)crct$")
+        self.correct = "crct"
+        self.re_correct = re.compile("^%s(.*)%s$" % (self.correct, self.correct))
         self.ALL_GOOD = ["oh", "ah", "eh", "mmmh", "oops"]
-        self.CONTRACTION_ALL_GOOD = "crctcrct"
+        self.CONTRACTION_ALL_GOOD = "%s%s" % (self.correct, self.correct)
         self.contractions = listener.contractions
     
     def correct_dialog(self, good_one, user_input):
-        good_one = self.strip_signs(good_one)
-        user_input = self.strip_signs(user_input)
+        #todo: eventually we may need to split in "." and "," 
+        #without spaces but keeping the signs
+        good_one = good_one.split(" ")
+        user_input = user_input.split(" ")
+        
         out = []
         is_correct = True
+        offset = [0,0]
         for i in range(len(user_input)):
-            wu = user_input[i]   #worduser
-            gw = good_one[i]     #goodword
+            if (i+offset[0]) >= len(user_input):
+                break  
+            if (i+offset[1]) >= len(good_one):
+                break  
+            wu = self.get_word(user_input[i+offset[0]])   #worduser
+            gw = self.get_word(good_one[i+offset[1]])     #goodword
+            raw_word_user = user_input[i+offset[0]]
+            raw_good_one = good_one[i+offset[1]]
+            logger.debug("wu/gw %s vs %s" % (wu,gw))
             if gw in self.ALL_GOOD:
-                out.append([True, gw])
-            else:
-                r=self.re_correct.match(gw)
-                if r:
-                    out.append([True, r.group(1)])
-                elif self.is_good_contraction(user_input, good_one, i):
-                    out.append([True, wu])
-                else:
-                    result = (wu==gw)        
-                    out.append([result, wu])
-                    is_correct = is_correct and result        
+                out.append([True, raw_good_one])
+                logger.debug("it's an all good word")
+                continue
+            r=self.re_correct.match(gw)
+            if r:
+                out.append([True, self.strip_all_good_mark(raw_good_one)])
+                logger.debug("it has the good mark")
+                continue
+            is_contraction = self.is_good_contraction(user_input, good_one, i, offset)
+            if is_contraction[0]:
+                out.append([True, raw_good_one])
+                logger.debug("is a good contraction")
+                offset[0] += is_contraction[1][0]
+                offset[1] += is_contraction[1][1]
+                if is_contraction[1] == [0,1]: #add the offsetted word
+                    out.append([True, good_one[i+offset[1]]])
+                continue
+            result = (wu==gw)        
+            out.append([result, raw_good_one if result else raw_word_user])
+            is_correct = is_correct and result        
+            logger.debug("is correct? %s" % result)
+
         #add an incomplete mark to the user input
-        if len(user_input) < len(good_one):
-            out.append([False,""])
-            is_correct = False 
+        #if len(user_input) < len(good_one):
+        #    is_correct = False
+        #    out.append([False,""])
         return is_correct,out 
-    
+        
     def strip_signs(self, line):
         lines = self.re_remove.split(line)
         lines = [l.lower() for l in lines if len(l)>0] 
         return lines
 
+    def get_word(self, word):
+        return None if word==None else self.re_remove.sub("", word).lower() 
     
-    def is_good_contraction(self, user_input, good_one, i):
-        logger.debug("user_input:%s, good_on:%s, i:%s" % (user_input, good_one, i))
-        wu = user_input[i]
-        gw = good_one[i] 
-        next_gw = None if len(good_one) < (i+2) else good_one[i+1] 
-        prev_gw = good_one[i-1] #we get the same word if len(list) == 1
-        next_wu = None if len(user_input) < (i+2) else user_input[i+1]
-        prev_wu = user_input[i-1] #we get the same word if len(list) == 1
+    def strip_all_good_mark(self, word):
+        return word.replace(self.correct,"")
         
-        #verify if the contraction has the structure:
-        #[aren] = [t,are,not] or
-        #[are] = [not,aren,t]
-        to_check = [[wu, next_wu, gw, next_gw],
-                    [gw, next_gw, wu, next_wu],
-                    [prev_wu, wu, prev_gw, gw],
-                    [prev_gw, gw, prev_wu, wu]
+    def is_good_contraction(self, user_input, good_one, iw, offset):
+        logger.debug("user_input:%s, good_on:%s, iw:%s offset %s" % (user_input, good_one, iw, offset))
+        iw += offset[0]
+        jw = iw + offset[1] 
+        wu = self.get_word(user_input[iw])
+        gw = self.get_word(good_one[jw]) 
+        next_wu = None if len(user_input) < (iw+2) else self.get_word(user_input[iw+1])
+        next_gw = None if len(good_one) < (jw+2) else self.get_word(good_one[jw+1]) 
+        
+        to_check = [[wu, gw, next_gw, [0,1]],
+                    [gw, wu, next_wu, [1,0]],
                     ]
-        ctrc = self.contractions 
-        for chk in to_check:
-            for con in ctrc:
-                logger.debug("checking '%s' vs '%s'" % (chk, con))
-                if chk == con:
-                    return True
-                if self.CONTRACTION_ALL_GOOD in con:
-                    is_good=True
-                    for i in range(len(to_check)):
-                        if chk[i] != con[i] and con[i]!=self.CONTRACTION_ALL_GOOD:
-                            is_good=False
-                    if is_good:
-                        return True 
-        return False
+        logger.debug("to_check %s" % to_check)
 
+        for contraction in self.contractions:
+            logger.debug("iterating over contraction: %s" % contraction)
+            for check in to_check:
+                logger.debug("iterating over check: %s" % check)
+                is_correct = True
+                for i in range(len(contraction)):
+                    logger.debug("comparing: %s / %s" % (self.get_word(contraction[i]),self.get_word(check[i])))
+                    if self.get_word(contraction[i]) != self.get_word(check[i]):
+                        if contraction[i] != self.CONTRACTION_ALL_GOOD:
+                            is_correct = False
+                            break
+                        else:
+                            #a special case requires a special offset
+                            check[-1] = [0,0]                     
+                if is_correct:
+                    return True,check[-1] 
+        return False,[0,0]
+            
     def correct_next_word(self, good_one, user_input):
-        is_correct,out = self.correct_dialog(good_one, user_input)
+        out = self.correct_dialog(good_one, user_input)[1]
         good_one = self.strip_signs(good_one)
         for i in range(len(out)):
             if not out[i][0]:

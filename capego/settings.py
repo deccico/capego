@@ -139,13 +139,19 @@ LOGGING = {
     },
     'handlers': {
         'null': {
-            'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
+           'level': 'DEBUG',
+           'class': 'django.utils.log.NullHandler',
         },
         'console':{
             'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
+        },
+        'file':{
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': SITE_ROOT + os.sep + 'log' + os.sep + APP_NAME + ".log"
         },
         'mail_admins': {
             'level': 'ERROR',
@@ -164,8 +170,7 @@ LOGGING = {
             'propagate': False,
         },
         APP_NAME: {
-            'handlers': ['console', 'mail_admins'],
-            'level': 'DEBUG',
+            'handlers': ['console', 'file', 'mail_admins'],
         }
     }
 }
