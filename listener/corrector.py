@@ -28,8 +28,11 @@ class Corrector():
     def correct_dialog(self, good_one, user_input):
         #todo: eventually we may need to split in "." and "," 
         #without spaces but keeping the signs
-        good_one = good_one.split(" ")
-        user_input = user_input.split(" ")
+        good_one = good_one.strip()
+        user_input = user_input.strip()
+        rgo, rui = good_one, user_input
+        good_one = good_one.split()
+        user_input = user_input.split()
         
         out = []
         is_correct = True
@@ -68,10 +71,10 @@ class Corrector():
             logger.debug("is correct? %s" % result)
 
         #add an incomplete mark to the user input
-        #if len(user_input) < len(good_one):
-        #    is_correct = False
-        #    out.append([False,""])
-        return is_correct,out 
+        if len(self.strip_signs(rui)) < len(self.strip_signs(rgo)):
+            is_correct = False
+            out.append([False,""])
+        return is_correct,out
         
     def strip_signs(self, line):
         lines = self.re_remove.split(line)

@@ -14,11 +14,9 @@ logger = logging.getLogger(settings.APP_NAME)
 import os
 import re
 
-import corrector
 
 class Contractions:
     def __init__(self):
-        self.cor = corrector.Corrector()
         contractions_file = os.path.dirname(os.path.realpath(__file__)) 
         contractions_file += os.sep + "contractions.txt" 
         self.contractions_dict = self.get_contractions(contractions_file)
@@ -42,7 +40,7 @@ class Contractions:
                 logger.warning("line '%s' doesn't contain a valid contraction" % line)
                 continue
 
-            k = [self.cor.get_word(l[0])]
+            k = [l[0].strip()]
             values = l[1].strip().split(";")
 
             for v in values:

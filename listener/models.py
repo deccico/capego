@@ -1,4 +1,5 @@
 from django.db import models
+import json 
 
 import formatter
 
@@ -27,6 +28,11 @@ class Listener(models.Model):
     @property
     def dialog_to_complete(self):
         return self.aformatter.dialog_to_complete(self.dialog)
+
+    @staticmethod
+    def get_good_line(listener_id, line_id):
+        d = Listener.objects.get(id=listener_id).dialog
+        return json.loads(d)[int(line_id)][1]
 
 class Accent(models.Model):
     def __unicode__(self):

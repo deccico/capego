@@ -59,37 +59,52 @@ class ListenerTest(TestCase):
         self.try_correction(user_input, correct_line)
     
     def try_correction(self,maybe, correct):
-        cor = corrector.Corrector()
-        maybe_correct_line = maybe
-        correct_line = correct
-        logger.debug("maybe correct:'%s' correct line:'%s'" % (maybe_correct_line, correct_line))
-        out = cor.correct_dialog(correct_line, maybe_correct_line)
+        out = self.correct(correct, maybe)
         self.assertTrue(out[0], """error in correction. Correct: '%s' check: '%s' 
-        out: %s""" % (correct_line, maybe_correct_line, out))
-        correct_line_list = correct_line.split(" ")
+        out: %s""" % (correct, maybe, out))
+        correct_line_list = correct.split(" ")
         self.assertEquals(len(out[1]), len(correct_line_list),
                           """Correct line has a different length than the output.
                           Correct:%s out:%s
-                          """ % (correct_line, out)) 
+                          """ % (correct, out)) 
         for i in range(len(correct_line_list)):
             self.assertEquals(correct_line_list[i], out[1][i][1],
                               """Correct line is different than the output.
                               Correct:%s out:%s. Correct line word:%s output word:%s 
-                              """ % (correct_line, out, correct_line_list[i], out[1][i][1])) 
+                              """ % (correct, out, correct_line_list[i], out[1][i][1])) 
         return out[1]    
     
-    def test_mistake(self):
+    def correct(self, correct, maybe_correct):
         cor = corrector.Corrector()
+        logger.debug("maybe correct:'%s' correct line:'%s'" % (maybe_correct, correct))
+        return cor.correct_dialog(correct, maybe_correct)
+    
+    def test_mistake(self):
         maybe_correct_line = "aren't Great"
         correct_line = "are not grate"
-        logger.debug("maybe correct:'%s' correct line:'%s'" % (maybe_correct_line, correct_line))
-        out = cor.correct_dialog(correct_line, maybe_correct_line)
+        out = self.correct(correct_line, maybe_correct_line)
         self.assertFalse(out[0], """error in correction correct line: '%s' check 
         line: '%s' out: %s""" % (correct_line, maybe_correct_line, out))
         last_word = maybe_correct_line.split(" ")[-1]
         self.assertEquals(last_word, out[1][-1][1],
                           """incorrect words should be preserved in the same format.
                           user input:%s out:%s. Correct line word:%s output word:%s 
-                          """ % (maybe_correct_line, out, last_word, out[1][-1][1])) 
+                          """ % (maybe_correct_line, out, last_word, out[1][-1][1]))
+    
+    def test_incomplete_correction(self):
+        correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer." 
+        maybe_correct = "all right"
+        out = self.correct(correct, maybe_correct)
+        self.assertFalse(out[0], "Output should be wrong. %s" % str(out))
         
+    def test_test_spaces(self):
+        self.try_correction("hi    There", "Hi there")
+
+    def test_test_without_spaces(self):
+        self.try_correction("hi There", "Hi there")
+        
+    def test_skipping_signs(self):
+        maybe = r"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer" 
+        correct = maybe + "." 
+        self.try_correction(maybe, correct)
         
