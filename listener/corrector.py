@@ -89,8 +89,8 @@ class Corrector():
         
     def is_good_contraction(self, user_input, good_one, iw, offset):
         logger.debug("user_input:%s, good_on:%s, iw:%s offset %s" % (user_input, good_one, iw, offset))
-        iw += offset[0]
         jw = iw + offset[1]
+        iw += offset[0]
         
         #check match in the first word 
         wu = user_input[iw].split("'",1)
@@ -130,9 +130,9 @@ class Corrector():
                     return True,check[-1] 
         return False,[0,0]
             
-    def correct_next_word(self, good_one, user_input):
+    def get_next_word(self, good_one, user_input):
         out = self.correct_dialog(good_one, user_input)[1]
-        good_one = self.strip_signs(good_one)
+        good_one = good_one.split()
         for i in range(len(out)):
             if not out[i][0]:
                 out[i] = [True, self.get_good_word(good_one[i])]

@@ -13,9 +13,9 @@ def check(request, listener_id, line_id, line):
     formatted = fmt.line_corrected(is_correct, corrected_dialog, line_id)
     return HttpResponse(formatted)
 
-def correct_next_word(request, listener_id, line_id, line):
+def get_next_word(request, listener_id, line_id, line):
     good_one = Listener.get_good_line(listener_id, line_id)
-    is_correct,corrected_dialog = cor.correct_next_word(good_one, line)
+    is_correct,corrected_dialog = cor.get_next_word(good_one, line)
     formatted = fmt.line_corrected(is_correct, corrected_dialog, line_id)
     return HttpResponse(formatted)
 

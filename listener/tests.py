@@ -118,4 +118,21 @@ class ListenerTest(TestCase):
         out = self.correct(correct, maybe)
         self.assertTrue(out[1][0][0], "First word should be correct. %s Correct: %s Maybe: %s" 
                         % (str(out), correct, maybe))
+    
+    def test_get_next_word(self):
+        correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer." 
+        lcorrect = correct.split()
+        cor = corrector.Corrector()
+        for i in range(len(lcorrect)):
+            maybe = (" ").join(lcorrect[:i])
+            out = cor.get_next_word(correct, maybe)
+            msg = "i:%s Maybe:%s out:%s Correct:%s " % (i,maybe,out,correct)
+            for j in range(i+1):
+                self.assertEquals(lcorrect[j], out[1][j][1], "incorrect next word. " + msg)
+                 
+    def test_correct_extreme(self):
+        maybe = "All right, gentlemen I will take your case but i am going to have to ask for a thousand dollar retainer"
+        correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer."        
+        self.correct(correct, maybe)                     
+
         
