@@ -42,7 +42,7 @@
 	
 	function loadXMLDoc(xmlhttp, url, cfunc) {	
 		xmlhttp.onreadystatechange = cfunc;
-		url += new Date().getTime() + "/";
+		url = encodeURIComponent(url) + new Date().getTime() + "/";
 		xmlhttp.open("GET", url, true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send();
