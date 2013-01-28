@@ -171,6 +171,7 @@ LOGGING = {
         },
         APP_NAME: {
             'handlers': ['console', 'file', 'mail_admins'],
+            'level': 'INFO',
         }
     }
 }
