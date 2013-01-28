@@ -44,6 +44,7 @@ class Formatter():
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
             btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true)">' % (span_id_text, dialog_id_text, span_correct_id_text)
+            character = characters[d[0]]
             html_output += """
                             <tr><td>%s<strong>%s:</strong></div>%s
                             <button id="%s" tabIndex="-1" class="btn small-btn" 
@@ -52,7 +53,7 @@ class Formatter():
                             </div></td>
                             <td>%s</td></tr>
                             """ % ('<div style="float:left;width:50%;">',
-                                   characters[d[0]],
+                                   character,
                                    '<div style="float: right; text-align: right; width: 50%;">',
                                    'btn-suggest-%s' % dialog_id,
                                    btn_next_word,
@@ -70,7 +71,7 @@ class Formatter():
                                       span_id_text, 
                                       dialog_id_text,
                                       span_correct_id_text,
-                                      characters[d[0]]))
+                                      character))
         html_output += """
                         </tbody>
                         <tfoot>
