@@ -19,6 +19,7 @@ import corrector
 
 
 class ListenerTest(TestCase):
+    
     def test_contractions(self):
         """
         Test contractions.
@@ -40,6 +41,9 @@ class ListenerTest(TestCase):
     
     def test_cannot_contraction(self):
         self.try_correction("can't dream", "cannot dream")
+
+    def test_cannot(self):
+        self.try_correction("can't", "can not")
 
     def test_you_have(self):
         self.try_correction("listen you've to", "listen you Have to")
@@ -65,8 +69,8 @@ class ListenerTest(TestCase):
         correct_line_list = correct.split(" ")
         self.assertEquals(len(out[1]), len(correct_line_list),
                           """Correct line has a different length than the output.
-                          Correct:%s out:%s
-                          """ % (correct, out)) 
+                          Correct:%s Maybe:%s out:%s
+                          """ % (correct, maybe, out)) 
         for i in range(len(correct_line_list)):
             self.assertEquals(correct_line_list[i], out[1][i][1],
                               """Correct line is different than the output.
@@ -97,14 +101,21 @@ class ListenerTest(TestCase):
         out = self.correct(correct, maybe_correct)
         self.assertFalse(out[0], "Output should be wrong. %s" % str(out))
         
-    def test_test_spaces(self):
+    def test_tst_spaces(self):
         self.try_correction("hi    There", "Hi there")
 
-    def test_test_without_spaces(self):
+    def test_tst_without_spaces(self):
         self.try_correction("hi There", "Hi there")
         
     def test_skipping_signs(self):
         maybe = r"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer" 
         correct = maybe + "." 
         self.try_correction(maybe, correct)
+
+    def test_partial_contraction(self):
+        correct = "I'll" 
+        maybe = "I"
+        out = self.correct(correct, maybe)
+        self.assertTrue(out[1][0][0], "First word should be correct. %s Correct: %s Maybe: %s" 
+                        % (str(out), correct, maybe))
         

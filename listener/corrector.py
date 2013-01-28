@@ -44,8 +44,8 @@ class Corrector():
                 break  
             wu = self.get_word(user_input[i+offset[0]])   #worduser
             gw = self.get_word(good_one[i+offset[1]])     #goodword
-            raw_word_user = user_input[i+offset[0]]
-            raw_good_one = good_one[i+offset[1]]
+            raw_word_user = user_input[i+offset[0]].strip()
+            raw_good_one = good_one[i+offset[1]].strip()
             logger.debug("wu/gw %s vs %s" % (wu,gw))
             if gw in self.ALL_GOOD:
                 out.append([True, raw_good_one])
@@ -90,17 +90,28 @@ class Corrector():
     def is_good_contraction(self, user_input, good_one, iw, offset):
         logger.debug("user_input:%s, good_on:%s, iw:%s offset %s" % (user_input, good_one, iw, offset))
         iw += offset[0]
-        jw = iw + offset[1] 
-        wu = self.get_word(user_input[iw])
-        gw = self.get_word(good_one[jw]) 
+        jw = iw + offset[1]
+        
+        #check match in the first word 
+        wu = user_input[iw].split("'",1)
+        gw = good_one[jw].split("'",1)
         next_wu = None if len(user_input) < (iw+2) else self.get_word(user_input[iw+1])
         next_gw = None if len(good_one) < (jw+2) else self.get_word(good_one[jw+1]) 
+
+        if next_wu==None and self.get_word(wu[0]) == self.get_word(gw[0]):
+            offset = [0,0]
+            if len(wu)>len(gw):
+                offset = [0,1]
+            return True,offset 
+        
+        wu = self.get_word(user_input[iw])
+        gw = self.get_word(good_one[jw]) 
         
         to_check = [[wu, gw, next_gw, [0,1]],
                     [gw, wu, next_wu, [1,0]],
                     ]
         logger.debug("to_check %s" % to_check)
-
+        
         for contraction in self.contractions:
             logger.debug("iterating over contraction: %s" % contraction)
             for check in to_check:
