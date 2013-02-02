@@ -134,5 +134,16 @@ class ListenerTest(TestCase):
         maybe = "All right, gentlemen I will take your case but i am going to have to ask for a thousand dollar retainer"
         correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer."        
         self.correct(correct, maybe)                     
-
+                
+    def test_partially_correct(self):
+        correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer." 
+        maybe_correct = "all right gentlemento ai teis"
+        out = self.correct(correct, maybe_correct)
+        self.assertFalse(out[0], "Output should be wrong. %s" % str(out))
+        for i in range(0,2):
+            self.assertTrue(out[1][i][0], "This word should be fine. Out:%s. index:%s" % (str(out),i))
+        maybe_correct = maybe_correct.split()
+        for i in range(2,5):
+            self.assertEquals(out[1][i][1], maybe_correct[i], "Wrong word should be preserved. Out:%s. index:%s" % (str(out),i))
+            
         
