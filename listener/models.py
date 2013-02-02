@@ -9,6 +9,12 @@ class Language(models.Model):
 
     name = models.CharField(max_length=50)
 
+class Level(models.Model):
+    def __unicode__(self):
+        return self.name
+    
+    name = models.CharField(max_length=15)
+
 #object that we can listen (nothing to do with the pattern)
 class Listener(models.Model):
     def __unicode__(self):
@@ -22,6 +28,7 @@ class Listener(models.Model):
     language = models.ForeignKey(Language)
     length = models.SmallIntegerField(blank=True, null=True) #length in seconds
     dialog = models.TextField(max_length=8192, blank=True)
+    level = models.ForeignKey(Level)
     
     aformatter = formatter.Formatter()
     

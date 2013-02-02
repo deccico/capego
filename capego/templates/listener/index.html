@@ -4,10 +4,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Metro Business Template</title>
+    <title>Capego</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Starter Twitter Bootstrap Template. This starter template is a great place to start your Bootstrap Projects.">
-    <meta name="author" content="LittleSparkVT">
+    <meta name="description" content="Practice listening and spelling with Capego.">
+    <meta name="author" content="Adrián">
 
     <!-- Style sheets -->
     <link href="{{ STATIC_PREFIX }}css/bootstrap.css" rel="stylesheet">
@@ -18,7 +18,6 @@
     <link href="{{ STATIC_PREFIX }}css/custom.css" rel="stylesheet">
     
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -49,7 +48,6 @@
 
                     <a class="btn btn-navbar btntop" data-toggle="collapse" data-target=".nav-collapse">NAVIGATION</a>
 
-
                     <h1 class="brand hidden-phone hidden-tablet">
                         <a href="{{ STATIC_PREFIX }}index.html">
                             <img src="{{ STATIC_PREFIX }}img/logo.png" alt="">
@@ -60,7 +58,6 @@
                         <ul class="nav pull-right">
                           <li><a href="{{ STATIC_PREFIX }}index.html">Home</a></li>
                           <li><a href="{{ STATIC_PREFIX }}about.html">About</a></li>
-                          <li><a href="{{ STATIC_PREFIX }}portfolio.html" class="active">Portfolio</a></li>
                           <li><a href="{{ STATIC_PREFIX }}contact.html">Contact</a></li>
                           <li><a href="{{ STATIC_PREFIX }}blog.html">Blog</a></li>
                         </ul>
@@ -84,17 +81,15 @@
 
             <div class="explain">
 
-                  <h2>portfolio</h2>
-                  <p class="intro">Responsive. Dynamic. Awesome. Isotope. Just a few of the words to describe the Portfolio.</p>
+                  <h2>English language learning</h2>
+                  <p class="intro">Improve your listening and spelling skills with Capego.</p>
       <!-- Start Portfolio Navigation -->
       <nav class="primary m-btn-group toggle-buttons clearfix"> 
           <ul> 
               <li><a href="{{ STATIC_PREFIX }}#" class="m-btn selected" data-filter="*">All</a></li> 
-              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".web">Web Design</a></li> 
-              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".ill">Illustration</a></li> 
-              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".logo">Logo</a></li> 
-              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".video">Video</a></li> 
-              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".print">Print Design</a></li> 
+              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".beginner">Beginner</a></li> 
+              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".intermediate">Intermediate</a></li> 
+              <li><a href="{{ STATIC_PREFIX }}#" class="m-btn" data-filter=".advance">Advance</a></li> 
           </ul> 
       </nav> 
 
@@ -104,87 +99,87 @@
             <section class="clearfix"> 
               
             <div class="portfolio"> 
-                <figure class="entry web"> 
+                <figure class="entry beginner"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image.jpg" alt="">
-                      <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                      <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a>
                 </figure> 
   
-                <figure class="entry web"> 
+                <figure class="entry beginner"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry logo"> 
+                <figure class="entry intermediate"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry web"> 
+                <figure class="entry beginner"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry print"> 
+                <figure class="entry advance"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry ill"> 
+                <figure class="entry advance"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry web ill logo"> 
+                <figure class="entry beginner intermediate advance"> 
                    <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                   <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                   <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry print logo"> 
+                <figure class="entry intermediate"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
 
-                <figure class="entry video logo"> 
+                <figure class="entry intermediate"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry web print"> 
+                <figure class="entry advance"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure>
 
-                <figure class="entry video print"> 
+                <figure class="entry beginner"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
-                <figure class="entry web"> 
+                <figure class="entry beginner"> 
                     <a href="{{ STATIC_PREFIX }}portfolio_example.html"><img src="{{ STATIC_PREFIX }}img/portfolio-image2.jpg" alt="">
-                    <h2>Portfolio Item</h2>
-                        <p>This is a description of a portfolio item</p>
+                    <h2>Video Item</h2>
+                        <p>Video item description</p>
                     </a> 
                 </figure> 
   
@@ -209,9 +204,7 @@
               <!-- Copyright and contact -->
               <div class="span4 address">
 
-              ©2012 Metro Business Template by <a href="{{ STATIC_PREFIX }}http://www.littlesparkvt.com">LittleSparkVT</a>
-              <br>555 Silverado Trail
-              <br>Burlington Vermont 05477
+              ©2013 Capego <a href="{{ STATIC_PREFIX }}http://www.capego.com"></a>
 
               </div>
 
