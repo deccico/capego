@@ -15,7 +15,7 @@ class Formatter():
         self.SPAN_PREFIX = "span_id"
         self.SPAN_CORRECT_PREFIX = "span_correct_id"
 
-    def dialog_to_complete(self, dialog):
+    def dialog_to_complete(self, dialog, listener_id):
         """
         Format a dialog from this json format to nice html output
         [{0:'Hutz',1:'Bart'}, 
@@ -43,11 +43,11 @@ class Formatter():
             dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
-            btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true)">' % (span_id_text, dialog_id_text, span_correct_id_text)
+            btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true,%s)">' % (span_id_text, dialog_id_text, span_correct_id_text, listener_id)
             character = characters[d[0]]
             html_output += """
                             <tr><td>%s<strong>%s:</strong></div>%s
-                            <button id="%s" tabIndex="-1" class="btn small-btn" 
+                            <button id="%s" tabIndex="-1" class="small-btn" 
                             title="Help me with the next word" %s
                             <i class="icon-eye-open"></i></button>
                             </div></td>
@@ -61,7 +61,7 @@ class Formatter():
                                    <span id="%s">
                                    <span id="%s"></span>
                                    <input id="%s" type="text" 
-                                   onkeyup="correct_data(event,%s,%s,%s)" 
+                                   onkeyup="correct_data(event,%s,%s,%s,%s)" 
                                    class="span11 search-query" 
                                    placeholder="Please enter %s dialog line here">
                                    </input></button></span>""" 
@@ -71,23 +71,24 @@ class Formatter():
                                       span_id_text, 
                                       dialog_id_text,
                                       span_correct_id_text,
+                                      listener_id,
                                       character))
         html_output += """
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="6">
-                                    <button id="btn_correct" class="btn btn-primary" onclick="correct_everything(%s)">
+                                    <button id="btn_correct" class="btn btn-primary" onclick="correct_everything(%s,%s)">
                                         Submit answers
                                     </button>
                                 </td>
                             </tr>
                         </tfoot>
                         </table>        
-                        """ % (len(fdialog[1:]))
+                        """ % (len(fdialog[1:]), listener_id)
         return html_output
     
-    def line_corrected(self, is_correct, line, dialog_id):
+    def line_corrected(self, is_correct, line, dialog_id, listener_id):
         """
         from corrected dialog [[result, user_input_word]..[]]
         to html output
@@ -106,7 +107,7 @@ class Formatter():
                 dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
                 corrected_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
                 html_out += """
-                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s)" 
+                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s)" 
                             class="span11 search-query" 
                             placeholder = "Please enter the rest of the dialog here."
                             value="%s">
@@ -114,7 +115,8 @@ class Formatter():
                             """  % (dialog_id_text, 
                                     span_id_text, 
                                     dialog_id_text,
-                                    corrected_id_text, 
+                                    corrected_id_text,
+                                    listener_id, 
                                     " ".join(w[1] for w in line[i:]))
                 close_correct_span = False
                 break

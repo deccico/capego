@@ -34,7 +34,7 @@ class Listener(models.Model):
     
     @property
     def dialog_to_complete(self):
-        return self.aformatter.dialog_to_complete(self.dialog)
+        return self.aformatter.dialog_to_complete(self.dialog, self.id)
 
     @staticmethod
     def get_good_line(listener_id, line_id):

@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/$',
        DetailView.as_view(
            model=Listener,
-           template_name='listener/video_play.html')),
+           template_name='listener/play.html')),
     url(r'^check/(?P<listener_id>\d+)/line_id(?P<line_id>\d+)/(?P<line>.+)/.*/$', 'listener.views.check'),
     url(r'^get_next_word/(?P<listener_id>\d+)/line_id(?P<line_id>\d+)/(?P<line>.+)/.*/$', 'listener.views.get_next_word'),
 )

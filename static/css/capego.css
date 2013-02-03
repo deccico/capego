@@ -1,0 +1,13 @@
+.status-correct 
+{
+  background-color: #b3f1b4; 
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.small-btn
+{
+  padding: 1px 3px 1px; 
+}
