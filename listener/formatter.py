@@ -77,8 +77,8 @@ class Formatter():
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
-                                    <button id="btn_correct" class="btn btn-primary" onclick="correct_everything(%s,%s)">
+                                <td colspan="6" >
+                                    <button id="btn_correct" class="m-btn blue btn-block" onclick="correct_everything(%s,%s)">
                                         Submit answers
                                     </button>
                                 </td>
