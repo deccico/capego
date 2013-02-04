@@ -1,0 +1,126 @@
+{% load static %} {% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Capego</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Practice listening and spelling with Capego.">
+<meta name="author" content="Adrián">
+
+<!-- Style sheets -->
+<link href="{{ STATIC_PREFIX }}css/bootstrap.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/bootstrap-responsive.css"
+	rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/font-awesome.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/m-forms.min.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/m-buttons.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/custom.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/capego.css" rel="stylesheet">
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300'
+	rel='stylesheet' type='text/css'>
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- fav and touch icons -->
+<link rel="shortcut icon" href="{{ STATIC_PREFIX }}img/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="{{ STATIC_PREFIX }}ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="{{ STATIC_PREFIX }}ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="{{ STATIC_PREFIX }}ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="{{ STATIC_PREFIX }}ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+<body>
+
+
+
+	<!-- HEADER CONTAINER -->
+
+	<div class="row header">
+
+		<!-- NAV -->
+		<nav class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+
+					<a class="btn btn-navbar btntop" data-toggle="collapse"
+						data-target=".nav-collapse">NAVIGATION</a>
+
+					<h1 class="brand hidden-phone hidden-tablet">
+						<a href="{{ STATIC_PREFIX }}index.html"> <img
+							src="{{ STATIC_PREFIX }}img/logo.png" alt="">
+						</a>
+					</h1>
+
+					<div class="nav-collapse">
+						<ul class="nav pull-right">
+							<li><a href="{{ STATIC_PREFIX }}index.html">Home</a></li>
+							<li><a href="{{ STATIC_PREFIX }}about.html">About</a></li>
+							<li><a href="{{ STATIC_PREFIX }}contact.html">Contact</a></li>
+							<li><a href="{{ STATIC_PREFIX }}blog.html">Blog</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<div class="pagination-centered mobilelogo hidden-desktop">
+		<a href="{{ STATIC_PREFIX }}index.html"> <img
+			src="{{ STATIC_PREFIX }}img/logo_mobile.png" alt="">
+		</a>
+	</div>
+
+	{% block content %}
+
+	{% endblock %}
+
+	<!-- FOOTER -->
+	<div class="row-fluid">
+		<div class="container footer">
+			<!-- Copyright and contact -->
+			<div class="span4 address">
+
+				©2013 Capego <a href="{{ STATIC_PREFIX }}http://www.capego.com"></a>
+
+			</div>
+
+			<!-- newsletter form -->
+
+			<div class="span5 pull-right footer-newsletter">
+				<h2>Newsletter</h2>
+				<p>Subscribe to our newsletter and get the latest news!</p>
+				<form action="mail.php" id="subscribe-form" method="post">
+					<input type="text" name="email" id="email"
+						placeholder="Your Email Address" class="input-text m-wrap m-ctrl">
+					<button type="submit" class="m-btn blue">Sign Up</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!-- Javascripts -->
+
+	<script src="{{ STATIC_PREFIX }}js/jquery.js"></script>
+	<script src="{{ STATIC_PREFIX }}js/jquery.isotope.min.js"></script>
+	<script src="{{ STATIC_PREFIX }}js/custom.js"></script>
+	<script src="{{ STATIC_PREFIX }}js/bootstrap.js"></script>
+	<script src="{{ STATIC_PREFIX }}js/capego_util.js"></script>
+
+
+</body>
+</html>
