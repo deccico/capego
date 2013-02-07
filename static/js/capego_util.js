@@ -24,17 +24,17 @@ function loadXMLDoc(xmlhttp, url, cfunc) {
 	xmlhttp.send();
 }
 
-function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl, id){
+function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl, id, btn_suggest){
     // look for window.event in case event isn't passed in
     if (typeof e == 'undefined' && window.event)
     { e = window.event; }
     if (e.keyCode == 13)
     {
-    	send_correction(getXmlHttp(), span_ctrl, input_ctrl, span_correct_ctrl, false, id);
+    	send_correction(getXmlHttp(), span_ctrl, input_ctrl, span_correct_ctrl, false, id, btn_suggest);
     }		
 }
 
-function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word, id)
+function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word, id, btn_suggest)
 {
 	if (typeof input_ctrl=='undefined' || input_ctrl==null){
 		   return;
@@ -54,10 +54,15 @@ function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_c
 			function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					span_ctrl.innerHTML = xmlhttp.responseText;
+					//todo next line is also coupled with Formatter class..
+					if (span_ctrl.innerHTML.indexOf('<div class="status-correct">') !== -1){
+						btn_suggest.style.display = 'none';
+					}
 				}
 			}); 
 }
 	
+//todo: move this class to the formatter class? since it has information about the control names..
 function correct_everything(num_dialogs, id)
 {
 	for (var i=1; i<num_dialogs+1;i++)
@@ -68,7 +73,8 @@ function correct_everything(num_dialogs, id)
 				document.getElementById("line_id" + i),
 				document.getElementById("span_correct_id" + i),
 				false,
-				id);
+				id,
+				document.getElementById("btn_suggest" + i));
 		
 	}		
 }

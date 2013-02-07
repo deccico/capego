@@ -14,6 +14,7 @@ class Formatter():
         self.LINE_PREFIX = "line_id"
         self.SPAN_PREFIX = "span_id"
         self.SPAN_CORRECT_PREFIX = "span_correct_id"
+        self.BTN_SUGGEST_PREFIX = "btn_suggest"
 
     def dialog_to_complete(self, dialog, listener_id):
         """
@@ -40,10 +41,11 @@ class Formatter():
         dialog_id = 0
         for d in fdialog[1:]:
             dialog_id += 1
+            btn_suggest = "%s%s" % (self.BTN_SUGGEST_PREFIX, dialog_id)
             dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
             span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
             span_correct_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
-            btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true,%s)">' % (span_id_text, dialog_id_text, span_correct_id_text, listener_id)
+            btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true,%s,%s)">' % (span_id_text, dialog_id_text, span_correct_id_text, listener_id, btn_suggest)
             character = characters[d[0]]
             html_output += """
                             <tr><td>%s<strong>%s:</strong></div>%s
@@ -55,13 +57,13 @@ class Formatter():
                             """ % ('<div style="float:left;width:50%;">',
                                    character,
                                    '<div style="float: right; text-align: right; width: 50%;">',
-                                   'btn-suggest-%s' % dialog_id,
+                                   btn_suggest,
                                    btn_next_word,
                                    """
                                    <span id="%s">
                                    <span id="%s"></span>
                                    <input id="%s" type="text" 
-                                   onkeyup="correct_data(event,%s,%s,%s,%s)" 
+                                   onkeyup="correct_data(event,%s,%s,%s,%s,%s)" 
                                    class="span11 search-query" 
                                    placeholder="Please enter %s dialog line here">
                                    </input></button></span>""" 
@@ -72,6 +74,7 @@ class Formatter():
                                       dialog_id_text,
                                       span_correct_id_text,
                                       listener_id,
+                                      btn_suggest,
                                       character))
         html_output += """
                         </tbody>
@@ -103,11 +106,12 @@ class Formatter():
                 html_out += line[i][1] + " "
             else:
                 html_out += "</span>"
+                btn_suggest = "%s%s" % (self.BTN_SUGGEST_PREFIX, dialog_id)
                 span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
                 dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
                 corrected_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
                 html_out += """
-                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s)" 
+                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s,%s)" 
                             class="span11 search-query" 
                             placeholder = "Please enter the rest of the dialog here."
                             value="%s">
@@ -116,7 +120,8 @@ class Formatter():
                                     span_id_text, 
                                     dialog_id_text,
                                     corrected_id_text,
-                                    listener_id, 
+                                    listener_id,
+                                    btn_suggest,
                                     " ".join(w[1] for w in line[i:]))
                 close_correct_span = False
                 break
