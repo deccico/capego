@@ -5,7 +5,6 @@ Created on 01/01/2013
 '''
 
 from django.conf import settings
-from django.utils.html import strip_tags
 
 # import the logging library
 import logging
@@ -27,9 +26,7 @@ class Corrector():
         self.contractions = listener.contractions
     
     def correct_dialog(self, good_one, user_input):
-        user_input = strip_tags(user_input)
-
-        #todo: eventually we may need to split in "." and "," 
+        #todo: eventually we may need to split in "." and ","
         #without spaces but keeping the signs
         good_one = good_one.strip()
         user_input = user_input.strip()
