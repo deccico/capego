@@ -16,6 +16,10 @@ sudo apt-get install python-dev
 #python postgres binding
 sudo pip install psycopg2
 
+
+pip install django-social-auth
+
+
 #------------------------
 
 sudo pip install bellatrix --upgrade
