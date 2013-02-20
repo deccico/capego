@@ -16,7 +16,11 @@ sudo apt-get install python-dev
 #python postgres binding
 sudo pip install psycopg2
 
-
+#social auth
+#http://django-social-auth.readthedocs.org/en/latest/configuration.html
+#http://django-social-auth.readthedocs.org/en/latest/backends/facebook.html
+#http://django-social-auth.readthedocs.org/en/latest/backends/google.html#google-openid
+#http://django-social-auth.readthedocs.org/en/latest/backends/openid.html
 pip install django-social-auth
 
 
