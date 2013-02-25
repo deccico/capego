@@ -7,3 +7,4 @@ setup/tmp
 setup/reports
 capego/log
 .idea
+local_settings.py
