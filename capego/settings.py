@@ -197,6 +197,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social_auth.context_processors.social_auth_by_type_backends',
 )
 
-LOGIN_URL          = '/login-form/'
-LOGIN_REDIRECT_URL = '/logged-in/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_URL          = '/auth/login-form/'
+LOGIN_REDIRECT_URL = '/auth/done/'
+LOGIN_ERROR_URL    = '/auth/login-error/'

@@ -5,7 +5,7 @@ from django.views.generic.simple import direct_to_template
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^login/', include('auth.urls')),
+    url(r'^auth/', include('auth.urls')),
     url(r'^listen/', include('listener.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('listener.urls')),
