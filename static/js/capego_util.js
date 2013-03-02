@@ -83,3 +83,10 @@ function FocusOnInput()
 {
      document.getElementById("line_id1").focus();
 }
+
+$(function () {
+    $('.disconnect form a').on('click', function (e) {
+        e.preventDefault();
+        $(this).parent('form').submit();
+    });
+});

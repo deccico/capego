@@ -200,3 +200,29 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 LOGIN_URL          = '/auth/login-form/'
 LOGIN_REDIRECT_URL = '/auth/done/'
 LOGIN_ERROR_URL    = '/auth/login-error/'
+
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+
+SOCIAL_AUTH_CREATE_USERS          = True
+SOCIAL_AUTH_FORCE_RANDOM_USERNAME = False
+SOCIAL_AUTH_DEFAULT_USERNAME      = 'socialauth_user'
+SOCIAL_AUTH_COMPLETE_URL_NAME     = 'socialauth_complete'
+LOGIN_ERROR_URL                   = '/login/error/'
+
+
+#SOCIAL_AUTH_USER_MODEL           = 'app.CustomUser'
+SOCIAL_AUTH_ERROR_KEY             = 'socialauth_error'
+
+SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.misc.save_status_to_session',
+    'auth.pipeline.redirect_to_form',
+    'auth.pipeline.username',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details',
+)

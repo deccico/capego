@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+
+    <div id="form">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class="span8">
+                    <h3>Log in</h3>
+
+                    <p>Please log in using one of the following accounts</p> </br>
+
+                    <ul class="contactlinks" >
+                        <li><a href="/auth/login/facebook/"><i class="icon-facebook-sign icon-large"></i>Log in with Facebook</a></li>
+                        </br>
+                        <li><a href="/auth/login/google/"><i class="icon-google-plus-sign icon-large"></i>Log in with Google</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+

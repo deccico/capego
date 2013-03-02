@@ -14,7 +14,7 @@ def home(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('done')
     else:
-        return render_to_response('home.html', {'version': version},
+        return render_to_response('login.html', {'version': version},
                                   RequestContext(request))
 
 
