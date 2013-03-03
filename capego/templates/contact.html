@@ -11,10 +11,10 @@
             <div class="span8" >
             <h3>Contact Form</h3>
 
+            {{ message|safe }}
 
-
-            <form action="sendmail.php" method="post" id="contact-form">
-                               
+            <form action="/contact/message/" method="post" id="contact-form">
+            {% csrf_token %}
             <fieldset>
             <div class="row"> 
                         <div class="holder span8"><div class="message"><div class="top"></div><div class="contents"><div id="alert"></div></div><div class="bottom"></div></div></div>
