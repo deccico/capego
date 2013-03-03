@@ -1,7 +1,7 @@
 from django.http import HttpResponse
+from django.utils.html import strip_tags
 
 from models import Listener
-from django.utils.html import strip_tags
 
 import corrector
 import formatter
