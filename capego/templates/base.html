@@ -66,7 +66,7 @@
                                     Login
                                 {% endif %}
                             </a></li>
-							<li><a href="/about">About</a></li>
+							<li><a href="/contact/about">About</a></li>
 							<li><a href="/contact">Contact</a></li>
 						</ul>
 					</div>
@@ -99,6 +99,7 @@
 				<h2>Newsletter</h2>
 				<p>Subscribe to our newsletter and get the latest news!</p>
 				<form action="mail.php" id="subscribe-form" method="post">
+                    {% csrf_token %}
 					<input type="text" name="email" id="email"
 						placeholder="Your Email Address" class="input-text m-wrap m-ctrl">
 					<button type="submit" class="m-btn blue">Sign Up</button>

@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'social_auth',
     'auth',
 	'listener',
+    'contact',
 )
 
 # See http://docs.djangoproject.com/en/dev/topics/logging for
