@@ -90,3 +90,20 @@ $(function () {
         $(this).parent('form').submit();
     });
 });
+
+
+function subscribe_to_newsletter(ctrl)
+{
+    if (typeof ctrl=='undefined' || ctrl==null){
+        return;
+    }
+    var url = "/contact/subscribe/";
+    loadXMLDoc(
+        getXmlHttp(),
+        url,
+        function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                ctrl.innerHTML = xmlhttp.responseText;
+            }
+        });
+}

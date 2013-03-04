@@ -7,6 +7,6 @@ urlpatterns = patterns('',
                        (r'^$', direct_to_template, {'template': 'contact.html'}),
                        (r'^about/$', direct_to_template, {'template': 'about.html'}),
                        url(r'^message/$', message, name='message'),
-
+                       url(r'^contact/subscribe/.*/$', 'contact.views.subscribe'),
 )
 

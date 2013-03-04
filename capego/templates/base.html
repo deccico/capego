@@ -95,14 +95,15 @@
 			</div>
 
 			<!-- newsletter form -->
+            <span id="newsletter_msg"></span>
 			<div class="span5 pull-right footer-newsletter">
 				<h2>Newsletter</h2>
 				<p>Subscribe to our newsletter and get the latest news!</p>
-				<form action="mail.php" id="subscribe-form" method="post">
+				<form id="subscribe-form" method="post">
                     {% csrf_token %}
 					<input type="text" name="email" id="email"
 						placeholder="Your Email Address" class="input-text m-wrap m-ctrl">
-					<button type="submit" class="m-btn blue">Sign Up</button>
+					<button onclick="subscribe_to_newsletter(newsletter_msg)" type="submit" class="m-btn blue">Sign Up</button>
 				</form>
 			</div>
 

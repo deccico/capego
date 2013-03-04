@@ -5,9 +5,8 @@ from django.template import RequestContext
 from models import NewsletterSubscriber, UsersContactingCapego
 
 
-def subscribe_to_newsletter(request, email):
-    #todo
-    pass
+def subscribe(request, email):
+    return HttpResponse("all good..")
 
 def message(request):
     if request.method == 'POST' and request.POST.get('email'):
