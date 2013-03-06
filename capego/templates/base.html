@@ -95,15 +95,14 @@
 			</div>
 
 			<!-- newsletter form -->
-            <span id="newsletter_msg"></span>
 			<div class="span5 pull-right footer-newsletter">
 				<h2>Newsletter</h2>
-				<p>Subscribe to our newsletter and get the latest news!</p>
-				<form id="subscribe-form" method="post">
+                <span id="newsletter_msg">Subscribe to our newsletter and get the latest news!</span>
+				<form id="subscribe-form" action="/contact/subscribe/" method="post">
                     {% csrf_token %}
 					<input type="text" name="email" id="email"
 						placeholder="Your Email Address" class="input-text m-wrap m-ctrl">
-					<button onclick="subscribe_to_newsletter(newsletter_msg)" type="submit" class="m-btn blue">Sign Up</button>
+					<button type="submit" class="m-btn blue">Sign Up</button>
 				</form>
 			</div>
 
@@ -119,6 +118,7 @@
 	<script src="{{ STATIC_PREFIX }}js/custom.js"></script>
 	<script src="{{ STATIC_PREFIX }}js/bootstrap.js"></script>
 	<script src="{{ STATIC_PREFIX }}js/capego_util.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
 
 
 </body>
