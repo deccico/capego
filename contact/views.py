@@ -22,8 +22,14 @@ def subscribe(request):
             msg = "<strong>%s is not a valid email</strong>" % email
         else:
             msg = "<strong>%s </strong> is now subscribed to our newsletter ;)" % email
-            s = NewsletterSubscriber(email=email)
-            s.save()
+            if NewsletterSubscriber.objects.filter(email=email).count() > 0:
+                msg = "<strong>%s </strong> was already subscribed to our newsletter." % email
+            else:
+                try:
+                    s = NewsletterSubscriber(email=email)
+                    s.save()
+                except:
+                    msg = "<strong>There was an error subscribing %s. </br>Please notify the problem to info@capego.com</strong>" % email
         return HttpResponse(msg)
 
 
