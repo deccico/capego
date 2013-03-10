@@ -1,10 +1,10 @@
 from django.conf.urls.defaults import patterns, url, include
-from auth.views import home, done, logout, error, form, form2, close_login_popup
+from auth.views import home, user, logout, error, form, form2, close_login_popup
 from auth.facebook import facebook_view
 
 urlpatterns = patterns('',
                        url(r'^$', home, name='home'),
-                       url(r'^done/$', done, name='done'),
+                       url(r'^user/$', user, name='user'),
                        url(r'^error/$', error, name='error'),
                        url(r'^logout/$', logout, name='logout'),
                        url(r'^form/$', form, name='form'),

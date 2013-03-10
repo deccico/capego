@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'auth',
 	'listener',
     'contact',
+    'user_data',
 )
 
 # See http://docs.djangoproject.com/en/dev/topics/logging for
@@ -205,7 +206,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 LOGIN_URL          = '/auth/login-form/'
-LOGIN_REDIRECT_URL = '/auth/done/'
+LOGIN_REDIRECT_URL = '/auth/user/'
 LOGIN_ERROR_URL    = '/auth/login-error/'
 
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
