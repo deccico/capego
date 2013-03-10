@@ -4,17 +4,18 @@
 
 {% block content %}
 <div>
-  <p>Sorry but some error made you impossible to login.</p>
-
-  {% if messages %}
+    <div class='alert'>
+        <button class='close' data-dismiss='alert'>x</button>
+        Sorry but some error made you impossible to login. </div>
+    {% if messages %}
     {% for msg in messages %}
         <p class="error">{{ msg.message }} ({{ msg.extra_tags }})</p>
     {% endfor %}
-  {% endif %}
-  {% if error_msg %}
+    {% endif %}
+    {% if error_msg %}
     <p>Details:</p>
     <p class="error">{{ error_msg }}</p>
-  {% endif %}
+    {% endif %}
 
   <p>Please try again <a href="/">Home</a></p>
 </div>
