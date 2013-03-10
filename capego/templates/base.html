@@ -12,8 +12,7 @@
 
 <!-- Style sheets -->
 <link href="{{ STATIC_PREFIX }}css/bootstrap.css" rel="stylesheet">
-<link href="{{ STATIC_PREFIX }}css/bootstrap-responsive.css"
-	rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/bootstrap-responsive.css" rel="stylesheet">
 <link href="{{ STATIC_PREFIX }}css/font-awesome.css" rel="stylesheet">
 <link href="{{ STATIC_PREFIX }}css/m-forms.min.css" rel="stylesheet">
 <link href="{{ STATIC_PREFIX }}css/m-buttons.css" rel="stylesheet">
@@ -41,24 +40,26 @@
 </head>
 
 <body>
-	<!-- HEADER CONTAINER -->
 	<div class="row header">
-		<!-- NAV -->
 		<nav class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-
 					<a class="btn btn-navbar btntop" data-toggle="collapse"
 						data-target=".nav-collapse">NAVIGATION</a>
-
 					<h1 class="brand hidden-phone hidden-tablet">
 						<a href="/"> <img
 							src="{{ STATIC_PREFIX }}img/logo.png" alt="">
 						</a>
 					</h1>
-
 					<div class="nav-collapse">
 						<ul class="nav pull-right">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                <li><a tabindex="-1" href="#">Action</a></li>
+                                <li><a tabindex="-1" href="#">Another action</a></li>
+                                <li><a tabindex="-1" href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a tabindex="-1" href="#">Separated link</a></li>
+                            </ul>
 							<li><a href="/auth">
                                 {% if user.is_authenticated %}
                                     {{ user.username }}
@@ -70,7 +71,6 @@
 							<li><a href="/contact">Contact</a></li>
 						</ul>
 					</div>
-
 				</div>
 			</div>
 		</nav>
