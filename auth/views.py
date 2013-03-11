@@ -14,7 +14,7 @@ def home(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('user')
     else:
-        return render_to_response('login.html', {'version': version},
+        return render_to_response('auth/login.html', {'version': version},
                                   RequestContext(request))
 
 
@@ -25,13 +25,13 @@ def user(request):
         'version': version,
         'last_login': request.session.get('social_auth_last_login_backend')
     }
-    return render_to_response('user.html', ctx, RequestContext(request))
+    return render_to_response('auth/user.html', ctx, RequestContext(request))
 
 
 def error(request):
     """Error view"""
     messages = get_messages(request)
-    return render_to_response('error.html', {'version': version,
+    return render_to_response('auth/error.html', {'version': version,
                                              'messages': messages},
                               RequestContext(request))
 
@@ -48,7 +48,7 @@ def form(request):
         request.session['saved_username'] = request.POST['username']
         backend = request.session[name]['backend']
         return redirect('socialauth_complete', backend=backend)
-    return render_to_response('form.html', {}, RequestContext(request))
+    return render_to_response('auth/form.html', {}, RequestContext(request))
 
 
 def form2(request):
@@ -57,8 +57,8 @@ def form2(request):
         name = setting('SOCIAL_AUTH_PARTIAL_PIPELINE_KEY', 'partial_pipeline')
         backend = request.session[name]['backend']
         return redirect('socialauth_complete', backend=backend)
-    return render_to_response('form2.html', {}, RequestContext(request))
+    return render_to_response('auth/form2.html', {}, RequestContext(request))
 
 
 def close_login_popup(request):
-    return render_to_response('close_popup.html', {}, RequestContext(request))
+    return render_to_response('auth/close_popup.html', {}, RequestContext(request))

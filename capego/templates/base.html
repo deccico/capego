@@ -53,20 +53,19 @@
 					</h1>
 					<div class="nav-collapse">
 						<ul class="nav pull-right">
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                <li><a tabindex="-1" href="#">Action</a></li>
-                                <li><a tabindex="-1" href="#">Another action</a></li>
-                                <li><a tabindex="-1" href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a tabindex="-1" href="#">Separated link</a></li>
-                            </ul>
-							<li><a href="/auth">
                                 {% if user.is_authenticated %}
-                                    {{ user.username }}
+                                    <li class="dropdown backround_menu">
+                                        <a id="drop1" href="/auth" role="button" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/auth/user/">Profile</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/user/badges/">Badges</a></li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/auth/logout/">Logout</a></li>
+                                        </ul>
+                                    </li>
                                 {% else %}
-                                    Login
+                                    <li><a href="/auth">Login</a></li>
                                 {% endif %}
-                            </a></li>
 							<li><a href="/contact/about">About</a></li>
 							<li><a href="/contact">Contact</a></li>
 						</ul>

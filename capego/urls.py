@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'', include('listener.urls')),
     url(r'^index\.html/', include('listener.urls')),
     url(r'^contact/', include('contact.urls')),
+    url(r'^user/', include('user_data.urls')),
 )

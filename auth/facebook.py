@@ -74,5 +74,5 @@ def facebook_view(request, *args, **kwargs):
     if auth_response:
         return auth_response
 
-    return render_to_response('facebook.html', {'fb_app_id':setting('FACEBOOK_APP_ID'),
+    return render_to_response('auth/facebook.html', {'fb_app_id':setting('FACEBOOK_APP_ID'),
                                                 'warning': request.method == 'GET'}, RequestContext(request))

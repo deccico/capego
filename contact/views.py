@@ -40,12 +40,12 @@ def message(request):
         msg = """<div class='alert alert-info'>
         <button class='close' data-dismiss='alert'>x</button>
         Your message has been sent successfuly  ;) </div>"""
-        return render_to_response('contact.html', {'message': msg}, RequestContext(request))
+        return render_to_response('contact/contact.html', {'message': msg}, RequestContext(request))
     else:
         msg = """<div class='alert'>
         <button class='close' data-dismiss='alert'>x</button>
         Your message did not contain valid data or there was an error processing it. </div>"""
-        return render_to_response('contact.html', {'message': msg}, RequestContext(request))
+        return render_to_response('contact/contact.html', {'message': msg}, RequestContext(request))
 
 
 
