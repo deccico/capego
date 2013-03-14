@@ -1,0 +1,18 @@
+[
+    {"pk": 1, "model": "user_data.badgetype", "fields": {"name": "Gold"}},
+    {"pk": 2, "model": "user_data.badgetype", "fields": {"name": "Silver"}},
+    {"pk": 3, "model": "user_data.badgetype", "fields": {"name": "Bronze"}},
+
+    {"pk": 1, "model": "user_data.badge", "fields": {"type": 3, "name": "Student", "description": "Solves first video"}},
+    {"pk": 2, "model": "user_data.badge", "fields": {"type": 3, "name": "Curious", "description": "Visit 10 videos"}},
+    {"pk": 3, "model": "user_data.badge", "fields": {"type": 3, "name": "Promoter", "description": "Send 10 invitations to your friends "}},
+    {"pk": 4, "model": "user_data.badge", "fields": {"type": 2, "name": "Visitor", "description": "Visit 100 videos"}},
+    {"pk": 5, "model": "user_data.badge", "fields": {"type": 2, "name": "Good citizen", "description": "Send a correction to a video that is accepted "}},
+    {"pk": 6, "model": "user_data.badge", "fields": {"type": 2, "name": "Nerd", "description": "Solve 50 videos "}},
+    {"pk": 7, "model": "user_data.badge", "fields": {"type": 1, "name": "Geek", "description": "Solve 100 videos"}},
+    {"pk": 8, "model": "user_data.badge", "fields": {"type": 1, "name": "Fanatic", "description": "Visit 1000 videos"}},
+    {"pk": 9, "model": "user_data.badge", "fields": {"type": 1, "name": "Shakespeare", "description": "Solve 1000 videos"}},
+
+    {"pk": 2, "model": "user_data.usersbadge", "fields": {"badge": 1, "user": 6}},
+    {"pk": 3, "model": "user_data.usersbadge", "fields": {"badge": 2, "user": 5}},
+    {"pk": 4, "model": "user_data.usersbadge", "fields": {"badge": 2, "user": 1}}]
