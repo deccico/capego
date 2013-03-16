@@ -1,16 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <!-- CONTACT -->
-
     <div id="form">
       <div class="container">
         <div class="row">        
             <div class="span8" >
             <h3>Contact Form</h3>
-
             {{ message|safe }}
-
             <form action="/contact/message/" method="post" id="contact-form">
             {% csrf_token %}
             <fieldset>
@@ -23,16 +18,12 @@
                     </fieldset>
                     </form>
           </div>
-
           <div class="span4">
             <h3>Social Networks</h3>
-
-
               <ul class="contactlinks">
                 <li><a href="#"><i class="icon-twitter-sign icon-large"></i>Twitter</a></li>
                 <li><a href="#"><i class="icon-facebook-sign icon-large"></i>Facebook</a></li>
                 <li><a href="#"><i class="icon-google-plus-sign icon-large"></i>Google +</a></li>
-                <li><a href="#"><i class="icon-pinterest-sign icon-large"></i>Pinterest</a></li>
               </ul>
               <h3>Contact info</h3>
               <p>
@@ -42,5 +33,4 @@
         </div>
       </div>
     </div>
-
 {% endblock %}

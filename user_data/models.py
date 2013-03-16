@@ -32,3 +32,4 @@ class UserExtraData(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, unique=True)
     points = models.IntegerField()
     referrer = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='referrer_user')
+    subscribes_to_newsletter = models.BooleanField()
