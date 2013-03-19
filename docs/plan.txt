@@ -1,0 +1,13 @@
+Release plan
+==============
+
+* add points to user profile
+* add badges page
+* custom admin
+* make badge functionality work
+* enhance footer with FB and Twitter accounts
+* 100 videos uploaded
+DONE * let the user subscribe to the newsletter from the login
+* custom login
+* tutorial (http://usablica.github.com/intro.js/)
+* online server set up
