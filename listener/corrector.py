@@ -1,14 +1,6 @@
-'''
-Created on 01/01/2013
-
-@author: adrian
-'''
-
 from django.conf import settings
 
-# import the logging library
 import logging
-# Get an instance of a logger
 logger = logging.getLogger(settings.APP_NAME)
 
 import re
@@ -27,7 +19,7 @@ class Corrector():
     
     def correct_dialog(self, good_one, user_input):
         #todo: eventually we may need to split in "." and ","
-        #without spaces but keeping the signs
+        #todo: without spaces but keeping the signs
         good_one = good_one.strip()
         user_input = user_input.strip()
         rgo, rui = good_one, user_input

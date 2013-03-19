@@ -24,6 +24,7 @@ DATABASES = {
         'PASSWORD': db_pw,                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        #'OPTIONS': {'autocommit': True,}
     }
 }
 
@@ -215,7 +216,7 @@ SOCIAL_AUTH_CREATE_USERS          = True
 SOCIAL_AUTH_FORCE_RANDOM_USERNAME = False
 SOCIAL_AUTH_DEFAULT_USERNAME      = 'socialauth_user'
 SOCIAL_AUTH_COMPLETE_URL_NAME     = 'socialauth_complete'
-LOGIN_ERROR_URL                   = '/login/error/'
+LOGIN_ERROR_URL                   = '/auth/login/error/'
 
 
 #SOCIAL_AUTH_USER_MODEL           = 'app.CustomUser'
@@ -233,4 +234,5 @@ SOCIAL_AUTH_PIPELINE = (
     'social_auth.backends.pipeline.social.associate_user',
     'social_auth.backends.pipeline.social.load_extra_data',
     'social_auth.backends.pipeline.user.update_user_details',
+    'user_data.pipeline.add_extra_data',
 )

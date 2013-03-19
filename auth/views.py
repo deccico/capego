@@ -27,7 +27,6 @@ def user(request):
     }
     return render_to_response('auth/user.html', ctx, RequestContext(request))
 
-
 def error(request):
     """Error view"""
     messages = get_messages(request)
@@ -35,17 +34,17 @@ def error(request):
                                              'messages': messages},
                               RequestContext(request))
 
-
 def logout(request):
     """Logs out user"""
     auth_logout(request)
     return HttpResponseRedirect('/')
 
-
 def form(request):
     if request.method == 'POST' and request.POST.get('username'):
         name = setting('SOCIAL_AUTH_PARTIAL_PIPELINE_KEY', 'partial_pipeline')
         request.session['saved_username'] = request.POST['username']
+        if request.POST.get('newsletter'):
+            request.session['newsletter'] = request.POST['newsletter']
         backend = request.session[name]['backend']
         return redirect('socialauth_complete', backend=backend)
     return render_to_response('auth/form.html', {}, RequestContext(request))
@@ -57,7 +56,7 @@ def form2(request):
         name = setting('SOCIAL_AUTH_PARTIAL_PIPELINE_KEY', 'partial_pipeline')
         backend = request.session[name]['backend']
         return redirect('socialauth_complete', backend=backend)
-    return render_to_response('auth/form2.html', {}, RequestContext(request))
+    return render_to_response('auth/form.html', {}, RequestContext(request))
 
 
 def close_login_popup(request):
