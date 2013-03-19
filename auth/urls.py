@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url, include
+from django.conf.urls import patterns, url, include
 from auth.views import home, user, logout, error, form, form2, close_login_popup
 from auth.facebook import facebook_view
 

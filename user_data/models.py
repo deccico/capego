@@ -26,6 +26,11 @@ class UsersBadge(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     badge = models.ForeignKey(Badge)
+    award_date = models.DateTimeField(auto_now_add=True)
+
+    @staticmethod
+    def get_current_user_badges():
+        pass
 
     class Meta:
         unique_together = (("user", "badge"),)
@@ -35,7 +40,7 @@ class UserExtraData(models.Model):
         return self.user.username
 
     user = models.OneToOneField(User)
-    points = models.IntegerField(default=0)
+    points = models.IntegerField(default=1)
     referrer = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='referrer')
     subscribes_to_newsletter = models.BooleanField(default=False)
 
@@ -47,7 +52,7 @@ class UserExtraData(models.Model):
             return True,UserExtraData(user=user)
 
     @staticmethod
-    @transaction.commit_on_success #todo catch exception -> log -> reraise
+    @transaction.commit_on_success
     def save_additional_values(username, newsletter):
         try:
             user = get_user(username)

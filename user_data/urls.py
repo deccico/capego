@@ -1,9 +1,5 @@
-from django.conf.urls import patterns
-from django.views.generic import TemplateView
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
-                       (r'^badges/$', TemplateView.as_view(template_name="user/badges.html")),
+                       url(r'^badges/$', 'user_data.views.user_badges'),
 )
-
-
-
