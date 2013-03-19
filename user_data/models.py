@@ -28,10 +28,6 @@ class UsersBadge(models.Model):
     badge = models.ForeignKey(Badge)
     award_date = models.DateTimeField(auto_now_add=True)
 
-    @staticmethod
-    def get_current_user_badges():
-        pass
-
     class Meta:
         unique_together = (("user", "badge"),)
 
