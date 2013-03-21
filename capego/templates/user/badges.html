@@ -7,12 +7,11 @@
 <div class="span6">
   <h3>Badges:</h3>
   <table class="table table-striped table-condensed">
-    <tr><th>Username:</th> <td>{{ user.username }}</td></tr>
-    <tr><th>Email:</th> <td>{{ user.email|default:"Not provided" }}</td></tr>
-    <tr><th>First name:</th> <td>{{ user.first_name|default:"Not provided" }}</td></tr>
-    <tr><th>Last name:</th> <td>{{ user.last_name|default:"Not provided" }}</td></tr>
-    <tr><th>Last login backend:</th> <td>{{ last_login }}</td></tr>
-    <tr><td colspan="2"><a rel="nofollow" class="logout" href="/auth/logout/">Logout</a></td></tr>
+      {% for ub in userbadges %}
+      <tr><th>Username:</th> <td>
+              {{ ub.badge }}
+      </td></tr>
+      {% endfor %}
   </table>
 </div>
 

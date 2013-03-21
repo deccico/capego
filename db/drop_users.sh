@@ -1,6 +1,6 @@
 set -ex
 
-./manage.py clean_associations
+#./manage.py clean_associations
 ./manage.py clean_nonces
 ./manage.py clearsessions
 
