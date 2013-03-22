@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load url from future %}
 
 {% block content %}
 <div class="container">
@@ -7,10 +6,15 @@
 <div class="span6">
   <h3>Badges:</h3>
   <table class="table table-striped table-condensed">
-      {% for ub in userbadges %}
-      <tr><th>Username:</th> <td>
-              {{ ub.badge }}
-      </td></tr>
+      {% for ub in user_badges %}
+      <tr><th>{{ ub.badge.name }}</th>
+          <td>
+              {{ ub.badge.type.name }}
+          </td>
+          <td>
+              {{ ub.badge.description }}
+          </td>
+      </tr>
       {% endfor %}
   </table>
 </div>
