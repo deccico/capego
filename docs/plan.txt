@@ -11,3 +11,4 @@ DONE * let the user subscribe to the newsletter from the login
 * open id and persona id
 * tutorial (http://usablica.github.com/intro.js/)
 * online server set up
+* use minified resources and check perfomance
