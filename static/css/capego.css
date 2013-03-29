@@ -43,6 +43,18 @@
     background-color: #e5e5e5;
 }
 
-.yellow{
+.Gold{
     color: gold;
+}
+
+.Silver{
+    color: #c0c0c0;
+}
+
+.Bronze{
+    color: #CD7F32;
+}
+
+.ok{
+    color: limegreen;
 }

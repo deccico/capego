@@ -1,15 +1,25 @@
 [
-    {"pk": 1, "model": "user_data.badgetype", "fields": {"name": "Gold"}},
+    {"pk": 1, "model": "user_data.badgetype", "fields": {"name": "Bronze"}},
     {"pk": 2, "model": "user_data.badgetype", "fields": {"name": "Silver"}},
-    {"pk": 3, "model": "user_data.badgetype", "fields": {"name": "Bronze"}},
+    {"pk": 3, "model": "user_data.badgetype", "fields": {"name": "Gold"}},
 
-    {"pk": 1, "model": "user_data.badge", "fields": {"type": 3, "name": "Student", "description": "Solves first video"}},
-    {"pk": 2, "model": "user_data.badge", "fields": {"type": 3, "name": "Curious", "description": "Visit 10 videos"}},
-    {"pk": 3, "model": "user_data.badge", "fields": {"type": 3, "name": "Promoter", "description": "Send 10 invitations to your friends "}},
-    {"pk": 4, "model": "user_data.badge", "fields": {"type": 2, "name": "Visitor", "description": "Visit 100 videos"}},
-    {"pk": 5, "model": "user_data.badge", "fields": {"type": 2, "name": "Good citizen", "description": "Send a correction to a video that is accepted "}},
-    {"pk": 6, "model": "user_data.badge", "fields": {"type": 2, "name": "Nerd", "description": "Solve 50 videos "}},
-    {"pk": 7, "model": "user_data.badge", "fields": {"type": 1, "name": "Geek", "description": "Solve 100 videos"}},
-    {"pk": 8, "model": "user_data.badge", "fields": {"type": 1, "name": "Fanatic", "description": "Visit 1000 videos"}},
-    {"pk": 9, "model": "user_data.badge", "fields": {"type": 1, "name": "Shakespeare", "description": "Solve 1000 videos"}}
+    {"pk": 4, "model": "user_data.badge", "fields": {"type": 1, "name": "Student", "description": "Solves first video"}},
+    {"pk": 5, "model": "user_data.badge", "fields": {"type": 2, "name": "Nerd", "description": "Solve 50 videos "}},
+    {"pk": 6, "model": "user_data.badge", "fields": {"type": 3, "name": "Geek", "description": "Solve 100 videos"}},
+
+    {"pk": 8, "model": "user_data.badge", "fields": {"type": 1, "name": "Curious", "description": "Visit 10 videos"}},
+    {"pk": 9, "model": "user_data.badge", "fields": {"type": 2, "name": "Informed", "description": "Visit 100 videos"}},
+    {"pk": 10, "model": "user_data.badge", "fields": {"type": 3, "name": "Fanatic", "description": "Visit 1000 videos"}},
+
+    {"pk": 11, "model": "user_data.badge", "fields": {"type": 1, "name": "Promoter", "description": "Send 10 invitations to your friends "}},
+    {"pk": 12, "model": "user_data.badge", "fields": {"type": 2, "name": "Enthusiast", "description": "Visit the site each day for 30 consecutive days. "}},
+    {"pk": 13, "model": "user_data.badge", "fields": {"type": 3, "name": "Disciplined", "description": "Visit the site each day for 100 consecutive days. "}},
+
+    {"pk": 14, "model": "user_data.badge", "fields": {"type": 1, "name": "Good citizen", "description": "Send a correction to a video that is accepted. "}},
+    {"pk": 15, "model": "user_data.badge", "fields": {"type": 2, "name": "City Marshall", "description": "Send 10 accepted corrections to different videos. "}},
+
+    {"pk": 16, "model": "user_data.badge", "fields": {"type": 1, "name": "Builder", "description": "Contribute to Capego with a new video. "}},
+
+    {"pk": 17, "model": "user_data.badge", "fields": {"type": 1, "name": "First impression", "description": "Sign up to Capego."}}
+
 ]

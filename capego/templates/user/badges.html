@@ -1,35 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-<div class="row">
-<div class="span6">
-  <h3>Badges:</h3>
-  <table class="table table-striped table-condensed">
-      {% for b in badges %}
-      <tr>
-          <td>
-              {% if b.awarded %}
-                  <div class="status-correct"><span><i class="icon-ok"></i> </span><span id="span_correct_id1">
-                  Awarded</span></div>
-              {% endif %}
-          </td>
-          <td>    <i class="icon-circle icon-large yellow"></i> icon-camera-retro
-              {{ b.name }}</td>
-          <td>
-              {{ b.type.name }}
-          </td>
-          <td>
-              {{ b.description }}
-          </td>
-      </tr>
-      {% endfor %}
-  </table>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <h3>Badges:</h3>
+                <table class="table table-striped table-condensed">
+                    {% for b in badges %}
+                        <tr>
+                            <td>
+                                {% if b.awarded %}
+                                    <span><i class="icon-ok icon-2x ok"></i></span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div title="{{ b.type.name }} badge: {{ b.description }}"><i class="icon-circle icon-large {{ b.type.name }}"></i></div>
+                            </td>
+                            <td>
+                                {{ b.name }}</td>
+                            <td>
+                                {{ b.description }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
 
-<div>
+            <div>
 
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

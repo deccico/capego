@@ -103,3 +103,18 @@ $(document).ready(function() {
 function showResponse(responseText, statusText, xhr, $form)  {
     $('#newsletter_msg').html(responseText);
 }
+
+/*
+var timer = 30;
+function decrementAfter1Second(){
+    setTimeout(function(){
+        timer--;
+        if(timer==0){
+            doWhateverYouWantAfter30Seconds();
+            timer = 30;
+        }
+        decrementAfter1Second();
+    }, 1000);
+}
+decrementAfter1Second();
+*/

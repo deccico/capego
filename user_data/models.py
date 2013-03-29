@@ -6,6 +6,9 @@ from django.db import transaction
 import logging
 logger = logging.getLogger(settings.APP_NAME)
 
+def get_user(username):
+    return User.objects.get(username = username)
+
 class BadgeType(models.Model):
     def __unicode__(self):
         return self.name
@@ -18,6 +21,7 @@ class Badge(models.Model):
 
     name = models.CharField(max_length=50, unique=True)
     type = models.ForeignKey(BadgeType)
+    repetition_needed = models.IntegerField(default=1)
     description = models.TextField()
 
 class UsersBadge(models.Model):
@@ -62,5 +66,17 @@ class UserExtraData(models.Model):
             logger.exception("failure while saving user additional data")
             raise
 
-def get_user(username):
-    return User.objects.get(username = username)
+class UserActivity(models.Model):
+    def __unicode__(self):
+        return self.user.username + "-" + self.badge.name
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    related_badge = models.ForeignKey(Badge)
+    description = models.CharField(blank=True, max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        #we use a triple composite key in order to let or avoid entering a duplicated activity when it is convenient
+        #for example a badge for visiting three days in a row the site will need a different description while
+        #we can avoid awarding a visit in the same day
+        unique_together = (("user", "related_badge", "description"),)
