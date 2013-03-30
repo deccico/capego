@@ -79,7 +79,7 @@ function correct_everything(num_dialogs, id)
 	}		
 }
 
-function FocusOnInput()
+function focusOnInput()
 {
      document.getElementById("line_id1").focus();
 }
@@ -104,17 +104,14 @@ function showResponse(responseText, statusText, xhr, $form)  {
     $('#newsletter_msg').html(responseText);
 }
 
-/*
-var timer = 30;
-function decrementAfter1Second(){
+function doSomethingAfterSomeSeconds(seconds){
+    ms = seconds * 1000;
     setTimeout(function(){
-        timer--;
-        if(timer==0){
-            doWhateverYouWantAfter30Seconds();
-            timer = 30;
-        }
-        decrementAfter1Second();
-    }, 1000);
+        alert("I am here...");
+    }, ms);
 }
-decrementAfter1Second();
-*/
+
+function initPlay(){
+    focusOnInput();
+    doSomethingAfterSomeSeconds(5);  //todo, use js to do it only once. 
+}

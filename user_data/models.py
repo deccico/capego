@@ -68,7 +68,7 @@ class UserExtraData(models.Model):
 
 class UserActivity(models.Model):
     def __unicode__(self):
-        return self.user.username + "-" + self.badge.name
+        return self.user.username + "-" + self.related_badge.name + "-" + self.description
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     related_badge = models.ForeignKey(Badge)
