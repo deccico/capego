@@ -1,3 +1,28 @@
+var constants = {
+    "Solve video": 1,
+    "Visit video": 2,
+    "Share video": 3,
+    "Visit the site": 4,
+    "Send correction": 5,
+    "Contribute video": 6,
+    "Sign up": 7
+};
+
+var csrftoken = $.cookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    crossDomain: false, // obviates need for sameOrigin test
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type)) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
 function getXmlHttp(){
 	var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -75,7 +100,6 @@ function correct_everything(num_dialogs, id)
 				false,
 				id,
 				document.getElementById("btn_suggest" + i));
-		
 	}		
 }
 
@@ -100,18 +124,47 @@ $(document).ready(function() {
 });
 
 // post-submit callback
-function showResponse(responseText, statusText, xhr, $form)  {
+function showResponse(responseText, statusText, xhr, $form){
     $('#newsletter_msg').html(responseText);
 }
 
-function doSomethingAfterSomeSeconds(seconds){
-    ms = seconds * 1000;
-    setTimeout(function(){
-        alert("I am here...");
-    }, ms);
+function doSomethingAfterSomeSeconds(seconds, f){
+    var ms = seconds * 1000;
+    setTimeout(f, ms);
+}
+
+String.prototype.hashCode = function(){
+    var hash = 0, i, char;
+    if (this.length == 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+};
+
+function getActivityKey(activity_code, description){
+    user
+}
+
+function sendActivity(activity_code, description){
+    $.ajax({
+        type: "POST",
+        url: "/user/register_activity",
+        beforeSend: function(xhr) {
+            xhr.overrideMimeType("text/plain; charset=x-user-defined");
+        },
+        data: { activity_code: activity_code }
+    }).done(function(msg) {
+            if (msg.substring(0,2)=="OK"){
+                localStorage.setItem('favoriteflavor','vanilla');
+            }
+
+        });
 }
 
 function initPlay(){
     focusOnInput();
-    doSomethingAfterSomeSeconds(5);  //todo, use js to do it only once.
+    doSomethingAfterSomeSeconds(5, function(){sendActivity(constants["Visit video"])});
 }
