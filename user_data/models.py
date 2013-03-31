@@ -15,12 +15,19 @@ class BadgeType(models.Model):
 
     name = models.CharField(max_length=10)
 
+class Activity(models.Model):
+    def __unicode__(self):
+        return self.name
+
+    name = models.CharField(max_length=20)
+
 class Badge(models.Model):
     def __unicode__(self):
         return self.name + " - " + self.type.name + " - " + self.description
 
     name = models.CharField(max_length=50, unique=True)
     type = models.ForeignKey(BadgeType)
+    related_activity = models.ForeignKey(Activity)
     repetition_needed = models.IntegerField(default=1)
     description = models.TextField()
 
@@ -71,7 +78,7 @@ class UserActivity(models.Model):
         return self.user.username + "-" + self.related_badge.name + "-" + self.description
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    related_badge = models.ForeignKey(Badge)
+    related_activity = models.ForeignKey(Activity)
     description = models.CharField(blank=True, max_length=100)
     date = models.DateTimeField(auto_now_add=True)
 
@@ -79,4 +86,4 @@ class UserActivity(models.Model):
         #we use a triple composite key in order to let or avoid entering a duplicated activity when it is convenient
         #for example a badge for visiting three days in a row the site will need a different description while
         #we can avoid awarding a visit in the same day
-        unique_together = (("user", "related_badge", "description"),)
+        unique_together = (("user", "related_activity", "description"),)

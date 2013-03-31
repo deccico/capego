@@ -113,5 +113,5 @@ function doSomethingAfterSomeSeconds(seconds){
 
 function initPlay(){
     focusOnInput();
-    doSomethingAfterSomeSeconds(5);  //todo, use js to do it only once. 
+    doSomethingAfterSomeSeconds(5);  //todo, use js to do it only once.
 }
