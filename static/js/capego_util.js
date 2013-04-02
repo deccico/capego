@@ -70,12 +70,6 @@ function loadXMLDoc(xmlhttp, url, cfunc) {
 function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl, id, btn_suggest){
     if (typeof e == 'undefined' && window.event)
     { e = window.event; }
-    /*
-    if (e.keyCode > 13 && e.keyCode < 46)
-        return;
-    if (e.ctrlKey && e.keyCode == 65) //ctrl+a
-        return;
-    */
     if (e.keyCode != 13)
         return;
     send_correction(getXmlHttp(), span_ctrl, input_ctrl, span_correct_ctrl, false, id, btn_suggest);
