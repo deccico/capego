@@ -61,7 +61,6 @@ function getXmlHttp(){
 
 function loadXMLDoc(xmlhttp, url, cfunc) {	
 	xmlhttp.onreadystatechange = cfunc;
-    xmlhttp.ontimeout = clear_correction();
 	url = encodeURIComponent(url) + new Date().getTime() + "/";
 	xmlhttp.open("GET", url, true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -69,18 +68,17 @@ function loadXMLDoc(xmlhttp, url, cfunc) {
 }
 
 function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl, id, btn_suggest){
-    if (window.correcting_data){
+    if (typeof e == 'undefined' && window.event)
+    { e = window.event; }
+    /*
+    if (e.keyCode > 13 && e.keyCode < 46)
         return;
-    }
-    window.correcting_data = true;
-    try{
-        send_correction(getXmlHttp(), span_ctrl, input_ctrl, span_correct_ctrl, false, id, btn_suggest);
-    }
-    catch(e){clear_correction();}
-}
-
-function clear_correction(){
-    window.correcting_data=false;
+    if (e.ctrlKey && e.keyCode == 65) //ctrl+a
+        return;
+    */
+    if (e.keyCode != 13)
+        return;
+    send_correction(getXmlHttp(), span_ctrl, input_ctrl, span_correct_ctrl, false, id, btn_suggest);
 }
 
 function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word, id, btn_suggest)
@@ -96,6 +94,7 @@ function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_c
 	var url_check = (is_correct_next_word? "../get_next_word/":
 											"../check/");
 	url_check += id + "/";
+    input_ctrl_id = input_ctrl.id;
 	loadXMLDoc(
 			xmlhttp,
 			url_check + input_ctrl.id + "/" 
@@ -106,8 +105,12 @@ function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_c
 					if (span_ctrl.innerHTML.indexOf('<div class="status-correct">') !== -1){
 						btn_suggest.style.display = 'none';
 					}
-                    document.getElementById("line_id1").focus();
-                    clear_correction();
+                    var input = document.getElementById(input_ctrl_id);
+                    if (input){
+                        var txt = input.value;
+                        input.focus();
+                        input.value = txt;
+                    }
 				}
 			}); 
 }
