@@ -1,9 +1,11 @@
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.db import transaction, IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from user_data.models import UsersBadge, Badge, UserActivity
+from user_data.models import UserBadge, Badge, UserActivity, Activity
 from django.conf import settings
 
 import logging
@@ -11,7 +13,7 @@ logger = logging.getLogger(settings.APP_NAME)
 
 @login_required
 def user_badges(request):
-    user_badges = UsersBadge.objects.filter(user=request.user)
+    user_badges = UserBadge.objects.filter(user=request.user)
     ub_ids = []
     for ub in user_badges:
         ub_ids.append(ub.badge.id)
@@ -33,15 +35,21 @@ def register_activity(request):
 
     usr = request.user
     desc = request.POST.get('description') if request.POST.get('description') else ""
+
+    status = True
     try:
-        ua = UserActivity(user=usr, related_activity=activity_code, description=desc)
+        #todo: we should have a transaction here for the whole request
+        ua = UserActivity(user=usr, related_activity=Activity.objects.get(id=activity_code), description=desc)
         ua.save()
     except IntegrityError:
         msg = "OK. Trying to record activity: user:%s, activity:%s, desc:%s but seems to be duplicated, which is as designed." % (usr, activity_code, desc)
+        status = False
         logger.debug(msg)
     except:
+        status = False
         msg = "Error recording activity: user:%s, activity:%s, desc:%s but seems to be duplicated, which is as designed." % (usr, activity_code, desc)
         logger.exception(msg)
 
-    msg="OK. Activity: user:%s, activity:%s, desc:%s recorded successfully." % (usr, activity_code, desc)
-    return HttpResponse(msg)
+    #this message will notify success on the operation and help whether JS should keep sending them
+    out = [{'status':status,'event_key':usr.username + str(activity_code) + desc.replace(" ", "") }]
+    return HttpResponse(json.dumps(out))

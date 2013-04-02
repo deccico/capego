@@ -1,3 +1,4 @@
+//common
 var constants = {
     "Solve video": 1,
     "Visit video": 2,
@@ -5,10 +6,26 @@ var constants = {
     "Visit the site": 4,
     "Send correction": 5,
     "Contribute video": 6,
-    "Sign up": 7
+    "Sign up": 7,
+    'event_key': 'event_key'
 };
 
-var csrftoken = $.cookie('csrftoken');
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
@@ -23,6 +40,7 @@ $.ajaxSetup({
     }
 });
 
+//play specific
 function getXmlHttp(){
 	var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -103,68 +121,57 @@ function correct_everything(num_dialogs, id)
 	}		
 }
 
-function focusOnInput()
-{
-     document.getElementById("line_id1").focus();
-}
-
-$(function () {
-    $('.disconnect form a').on('click', function (e) {
-        e.preventDefault();
-        $(this).parent('form').submit();
-    });
-});
-
+// newsletter specific
 $(document).ready(function() {
     $('#subscribe-form').submit(function() {
-        $(this).ajaxSubmit({success: showResponse});
+        $(this).ajaxSubmit({success: showResponse});  //newsletter specific
         // always return false to prevent standard browser submit and page navigation
         return false;
     });
 });
 
-// post-submit callback
 function showResponse(responseText, statusText, xhr, $form){
     $('#newsletter_msg').html(responseText);
+    document.getElementById('email').value="";
 }
 
+//common
 function doSomethingAfterSomeSeconds(seconds, f){
     var ms = seconds * 1000;
     setTimeout(f, ms);
 }
 
-String.prototype.hashCode = function(){
-    var hash = 0, i, char;
-    if (this.length == 0) return hash;
-    for (i = 0; i < this.length; i++) {
-        char = this.charCodeAt(i);
-        hash = ((hash<<5)-hash)+char;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
-};
-
-function getActivityKey(activity_code, description){
-    user
-}
-
-function sendActivity(activity_code, description){
+function sendActivity(activity_code, desc){
     $.ajax({
         type: "POST",
-        url: "/user/register_activity",
+        url: "/user/register_activity/",
         beforeSend: function(xhr) {
-            xhr.overrideMimeType("text/plain; charset=x-user-defined");
+            return doINeedToSend(activity_code, desc);
         },
-        data: { activity_code: activity_code }
+        data: { activity_code: activity_code, description: desc, csrfmiddlewaretoken: csrftoken }
     }).done(function(msg) {
-            if (msg.substring(0,2)=="OK"){
-                localStorage.setItem('favoriteflavor','vanilla');
-            }
-
+            analyseResponseActivityMessage(msg);
         });
 }
 
-function initPlay(){
-    focusOnInput();
-    doSomethingAfterSomeSeconds(5, function(){sendActivity(constants["Visit video"])});
+function analyseResponseActivityMessage(msg){
+    obj = JSON && JSON.parse(msg) || $.parseJSON(msg);
+    if (obj != null) obj = obj[0];
+    //this is to avoid sending the same events
+    if (obj.status){
+        localStorage.setItem(obj.event_key, "true");
+    }
 }
+
+//play specific
+function focusOnInput()
+{
+    document.getElementById("line_id1").focus();
+}
+
+function initPlay(video_id){
+    focusOnInput();
+    doSomethingAfterSomeSeconds(5, function(){sendActivity(constants["Visit video"], "V".concat(video_id.toString()))});
+}
+
+

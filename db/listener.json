@@ -32,5 +32,18 @@
     {"pk": 7, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
         "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
         "level": 2, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "pub_date": "2013-01-27T11:09:02.532Z"}},
+    {"pk": 8, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
+        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
+        "level": 1, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
-    {"pk": 1, "model": "listener.accent", "fields": {"name": "English", "language": 1}}]
+    {"pk": 9, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
+        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
+        "level": 3, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "pub_date": "2013-01-27T11:09:06.532Z"}},
+    {"pk": 10, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
+        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
+        "level": 3, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "pub_date": "2013-01-27T11:09:05.532Z"}},
+    {"pk": 1, "model": "listener.accent", "fields": {"name": "English", "language": 1}}
+]

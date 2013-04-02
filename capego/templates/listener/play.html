@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block onload_function %}onload="initPlay()"{% endblock %}
+{% block onload_function %}onload="initPlay({{ listener.id }})"{% endblock %}
 
 {% block content %}
 <div class="row-fluid section" id="about">
@@ -29,10 +29,5 @@
 		</div>
 	</div>
 </div>
-<!--
-<script language="javascript">
-    doSomethingAfterSomeSeconds(5);
-</script>
--->
 {% endblock %}
 

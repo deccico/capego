@@ -33,7 +33,15 @@ def subscribe(request):
 
 def message(request):
     if request.method == 'POST' and request.POST.get('email'):
-        u = UsersContactingCapego(name=request.POST.get('name').lower(), email=request.POST.get('email').lower(), message=request.POST.get('message'))
+        email = request.POST.get('email').lower()
+        #add this when the form in the error doesn't get erased
+        # if not isEmailAddressValid(email):
+        #     result = "<strong>%s is not a valid email</strong>" % email
+        #     msg = """<div class='alert alert-error'>
+        #     <button class='close' data-dismiss='alert'>x</button>
+        #     %s  </div>""" % result
+        # else:
+        u = UsersContactingCapego(name=request.POST.get('name').lower(), email=email, message=request.POST.get('message'))
         u.save()
         msg = """<div class='alert alert-info'>
         <button class='close' data-dismiss='alert'>x</button>

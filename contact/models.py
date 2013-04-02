@@ -11,6 +11,6 @@ class UsersContactingCapego(models.Model):
         return self.name + "-" + self.email
 
     name = models.CharField(max_length=50)
-    email = models.CharField(max_length=100, unique=True)
+    email = models.CharField(max_length=100)
     message = models.CharField(max_length=1024)
 
