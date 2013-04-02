@@ -57,7 +57,7 @@ class Formatter():
                                    <span id="%s">
                                    <span id="%s"></span>
                                    <input id="%s" type="text" 
-                                   onkeyup="correct_data(event,%s,%s,%s,%s,%s)" 
+                                   onkeyup="correct_data(event,%s,%s,%s,%s,%s)"
                                    class="span11 search-query" 
                                    placeholder="Please enter %s dialog line here">
                                    </input></button></span>""" 
@@ -105,7 +105,7 @@ class Formatter():
                 dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
                 corrected_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
                 html_out += """
-                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s,%s)" 
+                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s,%s)"
                             class="span11 search-query" 
                             placeholder = "Please enter the rest of the dialog here."
                             value="%s">
