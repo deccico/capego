@@ -104,6 +104,7 @@ class Formatter():
                 span_id_text = "%s%s" % (self.SPAN_PREFIX, dialog_id)
                 dialog_id_text = "%s%s" % (self.LINE_PREFIX, dialog_id)
                 corrected_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
+                input_text = " ".join(w[1] for w in line[i:]).strip()
                 html_out += """
                             <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s,%s)"
                             class="span11 search-query" 
@@ -116,7 +117,8 @@ class Formatter():
                                     corrected_id_text,
                                     listener_id,
                                     btn_suggest,
-                                    " ".join(w[1] for w in line[i:]))
+                                    input_text
+                                    )
                 close_correct_span = False
                 break
         if close_correct_span:
