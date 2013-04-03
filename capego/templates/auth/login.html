@@ -1,25 +1,73 @@
 {% extends "base.html" %}
 {% load url from future %}
-
 {% block content %}
     <div id="form">
         <div class="container">
             <div class="row">
                 <div class="span8">
                     <h3>Log in</h3>
-
                     <p>Please log in using one of the following accounts</p> </br>
-
-                    <ul class="contactlinks" >
-                        <li><a href="/auth/login/facebook/"><i class="icon-facebook-sign icon-large"></i>Log in with Facebook</a></li>
-                        </br>
-                        <li><a href="/auth/login/google/"><i class="icon-google-plus-sign icon-large"></i>Log in with Google</a></li>
-                    </ul>
+                    <div class="row">
+                        <div class="span4">
+                            <ul class="contactlinks" >
+                                <li><a href="/auth/login/facebook/"><i class="icon-facebook-sign icon-large"></i>Log in with Facebook</a></li>
+                            </ul>
+                        </div>
+                        <div class="span4">
+                            <ul class="contactlinks" >
+                                <li><a href="/auth/login/google/"><i class="icon-google-plus-sign icon-large"></i>Log in with Google</a></li>
+                            </ul>
+                        </div>
+                        <div class="span4">
+                            <ul class="contactlinks" >
+                                <li>
+                                    <form method="post" action="{% url "socialauth_complete" "browserid" %}">
+                                        <input type="hidden" name="assertion" value="" />
+                                        <a rel="nofollow" id="browserid" href="#"><i class="icon-user icon-large"></i>
+                                            Log in with Mozilla Persona</a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="span4">
+                            <ul class="contactlinks" >
+                                <li>
+                                    <form id="myopenid" action="{% url "socialauth_begin" "openid" %}" method="post">{% csrf_token %}
+                                        <input type="hidden" id="openid_identifier" value="myopenid.com" name="openid_identifier" />
+                                        <a rel="nofollow" onclick="document.getElementById('myopenid').submit()" href="#"><i class="icon-signin icon-large"></i>
+                                            Log in with myOpenID</a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
+{% block additional_js %}
 
+    <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#browserid').click(function (e) {
+                e.preventDefault();
+                var self = $(this);
 
+                navigator.id.get(function (assertion) {
+                    if (assertion) {
+                        self.parent('form')
+                                .find('input[type=hidden]')
+                                .attr('value', assertion)
+                                .end()
+                                .submit();
+                    } else {
+                        alert('There was an error contacting Mozilla Persona or maybe you just closed the login window.');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

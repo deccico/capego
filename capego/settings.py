@@ -11,7 +11,7 @@ APP_NAME = "Capego"
 
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('Adrian', 'deccico@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -194,6 +194,8 @@ LOGGING = {
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',
     'social_auth.backends.google.GoogleBackend',
+    'social_auth.backends.browserid.BrowserIDBackend',
+    'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -219,7 +221,6 @@ SOCIAL_AUTH_COMPLETE_URL_NAME     = 'socialauth_complete'
 LOGIN_ERROR_URL                   = '/auth/login/error/'
 
 
-#SOCIAL_AUTH_USER_MODEL           = 'app.CustomUser'
 SOCIAL_AUTH_ERROR_KEY             = 'socialauth_error'
 
 SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
@@ -236,3 +237,4 @@ SOCIAL_AUTH_PIPELINE = (
     'social_auth.backends.pipeline.user.update_user_details',
     'user_data.pipeline.add_extra_data',
 )
+
