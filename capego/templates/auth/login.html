@@ -10,12 +10,12 @@
                     <div class="row">
                         <div class="span4">
                             <ul class="contactlinks" >
-                                <li><a href="/auth/login/facebook/"><i class="icon-facebook-sign icon-large"></i>Log in with Facebook</a></li>
+                                <li><a href="{% url "socialauth_begin" "facebook" %}"><i class="icon-facebook-sign icon-large"></i>Log in with Facebook</a></li>
                             </ul>
                         </div>
                         <div class="span4">
                             <ul class="contactlinks" >
-                                <li><a href="/auth/login/google/"><i class="icon-google-plus-sign icon-large"></i>Log in with Google</a></li>
+                                <li><a href="{% url "socialauth_begin" "google" %}"><i class="icon-google-plus-sign icon-large"></i>Log in with Google</a></li>
                             </ul>
                         </div>
                         <div class="span4">
