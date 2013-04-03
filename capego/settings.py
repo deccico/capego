@@ -238,3 +238,11 @@ SOCIAL_AUTH_PIPELINE = (
     'user_data.pipeline.add_extra_data',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"

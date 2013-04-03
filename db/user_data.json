@@ -22,8 +22,8 @@
     {"pk": 10, "model": "user_data.badge", "fields": {"type": 3, "name": "Fanatic", "description": "Visit 1000 videos", "related_activity": 2, "repetition_needed": 1000}},
 
     {"pk": 11, "model": "user_data.badge", "fields": {"type": 1, "name": "Promoter", "description": "Share 10 videos.", "related_activity": 3, "repetition_needed": 10}},
-    {"pk": 12, "model": "user_data.badge", "fields": {"type": 2, "name": "Enthusiast", "description": "Visit the site each day for 30 consecutive days.", "related_activity": 4, "repetition_needed": 30}},
-    {"pk": 13, "model": "user_data.badge", "fields": {"type": 3, "name": "Disciplined", "description": "Visit the site each day for 100 consecutive days.", "related_activity": 4, "repetition_needed": 100}},
+    {"pk": 12, "model": "user_data.badge", "fields": {"type": 2, "name": "Enthusiast", "description": "Visit the site 30 different days.", "related_activity": 4, "repetition_needed": 30}},
+    {"pk": 13, "model": "user_data.badge", "fields": {"type": 3, "name": "Disciplined", "description": "Visit the site 100 different days.", "related_activity": 4, "repetition_needed": 100}},
 
     {"pk": 14, "model": "user_data.badge", "fields": {"type": 1, "name": "Good citizen", "description": "Send a correction to a video that is accepted.", "related_activity": 5, "repetition_needed": 1}},
     {"pk": 15, "model": "user_data.badge", "fields": {"type": 2, "name": "City Marshall", "description": "Send 10 accepted corrections to different videos.", "related_activity": 5, "repetition_needed": 10}},
