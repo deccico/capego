@@ -29,17 +29,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="span4">
-                            <ul class="contactlinks" >
-                                <li>
-                                    <form id="myopenid" action="{% url "socialauth_begin" "openid" %}" method="post">{% csrf_token %}
-                                        <input type="hidden" id="openid_identifier" value="myopenid.com" name="openid_identifier" />
-                                        <a rel="nofollow" onclick="document.getElementById('myopenid').submit()" href="#"><i class="icon-signin icon-large"></i>
-                                            Log in with myOpenID</a>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

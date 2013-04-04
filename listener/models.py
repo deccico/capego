@@ -39,7 +39,7 @@ class Listener(models.Model):
     @staticmethod
     def get_good_line(listener_id, line_id):
         d = Listener.objects.get(id=listener_id).dialog
-        return json.loads(d)[int(line_id)][1]
+        return json.loads(d)[int(line_id)][1],len(d)
 
 class Accent(models.Model):
     def __unicode__(self):
