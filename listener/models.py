@@ -37,9 +37,11 @@ class Listener(models.Model):
         return self.aformatter.dialog_to_complete(self.dialog, self.id)
 
     @staticmethod
+    #todo: this could be cached
     def get_good_line(listener_id, line_id):
-        d = Listener.objects.get(id=listener_id).dialog
-        return json.loads(d)[int(line_id)][1],len(d)
+        l = Listener.objects.get(id=listener_id)
+        d = json.loads(l.dialog)
+        return d[int(line_id)][1], len(d) - 1, l.level_id
 
 class Accent(models.Model):
     def __unicode__(self):

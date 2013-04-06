@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.db import transaction
+from listener.models import Listener
 
 logger = logging.getLogger(settings.APP_NAME)
 
@@ -10,17 +11,20 @@ logger = logging.getLogger(settings.APP_NAME)
 def get_user(username):
     return User.objects.get(username = username)
 
+
 class Activity(models.Model):
     def __unicode__(self):
         return self.name
 
     name = models.CharField(max_length=20)
 
+
 class BadgeType(models.Model):
     def __unicode__(self):
         return self.name
 
     name = models.CharField(max_length=10)
+
 
 class Badge(models.Model):
     def __unicode__(self):
@@ -32,6 +36,7 @@ class Badge(models.Model):
     repetition_needed = models.IntegerField(default=1)
     description = models.TextField()
 
+
 class UserBadge(models.Model):
     def __unicode__(self):
         return self.user.username + "-" + self.badge.name
@@ -42,6 +47,7 @@ class UserBadge(models.Model):
 
     class Meta:
         unique_together = (("user", "badge"),)
+
 
 class UserExtraData(models.Model):
     def __unicode__(self):
@@ -75,6 +81,7 @@ class UserExtraData(models.Model):
             logger.exception("failure while saving user additional data")
             raise
 
+
 class UserActivity(models.Model):
     def __unicode__(self):
         return self.user.username + "-" + self.related_activity.name + "-" + self.description
@@ -96,6 +103,14 @@ class UserActivity(models.Model):
         unique_together = (("user", "related_activity", "description"),)
 
 
+class UserSolvedListener(models.Model):
+    def __unicode__(self):
+        return self.user.username + "-" + self.badge.name
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    listener = models.ForeignKey(Listener)
+    number_of_suggestions = models.IntegerField()
+    solved_date = models.DateTimeField(auto_now_add=True)
 
 
 class Awarder():
