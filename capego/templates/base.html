@@ -122,20 +122,22 @@
 
     <script>
         function doINeedToSend(activity_code, description){
-            {% if user.is_authenticated %}
-            var usr = "{{user.username}}";
-            {% else %}
-            var usr = "";
-            {% endif %}
-            if (usr == "") return true;
             description = description.replace(/ /g,"");
-            k = usr.concat(activity_code).concat(description);
+            k = activity_code.toString().concat(description);
             v = localStorage.getItem(k);
             if (v !== null && v == "true") {
                 //prevent sending the same event more than once
                 return false;
             }
             return true;
+        }
+
+        function sendUserActivities(video_id){
+            {% if user.is_authenticated %}
+            var usr = "{{user.username}}";
+            doSomethingAfterSomeSeconds(5, function(){sendActivity(constants["Visit video"], usr.concat("VV").concat(video_id.toString()))});
+            doSomethingAfterSomeSeconds(30, function(){sendActivity(constants["Visit the site"], usr.concat("VS").concat(getToday()))});
+            {% endif %}
         }
     </script>
 

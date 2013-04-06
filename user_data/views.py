@@ -22,16 +22,15 @@ def user_badges(request):
         b.awarded = b.id in ub_ids
     return render_to_response('user/badges.html', {'badges': badges}, RequestContext(request))
 
-@login_required
 @transaction.commit_on_success
 def register_activity(request):
-    if not request.method == 'POST' or not request.POST.get('activity_code'):
-        return
+    if not request.user.is_authenticated() or not request.method == 'POST' or not request.POST.get('activity_code'):
+        return HttpResponse("")
     try:
         activity_code = int(request.POST.get('activity_code'))
     except ValueError:
         logger.exception("%s is not an integer" % request.POST.get('activity_code'))
-        return
+        return HttpResponse("")
 
     usr = request.user
     desc = request.POST.get('description') if request.POST.get('description') else ""
@@ -51,5 +50,5 @@ def register_activity(request):
         logger.exception(msg)
 
     #this message will notify success on the operation and help whether JS should keep sending them
-    out = [{'status':status,'event_key':usr.username + str(activity_code) + desc.replace(" ", "") }]
+    out = [{'status':status}]
     return HttpResponse(json.dumps(out))

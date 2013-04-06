@@ -10,6 +10,14 @@ var constants = {
     'event_key': 'event_key'
 };
 
+function getToday(){
+    var currentdate = new Date();
+    var today = currentdate.getDate() + "/"
+        + (currentdate.getMonth()+1)  + "/"
+        + currentdate.getFullYear();
+    return today;
+}
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -169,6 +177,8 @@ function sendActivity(activity_code, desc){
 }
 
 function analyseResponseActivityMessage(msg){
+    if (msg.length < 1)
+        return;
     obj = JSON && JSON.parse(msg) || $.parseJSON(msg);
     if (obj != null) obj = obj[0];
     //this is to avoid sending the same events
@@ -185,7 +195,7 @@ function focusOnInput()
 
 function initPlay(video_id){
     focusOnInput();
-    doSomethingAfterSomeSeconds(5, function(){sendActivity(constants["Visit video"], "V".concat(video_id.toString()))});
+    sendUserActivities(video_id);
 }
 
 

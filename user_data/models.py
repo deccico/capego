@@ -97,7 +97,7 @@ class UserActivity(models.Model):
 
     @transaction.commit_on_success
     def save(self, *args, **kwargs):
-        key = self.user_id + "-" + self.related_activity_id + "-" + self.description
+        key = "%s-%s-%s" % (self.user_id, self.related_activity_id, self.description)
         #only save if it is a new activity
         if cache.get(key) == None:
             super(UserActivity, self).save(*args, **kwargs)
@@ -135,4 +135,6 @@ class Awarder():
             if b.repetition_needed <= number_of_activities:
                 self.award_badge(user_activity.user, b)
 
+    def award_badge(self, user, badge):
+        UserBadge(user=user, badge=badge).save()
 
