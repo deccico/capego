@@ -246,3 +246,9 @@ CACHES = {
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+
+#By default, Django only saves to the session database when the session has been modified
+# that is if any of its dictionary values have been assigned or deleted.
+# When set to True, Django will save the session to the database on every single request.
+SESSION_SAVE_EVERY_REQUEST = True
+

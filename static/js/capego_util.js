@@ -105,6 +105,17 @@ function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_c
                         input.focus();
                         input.value = txt;
                     }
+                    else{
+                        for (var i=0;i<10;i++){
+                            e = document.getElementById("line_id".concat(i));
+                            if (e!=null){
+                                var txt = e.value;
+                                e.focus();
+                                e.value = txt;
+                                break;
+                            }
+                        }
+                    }
 				}
 			}); 
 }

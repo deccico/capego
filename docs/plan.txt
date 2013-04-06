@@ -3,12 +3,10 @@ Release plan
 
 DONE * add points to user profile
 DONE * add badges page
-* custom admin
 DONE * make badge functionality work
-* enhance footer with FB and Twitter accounts
 * 100 videos uploaded
 DONE * let the user subscribe to the newsletter from the login
-* open id and persona id
+DONE * open id and persona id
 * tutorial (http://usablica.github.com/intro.js/)
 * online server set up
 * use minified resources and check perfomance. For jquery check external hosting
