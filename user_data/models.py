@@ -1,8 +1,12 @@
+import datetime
 import logging
+
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.db import transaction
+from django.core.cache import cache
+
 from listener.models import Listener
 
 logger = logging.getLogger(settings.APP_NAME)
@@ -61,9 +65,9 @@ class UserExtraData(models.Model):
     @staticmethod
     def getUserExtraData(user):
         if UserExtraData.objects.filter(user=user).count() > 0:
-            return False,UserExtraData.objects.get(user=user)
+            return False, UserExtraData.objects.get(user=user)
         else:
-            return True,UserExtraData(user=user)
+            return True, UserExtraData(user=user)
 
     @staticmethod
     @transaction.commit_on_success
@@ -93,8 +97,12 @@ class UserActivity(models.Model):
 
     @transaction.commit_on_success
     def save(self, *args, **kwargs):
-        super(UserActivity, self).save(*args, **kwargs)
-        Awarder().analyze_activity(self)
+        key = self.user_id + "-" + self.related_activity_id + "-" + self.description
+        #only save if it is a new activity
+        if cache.get(key) == None:
+            super(UserActivity, self).save(*args, **kwargs)
+            Awarder().analyze_activity(self)
+            cache.set(key, "already recorded")
 
     class Meta:
         #we use a triple composite key in order to let or avoid entering a duplicated activity when it is convenient
@@ -128,5 +136,3 @@ class Awarder():
                 self.award_badge(user_activity.user, b)
 
 
-    def award_badge(self, user, badge):
-        UserBadge(user=user, badge=badge).save()
