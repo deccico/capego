@@ -1,6 +1,4 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils.html import strip_tags
 
 from models import Listener
@@ -17,7 +15,6 @@ def check(request, listener_id, line_id, line):
     is_correct, corrected_dialog = cor.correct_dialog(strip_tags(good_one), strip_tags(line))
     formatted = fmt.line_corrected(is_correct, corrected_dialog, line_id, listener_id)
     if is_correct:
-        #len_lines is +1 since first entry is for suggestions
         activity_checker.mark_line_correct_and_check_if_video_is_correct(request, listener_id, int(line_id), len_lines, level)
     return HttpResponse(formatted)
 

@@ -127,10 +127,13 @@ class Awarder():
         number_of_activities = UserActivity.objects.filter(user=user_activity.user, related_activity=user_activity.related_activity).count()
         badges_to_award = Badge.objects.filter(related_activity=user_activity.related_activity)
         badges_awarded = UserBadge.objects.filter(user=user_activity.user)
+        badges_awarded_ids = []
+        for b in badges_awarded:
+            badges_awarded_ids.append(b.badge_id)
 
         for b in badges_to_award:
             #check if repetitions are enough for a new badge
-            if b in badges_awarded:
+            if b.id in badges_awarded_ids:
                 continue
             if b.repetition_needed <= number_of_activities:
                 self.award_badge(user_activity.user, b)
