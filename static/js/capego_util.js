@@ -168,22 +168,22 @@ function sendActivity(activity_code, desc){
         type: "POST",
         url: "/user/register_activity/",
         beforeSend: function(xhr) {
-            return doINeedToSend(activity_code, desc);
+            return doINeedToSend(desc);
         },
         data: { activity_code: activity_code, description: desc, csrfmiddlewaretoken: csrftoken }
     }).done(function(msg) {
-            analyseResponseActivityMessage(msg);
+            analyseResponseActivityMessage(msg, desc);
         });
 }
 
-function analyseResponseActivityMessage(msg){
+function analyseResponseActivityMessage(msg, desc){
     if (msg.length < 1)
         return;
     obj = JSON && JSON.parse(msg) || $.parseJSON(msg);
     if (obj != null) obj = obj[0];
     //this is to avoid sending the same events
     if (obj.status){
-        localStorage.setItem(obj.event_key, "true");
+        localStorage.setItem(desc, "true");
     }
 }
 

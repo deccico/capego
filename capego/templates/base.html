@@ -121,10 +121,8 @@
     {% block additional_js %}{% endblock %}
 
     <script>
-        function doINeedToSend(activity_code, description){
-            description = description.replace(/ /g,"");
-            k = activity_code.toString().concat(description);
-            v = localStorage.getItem(k);
+        function doINeedToSend(description){
+            v = localStorage.getItem(description);
             if (v !== null && v == "true") {
                 //prevent sending the same event more than once
                 return false;
@@ -135,8 +133,14 @@
         function sendUserActivities(video_id){
             {% if user.is_authenticated %}
             var usr = "{{user.username}}";
-            doSomethingAfterSomeSeconds(5, function(){sendActivity(constants["Visit video"], usr.concat("VV").concat(video_id.toString()))});
-            doSomethingAfterSomeSeconds(30, function(){sendActivity(constants["Visit the site"], usr.concat("VS").concat(getToday()))});
+            doSomethingAfterSomeSeconds(5,
+                    function(){sendActivity(constants["Visit video"],
+                            usr.concat("VV").concat(constants["Visit video"].toString()).concat("-").concat(video_id.toString()));
+                    });
+            doSomethingAfterSomeSeconds(30,
+                    function(){sendActivity(constants["Visit the site"],
+                            usr.concat("VS").concat(constants["Visit the site"].toString()).concat("-").concat(getToday()));
+                    });
             {% endif %}
         }
     </script>
