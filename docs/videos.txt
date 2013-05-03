@@ -1,4 +1,7 @@
-No, money down! 
+sudo apt-get install libav-tools
+ffmpeg -ss 00:07:30 -t 00:01:00 -i SP.S16.E1.avi -vcodec copy -acodec copy out.avi
+
+No, money down!
 http://vimeo.com/55706253
 
 [{0:'Hutz',1:'Bart'},
