@@ -5,46 +5,94 @@
     {"pk": 1, "model": "listener.level", "fields": {"name": "Beginner"}},
     {"pk": 2, "model": "listener.level", "fields": {"name": "Intermediate"}},
     {"pk": 3, "model": "listener.level", "fields": {"name": "Advanced"}},
+    {"pk": 1, "model": "listener.accent", "fields": {"name": "English", "language": 1}},
+
     {"pk": 1, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 3, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], [0,\"Oh! They got this all screwed up...\"], [1,\"So you don't work on a contingency basis?\"], [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/65368465?badge=0",
+        "level": 3, "length": 25, "dialog":
+        "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], [0,\"Oh! They got this all screwed up...\"], [1,\"So you don't work on a contingency basis?\"], [0,\"No, money down!\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
+
     {"pk": 2, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Where it belongs", "url": "http://player.vimeo.com/video/65368589?badge=0",
-        "level": 2, "length": 30,
-        "dialog": "[[\"Mother\"], [0, \"You're coming home right now Clyde and your are putting the toilet seat down, where it belongs.\"], [0,\"Let's go!\"]]",
+        "level": 1, "length": 10,
+        "dialog":
+        "[[\"Mother\"], [0, \"You're coming home right now Clyde and your are putting the toilet seat down, where it belongs.\"], [0,\"Let's go!\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
+
     {"pk": 3, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 2, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], [0,\"Oh! They got this all screwed up...\"], [1,\"So you don't work on a contingency basis?\"], [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "language": 1, "title": "IHOP", "url": "http://player.vimeo.com/video/65368588?badge=0",
+        "level": 1, "length": 6, "dialog":
+        "[[\"Cartman\"], [0, \"This is unbelievable. Stupid toilet safety administration.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
+
     {"pk": 4, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 1, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], [0,\"Oh! They got this all screwed up...\"], [1,\"So you don't work on a contingency basis?\"], [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "language": 1, "title": "TSA", "url": "http://player.vimeo.com/video/65368587?badge=0",
+        "level": 2, "length": 20,
+        "dialog":
+        "[[\"Cartman\", \"Officer\", \"Person\"], [0, \"This is unbelievable. Stupid toilet safety administration.\"], [0, \"You can't take a crap at I hop without a 40 minute line.\"], [1,\"shoes off, belts off. Sharp objects in the plastic tank.\"], [2,\"This is inhuman.\"], [1,\"Shut up, sir.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
+
     {"pk": 5, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 2, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], [0,\"Oh! They got this all screwed up...\"], [1,\"So you don't work on a contingency basis?\"], [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "language": 1, "title": "That's embarassing", "url": "http://player.vimeo.com/video/65368586?badge=0",
+        "level": 2, "length": 19, "dialog":
+        "[[\"Butters\"], [0, \"Wait a minute. You're suppose to poop in a toilet facing out? \"], [0, \"But I thought you sit on the toilet this way, so you have that nice little shelf for your comic book and your chocolate milk.\"], [0, \"Because then you got the flusher right here.\"], [0, \"No? Oh geez, that's embarrassing.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
+
     {"pk": 6, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 1, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], [0,\"Oh! They got this all screwed up...\"], [1,\"So you don't work on a contingency basis?\"], [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+        "language": 1, "title": "Sue somebody", "url": "http://player.vimeo.com/video/65368584?badge=0",
+        "level": 3, "length": 20, "dialog":
+        "[[\"Stan\", \"Kyle\", \"Lawyer\"], [0, \"We keep trying to tell him maybe this all isn't his fault.\"], [0, \"Maybe the people who made the toilet are to blame for what happened.\"], [1, \"So we were just wondering...\"], [1, \"if we could sue somebody.\"], [2, \"You can always sue somebody.\"], [1, \"All right, you see, Clyde.\"], [1, \"Okay, we wanna help him sue whoever invented the toilet.\"], [2, \"You got it.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
-    {"pk": 7, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 2, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
-        "pub_date": "2013-01-27T11:09:02.532Z"}},
-    {"pk": 8, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 1, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
+
+    {"pk": 7, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Contingency basis", "url": "http://player.vimeo.com/video/65368468?badge=0",
+        "level": 1, "length": 5, "dialog":
+        "[[\"Bart\", \"Hutz\"], [0,\"So you don't work on a contingency basis?\"], [0,\"No, money down!.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
-    {"pk": 9, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 3, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
-        "pub_date": "2013-01-27T11:09:06.532Z"}},
-    {"pk": 10, "model": "listener.listener", "fields": {"update_date": "2013-02-07T13:47:00.286Z", "description": "",
-        "language": 1, "title": "No, money down!", "url": "http://player.vimeo.com/video/55706253?badge=0",
-        "level": 3, "length": 30, "dialog": "[[\"Hutz\", \"Bart\"], \r\n [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], \r\n [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"], \r\n [0,\"Oh! They got this all screwed up...\"], \r\n [1,\"So you don't work on a contingency basis?\"], \r\n [0,\"No, money down! Oops, I shouldn't have this Bar Association logo here either.\"]]",
-        "pub_date": "2013-01-27T11:09:05.532Z"}},
-    {"pk": 1, "model": "listener.accent", "fields": {"name": "English", "language": 1}}
+
+    {"pk": 8, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Put your coffee", "url": "http://player.vimeo.com/video/65368466?badge=0",
+        "level": 2, "length":16 , "dialog":
+        "[[\"Officer 1\", \"Officer 2\", \"Randy\", \"Officer 3\"], [0, \"Put your coffee in the plastic tray, please, sir.\"], [1, \"Shoes off. Belts off.\"], [2, \"Yeah, yeah.\"], [3, \"Got any metal in your pockets?\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}},
+
+
+    {"pk": 9, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Gentlemen!", "url": "http://player.vimeo.com/video/65368412?badge=0",
+        "level": 2, "length": 11, "dialog":
+        "[[\"Hutz\", \"Bart\"], [0, \"All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer.\"], [1, \"A thousand dollars? But your ad says \\\"No money down\\\".\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}},
+
+    {"pk": 10, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Money to make", "url": "http://player.vimeo.com/video/65368463?badge=0",
+        "level": 2, "length": 10, "dialog":
+        "[[\"Lawyer\", \"Stan\"], [0, \"Doors and windows are locked.\"], [0, \"You boys have your $500 in cash ready?\"], [1, \"Yeah.\"], [0, \"Alright. Then I've got this big bowl set here, to catch all money we are about to make.\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}},
+
+    {"pk": 11, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Inventing things", "url": "http://player.vimeo.com/video/65368462?badge=0",
+        "level": 3, "length": 30, "dialog":
+        "[[\"Lawyer\", \"Spirit\"], [0, \"What is your name, spirit?\"], [1, \"Burns.\"], [1, \"Jimmy Burns. What's it to you?\"], [1, \"Who are you, mugs?\"], [0, \"That's how people talked in the past.\"], [0, \"We have a claim against a John Harrington. Do you know him spirit?\"], [1, \"Well, maybe I do and maybe I don't.\"], [1, \"Might need a little something something to jar my memory.\"], [0, \"We got to grease him. Put a hundred in the box.\"], [1, \"Oh yeah, Harrington. I know him.\"], [1, \"Always going round inventing things.\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}},
+
+
+    {"pk": 12, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Telling you", "url": "http://player.vimeo.com/video/65368416?badge=0",
+        "level": 1, "length": 6, "dialog":
+        "[[\"Cartman\"], [0, \"Dude, I'm telling you it was freaking hysterical.\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}},
+
+    {"pk": 13, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "Government out", "url": "http://player.vimeo.com/video/65368415?badge=0",
+        "level": 2, "length": 11, "dialog":
+        "[[\"Cartman\"], [0, \"Exactly how long are we going to sit around as our freedoms are stripped away one by one.\"], [0, \"Is time for us to stand together and say, we want the government out of our bathrooms.\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}},
+
+    {"pk": 14, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
+        "language": 1, "title": "A suance", "url": "http://player.vimeo.com/video/65368414?badge=0",
+        "level": 3, "length": 28, "dialog":
+        "[[\"Lawyer\", \"Stan\", \"Kyle\", \"Jimmy\"], [0, \"I'll be asking all of you to have a very open mind and a willingness to face your fears.\"], [0, \"I warn you boys.\"], [0, \"A suance can be very... expensive.\"], [1, \"How expensive?\"], [0, \"How much do you have?\"], [2, \"Clyde got $3000 from his mom's life insurance.\"], [0, \"Wow! That's exactly how much a suance costs.\"], [3, \"Wow, that's weird.\"]]",
+        "pub_date": "2013-01-27T11:09:04.532Z"}}
 ]
+
