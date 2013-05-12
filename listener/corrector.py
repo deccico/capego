@@ -16,6 +16,10 @@ class Corrector():
         self.ALL_GOOD = ["oh", "ah", "eh", "mmmh", "oops"]
         self.CONTRACTION_ALL_GOOD = "%s%s" % (self.correct, self.correct)
         self.contractions = listener.contractions
+        self.EQUALITIES = {"geez": "jeez", "jeez": "geez",   #TODO: this should be loaded from a file
+                           "okay": "ok", "ok": "okay",
+                           "okey": "ok", "ok": "okey",
+        }
     
     def correct_dialog(self, good_one, user_input):
         #todo: eventually we may need to split in "." and ","
@@ -42,6 +46,10 @@ class Corrector():
             if gw in self.ALL_GOOD:
                 out.append([True, raw_good_one])
                 logger.debug("it's an all good word")
+                continue
+            if gw in self.EQUALITIES.keys() and self.EQUALITIES[gw] == wu:
+                out.append([True, raw_good_one])
+                logger.debug("is an equality")
                 continue
             r=self.re_correct.match(gw)
             if r:
