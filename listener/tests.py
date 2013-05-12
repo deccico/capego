@@ -133,7 +133,7 @@ class ListenerTest(TestCase):
     def test_correct_extreme(self):
         maybe = "All right, gentlemen I will take your case but i am going to have to ask for a thousand dollar retainer"
         correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer."        
-        self.correct(correct, maybe)                     
+        self.try_correction(maybe, correct)
                 
     def test_partially_correct(self):
         correct = "All right, Gentlemen, I'll take your case. But I'm going to have to ask for a thousand dollar retainer." 
@@ -146,4 +146,12 @@ class ListenerTest(TestCase):
         for i in range(2,5):
             self.assertEquals(out[1][i][1], maybe_correct[i], "Wrong word should be preserved. Out:%s. index:%s" % (str(out),i))
             
-        
+
+    def test_possesive(self):
+        maybe = "Clyde got $3000 from his mom's life insurance."
+        correct = "Clyde got $3000 from his mom's life insurance."
+        self.try_correction(maybe, correct)
+
+
+
+

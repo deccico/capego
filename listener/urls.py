@@ -5,7 +5,7 @@ from listener.models import Listener
 urlpatterns = patterns('',
     url(r'^$',
        ListView.as_view(
-           queryset=Listener.objects.order_by('-update_date')[:30],
+           queryset=Listener.objects.order_by('-update_date')[:50],
            context_object_name='latest_listener_list',
            template_name='listener/index.html')),
     url(r'^(?P<pk>\d+)/$', DetailView.as_view(model=Listener, template_name='listener/play.html')),
