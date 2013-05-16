@@ -1,0 +1,240 @@
+body {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: #1A1A1A;
+    margin-top:80px;
+}
+
+h2 {
+    line-height:;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight:200;
+}
+
+input, button, select, textarea {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+     background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+     background-image:;
+}
+
+.btn {
+     background-color: #000;
+     *background-color: #000;
+     background-image:;
+     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);   
+     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+}
+
+.btn:hover {
+     background-color:;
+     *background-color:;
+     background-position: 0 33px;
+}
+
+.btn-large {
+     -webkit-border-radius: 1px;
+      -moz-border-radius: 1px;
+      border-radius: 1px;        
+}
+
+.nav-header {
+    padding-top:0px;    
+}
+
+.navbar {
+    background:#fff;    
+}
+
+.navbar-inner {
+    min-height:;
+    background-color:;
+    background-image:;
+    background-repeat:;
+    border:;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    border-radius:;
+    filter:;   
+    -webkit-box-shadow:;
+    -moz-box-shadow:;
+    box-shadow:; 
+}
+
+.navbar-search .search-query {
+     font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.navbar-fixed-bottom {
+    z-index: 9999; 
+}
+
+.navbar-fixed-top .navbar-inner,
+.navbar-static-top .navbar-inner {
+    -webkit-box-shadow:;
+    -moz-box-shadow:;
+    box-shadow:;
+}
+
+.navbar-fixed-bottom .navbar-inner { 
+    -webkit-box-shadow:;
+    -moz-box-shadow:;
+    box-shadow:;
+}
+
+.navbar .nav > li > a { 
+    color: #55606E;
+    font:bold 16px/40px "Open Sans",Helvetica,Arial,Sans-serif;                  
+    text-transform:uppercase;
+    font-weight:300;
+    border-top:11px solid transparent; 
+}
+
+.navbar .nav > li.active{
+   border-top:10px solid #F30;    
+   opacity: 0.9;
+   -webkit-transition: opacity 0.15s linear;                                          
+   -moz-transition: opacity 0.15s linear;                                             
+   -o-transition: opacity 0.15s linear;                                               
+   transition: opacity 0.15s linear;     
+}
+
+.navbar .nav > li.active:hover{border-top:none; padding-top:0px;} 
+
+.navbar .nav > li.active a{/*border-bottom:1px solid #F15A23;*/ padding-top:0px;}
+.navbar .nav > li.active a:hover{padding-top:11px;}
+
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover, 
+.navbar .nav > li > a.active
+{
+    color: #333333;
+    text-decoration: none;
+    background-color: transparent;
+    opacity: 0.9;
+     -webkit-transition: opacity 0.15s linear;
+      -moz-transition: opacity 0.15s linear;   
+      -o-transition: opacity 0.15s linear;
+      transition: opacity 0.15s linear;
+}
+
+.navbar .nav > .active > a,  
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus { 
+ background-color:;
+  -webkit-box-shadow:;
+     -moz-box-shadow:;
+          box-shadow:;
+} 
+
+.navbar .btn-navbar {
+    float:;
+    background-color: #000; 
+    width:93%;
+    background-color:;
+    *background-color:;
+    background-image:;
+    background-repeat:;
+    border-color:;    
+    filter:;
+    -webkit-box-shadow;
+       -moz-box-shadow;
+            box-shadow; 
+}
+
+.navbar .btn-navbar:hover,
+.navbar .btn-navbar:active,
+.navbar .btn-navbar.active,
+.navbar .btn-navbar.disabled,
+.navbar .btn-navbar[disabled] {
+    background-color:;
+    *background-color:;
+}
+
+
+.navbar .btn-navbar:active,
+.navbar .btn-navbar.active {
+    background-color:;
+}
+
+.navbar .btn-navbar .icon-bar {
+  width: 98%;
+  height: 4px;
+  background-color: #fff;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+    -border-radius:;
+  -webkit-border-shadow:;
+  -moz-border-shadow:;
+    -border-shadow:;
+}
+
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: #000;
+}
+
+.pagination ul { 
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    border-radius:;
+    -webkit-border-radius:;
+    -webkit-box-shadow:;
+    -moz-box-shadow:;
+    box-shadow:;
+}
+
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
+     -webkit-border-radius:;
+     -moz-border-radius:;
+     border-radius:;
+}
+
+.pagination ul > li:last-child > a,
+.pagination ul > li:last-child > span { 
+    -webkit-border-radius:; 
+    -moz-border-radius:;
+    border-radius;
+}
+
+.carousel .item {
+  -webkit-transition: opacity 2s ease-in-out;
+  -moz-transition: opacity 2s ease-in-out;
+  -ms-transition: opacity 2s ease-in-out;
+  -o-transition: opacity 2s ease-in-out;
+  transition: opacity 2s ease-in-out;
+}
+
+.carousel .next {
+  left:0;opacity:1;z-index:1;;
+}
+
+.carousel .active.left {
+  left:0;opacity:0;z-index:2;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 60px;
+  height: 60px;
+  margin-top: -20px;
+  font-size: 70px;
+  font-weight: 100;
+  line-height: 44px;
+  color: #ffffff;
+  text-align: center;
+  background: #999;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
