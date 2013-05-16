@@ -9,8 +9,9 @@
 <meta name="author" content="Adrián">
 
 <!-- Style sheets -->
-<link href="{{ STATIC_PREFIX }}css/bootstrap.css" rel="stylesheet">
-<link href="{{ STATIC_PREFIX }}css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/bootstrap-responsive.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}css/metro-customizations.css" rel="stylesheet">
 <link href="{{ STATIC_PREFIX }}css/font-awesome.min.css" rel="stylesheet">
 <!--[if IE 7]>
 <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/font-awesome-ie7.min.css">
@@ -19,7 +20,6 @@
 <link href="{{ STATIC_PREFIX }}css/m-buttons.min.css" rel="stylesheet">
 <link href="{{ STATIC_PREFIX }}css/custom.css" rel="stylesheet">
 <link href="{{ STATIC_PREFIX }}css/capego.css" rel="stylesheet">
-
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -62,10 +62,17 @@
                                         </ul>
                                     </li>
                                 {% else %}
-                                    <li><a href="/auth">login</a></li>
+                                    <li><a class="bootstro"
+                                        data-bootstro-step="0"
+                                        data-bootstro-title="Login"
+                                        data-bootstro-content="You can use Capego without any registration
+                                        but if you want your progress to be tracked,
+                                        you need to login by clicking here"
+                                        data-bootstro-placement="top" href="/auth">login</a></li>
                                 {% endif %}
 							<li><a href="/contact/about">about</a></li>
 							<li><a href="/contact/">contact</a></li>
+							<li><a href="#" id="help-main">help</a></li>
 						</ul>
 					</div>
                     {% block heading %}
@@ -120,9 +127,17 @@
 	<script src="{{ STATIC_PREFIX }}js/bootstrap.js"></script>
 	<script src="{{ STATIC_PREFIX }}js/capego_util.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
+
+    <link href="{{ STATIC_PREFIX }}css/bootstro.min.css" rel="stylesheet">
+	<script src="{{ STATIC_PREFIX }}js/bootstro.min.js"></script>
     {% block additional_js %}{% endblock %}
 
     <script>
+		$(document).ready(function(){
+		    $("#help-main").click(function(){
+		        bootstro.start();
+		    });
+		});
         function doINeedToSend(description){
             v = localStorage.getItem(description);
             if (v !== null && v == "true") {
