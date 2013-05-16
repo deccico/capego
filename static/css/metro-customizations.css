@@ -5,7 +5,7 @@ body {
 }
 
 h2 {
-    line-height:;
+    line-height:normal;
 }
 
 h4 {
@@ -20,20 +20,20 @@ input, button, select, textarea {
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
      background-image: linear-gradient(to bottom, #0088cc, #0077b3);
-     background-image:;
+     background-image:none;
 }
 
 .btn {
      background-color: #000;
      *background-color: #000;
-     background-image:;
+     background-image:none;
      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);   
      border-color: #e6e6e6 #e6e6e6 #bfbfbf;
 }
 
 .btn:hover {
-     background-color:;
-     *background-color:;
+     background-color:transparent;
+     *background-color:transparent;
      background-position: 0 33px;
 }
 
@@ -52,18 +52,18 @@ input, button, select, textarea {
 }
 
 .navbar-inner {
-    min-height:;
-    background-color:;
-    background-image:;
-    background-repeat:;
-    border:;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    border-radius:;
+    min-height:0;
+    background-color:transparent;
+    background-image:none;
+    background-repeat:repeat;
+    border:none;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
     filter:;   
-    -webkit-box-shadow:;
-    -moz-box-shadow:;
-    box-shadow:; 
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
 }
 
 .navbar-search .search-query {
@@ -76,15 +76,15 @@ input, button, select, textarea {
 
 .navbar-fixed-top .navbar-inner,
 .navbar-static-top .navbar-inner {
-    -webkit-box-shadow:;
-    -moz-box-shadow:;
-    box-shadow:;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
 }
 
 .navbar-fixed-bottom .navbar-inner { 
-    -webkit-box-shadow:;
-    -moz-box-shadow:;
-    box-shadow:;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
 }
 
 .navbar .nav > li > a { 
@@ -126,25 +126,24 @@ input, button, select, textarea {
 .navbar .nav > .active > a,  
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus { 
- background-color:;
-  -webkit-box-shadow:;
-     -moz-box-shadow:;
-          box-shadow:;
+ background-color:transparent;
+  -webkit-box-shadow:none;
+     -moz-box-shadow:none;
+          box-shadow:none;
 } 
 
 .navbar .btn-navbar {
-    float:;
+    float:none;
     background-color: #000; 
     width:93%;
-    background-color:;
-    *background-color:;
-    background-image:;
-    background-repeat:;
-    border-color:;    
+    background-color:transparent;
+    *background-color:transparent;
+    background-image:none;
+    background-repeat:repeat;
     filter:;
-    -webkit-box-shadow;
-       -moz-box-shadow;
-            box-shadow; 
+    -webkit-box-shadow:none;
+       -moz-box-shadow:none;
+            box-shadow:none;
 }
 
 .navbar .btn-navbar:hover,
@@ -152,26 +151,26 @@ input, button, select, textarea {
 .navbar .btn-navbar.active,
 .navbar .btn-navbar.disabled,
 .navbar .btn-navbar[disabled] {
-    background-color:;
-    *background-color:;
+    background-color:transparent;
+    *background-color:transparent;
 }
 
 
 .navbar .btn-navbar:active,
 .navbar .btn-navbar.active {
-    background-color:;
+    background-color:transparent;
 }
 
 .navbar .btn-navbar .icon-bar {
   width: 98%;
   height: 4px;
   background-color: #fff;
-  -webkit-border-radius:;
-  -moz-border-radius:;
-    -border-radius:;
-  -webkit-border-shadow:;
-  -moz-border-shadow:;
-    -border-shadow:;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+    -border-radius:0;
+  -webkit-border-shadow:none;
+  -moz-border-shadow:none;
+    -border-shadow:none;
 }
 
 
@@ -182,27 +181,27 @@ input, button, select, textarea {
 }
 
 .pagination ul { 
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    border-radius:;
-    -webkit-border-radius:;
-    -webkit-box-shadow:;
-    -moz-box-shadow:;
-    box-shadow:;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
+    -webkit-border-radius:0;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
 }
 
 .pagination ul > li:first-child > a,
 .pagination ul > li:first-child > span {
-     -webkit-border-radius:;
-     -moz-border-radius:;
-     border-radius:;
+     -webkit-border-radius:0;
+     -moz-border-radius:0;
+     border-radius:0;
 }
 
 .pagination ul > li:last-child > a,
 .pagination ul > li:last-child > span { 
-    -webkit-border-radius:; 
-    -moz-border-radius:;
-    border-radius;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
 }
 
 .carousel .item {
