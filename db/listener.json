@@ -30,7 +30,7 @@
         "language": 1, "title": "Long queue", "url": "http://player.vimeo.com/video/65368587?badge=0",
         "level": 2, "length": 20,
         "dialog":
-        "[[\"Cartman\", \"Officer\", \"Person\"], [0, \"This is unbelievable. Stupid toilet safety administration.\"], [0, \"You can't even take a crap at IHOP without a 40 minute line.\"], [1,\"shoes off, belts off. Sharp objects go in the plastic tray.\"], [2,\"This is inhuman.\"], [1,\"Shut up, sir.\"]]",
+        "[[\"Cartman\", \"Officer\", \"Person\"], [0, \"This is unbelievable. Stupid toilet safety administration.\"], [0, \"You can't even take a crap at IHOP without a forty minute line.\"], [1,\"shoes off, belts off. Sharp objects go in the plastic tray.\"], [2,\"This is inhuman.\"], [1,\"Shut up, sir.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 5, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
@@ -67,7 +67,7 @@
     {"pk": 10, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Money to make", "url": "http://player.vimeo.com/video/65368463?badge=0",
         "level": 2, "length": 10, "dialog":
-        "[[\"Lawyer\", \"Stan\"], [0, \"Doors and windows are locked.\"], [0, \"You boys have your $500 in cash ready?\"], [1, \"Yeah.\"], [0, \"Alright. Then I've got this big bowl set here, to catch all the money we are about to make.\"]]",
+        "[[\"Lawyer\", \"Stan\"], [0, \"Doors and windows are locked.\"], [0, \"You boys have your five hundred in cash ready?\"], [1, \"Yeah.\"], [0, \"Alright. Then I've got this big bowl set here, to catch all the money we are about to make.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 11, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
@@ -92,7 +92,7 @@
     {"pk": 14, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "A suance", "url": "http://player.vimeo.com/video/65368414?badge=0",
         "level": 3, "length": 28, "dialog":
-        "[[\"Lawyer\", \"Stan\", \"Kyle\", \"Jimmy\"], [0, \"I'll be asking all of you to have a very open mind and a willingness to face your fears.\"], [0, \"I warn you boys.\"], [0, \"A suance can be very... expensive.\"], [1, \"How expensive?\"], [0, \"How much do you have?\"], [2, \"Clyde got $3000 from his mom's life insurance.\"], [0, \"Wow! That's exactly how much a suance costs.\"], [3, \"Wow, that's weird.\"]]",
+        "[[\"Lawyer\", \"Stan\", \"Kyle\", \"Jimmy\"], [0, \"I'll be asking all of you to have a very open mind and a willingness to face your fears.\"], [0, \"I warn you boys.\"], [0, \"A suance can be very... expensive.\"], [1, \"How expensive?\"], [0, \"How much do you have?\"], [2, \"Clyde got three thousand dollars from his mom's life insurance.\"], [0, \"Wow! That's exactly how much a suance costs.\"], [3, \"Wow, that's weird.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}}
 ]
 
