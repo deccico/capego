@@ -8,7 +8,7 @@
 		<div class="explain">
 			<h2>{{ listener.title }}</h2>
 			<div class="row-fluid">
-				<div class="span5 pagination-centered">
+				<div class="span5 pagination-centered" id="video">
 					<iframe src="{{ listener.url }}" width="457" height="343"
 						frameborder="0" webkitAllowFullScreen mozallowfullscreen
 						allowFullScreen></iframe>
@@ -31,3 +31,80 @@
 </div>
 {% endblock %}
 
+{% block additional_js %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#help-main").click(function(){
+                startIntro();
+            });
+        });
+
+        function startIntro(){
+            var intro = introJs();
+            setElementIdByXpath('//*[@id="dialog"]/tbody/tr/td[1]/div[1]/strong', 'firstcharacter');
+            intro.setOptions({
+                steps: [
+                    {
+                        element: '#video',
+                        intro: "First, play the video. You can watch it and pause it as many times as you need."
+                    },
+                    {
+                        element: '#line_id1',
+                        intro: "Then, type the dialog as best as you can in this box. Press 'enter' so Capego will " +
+                                "correct your text. You can press 'enter' after each word if you want."
+                    },
+                    {
+                        element: '#line_id1',
+                        intro: "Tip: whenever you hear a number, please type the letters, " +
+                                "not the digits. For example 'one thousand' and not '1 thousand'."
+                    },
+                    {
+                        element: '#line_id1',
+                        intro: "After Capego verifies your text, the correct words from the beginning (if any) will " +
+                                "appear on top of the box."
+                    },
+                    {
+                        element: '#line_id1',
+                        intro: "If the whole line is correct, you will see the text with a green background " +
+                                "and a check mark."
+                    },
+                    {
+                        element: '#firstcharacter',
+                        intro: "In order to follow the dialog, you can check the name of each character over here."
+                    },
+                    {% if not user.is_authenticated %}
+                    {
+                        element: '#btn_suggest1',
+                        intro: "If you are stuck with a word, you can always press this button so Capego will write " +
+                                "it for you."
+                    },
+                    {
+                        element: '#nologgedin',
+                        intro: "You can use Capego without any registration but if you want your progress to " +
+                                "be tracked, " +
+                                "you need to login by clicking here."
+                    },
+                    {% else %}
+                    {
+                        element: '#btn_suggest1',
+                        intro: "If you are stuck with a word, you can always press this button so Capego will write " +
+                                "it for you."
+                    },
+                    {
+                        element: '#btn_suggest1',
+                        intro: "Please notice that a small penalty over the points received for solving the " +
+                                "video will be applied each time you press this button."
+                    },
+                    {% endif %}
+                    {
+                        element: '#btn_correct',
+                        intro: "Pressing this button will correct the whole dialog. This is not necessary if you " +
+                                "already pressed 'enter' on each line."
+                    },
+                ]
+            });
+
+            intro.start();
+        }
+    </script>
+{% endblock %}

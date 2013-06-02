@@ -2,58 +2,86 @@
 
 {% block content %}
 
-<div class="row-fluid section" id="portfolio">
-    <div class="row-fluid section">
-    <div class="container">
+    <div class="row-fluid section" id="portfolio">
+        <div class="row-fluid section">
+            <div class="container">
 
-		<div class="explain">
+                <div class="explain">
 
-			<h2>English language learning</h2>
-			<p class="intro">Improve your listening and spelling skills with
-				Capego.</p>
-			<!-- Start Portfolio Navigation -->
-			<nav class="primary m-btn-group toggle-buttons clearfix">
-				<ul>
-					<li><a href="{{ STATIC_PREFIX }}#" class="m-btn selected"
-						data-filter="*">All</a></li>
-					<li><a href="{{ STATIC_PREFIX }}#" class="m-btn bootstro"
-                                        data-bootstro-step="1"
-                                        data-bootstro-title="Filter"
-                                        data-bootstro-content="Filter the difficulty of the videos by pressing any
-                                        of these links"
-						data-filter=".Beginner">Beginner</a></li>
-					<li><a href="{{ STATIC_PREFIX }}#" class="m-btn"
-						data-filter=".Intermediate">Intermediate</a></li>
-					<li><a href="{{ STATIC_PREFIX }}#" class="m-btn"
-						data-filter=".Advanced">Advanced</a></li>
-				</ul>
-			</nav>
+                    <h2>English language learning</h2>
+                    <p class="intro">Improve your listening and spelling skills with
+                        Capego.</p>
+                    <nav class="primary m-btn-group toggle-buttons clearfix">
+                        <ul>
+                            <li><a href="{{ STATIC_PREFIX }}#" class="m-btn selected"
+                                   data-filter="*">All</a></li>
+                            <li><a href="{{ STATIC_PREFIX }}#" id="beginner" class="m-btn"
+                                   data-filter=".Beginner">Beginner</a></li>
+                            <li><a href="{{ STATIC_PREFIX }}#" class="m-btn"
+                                   data-filter=".Intermediate">Intermediate</a></li>
+                            <li><a href="{{ STATIC_PREFIX }}#" class="m-btn"
+                                   data-filter=".Advanced">Advanced</a></li>
+                        </ul>
+                    </nav>
 
-
-			<!-- START Listener items -->
-
-			<section class="clearfix">
-
-				<div class="portfolio">
-					{% for listen in latest_listener_list %}
-					<figure class="entry {{ listen.level }}">
-						<a href="/listen/{{ listen.id }}"><img
-							src="{{ STATIC_PREFIX }}img-lst/{{ listen.id }}.jpg" alt="">
-							<h2>{{ listen.title }}</h2>
-							<p>{{ listen.description }}</p> </a>
-					</figure>
-					{% endfor %}
-				</div>
-
-			</section>
-
-
-
-		</div>
-	</div>
+                    <section class="clearfix">
+                        <div class="portfolio">
+                            {% for listen in latest_listener_list %}
+                                <figure class="entry {{ listen.level }}">
+                                    <a href="/listen/{{ listen.id }}"><img
+                                            src="{{ STATIC_PREFIX }}img-lst/{{ listen.id }}.jpg" alt="">
+                                        <h2>{{ listen.title }}</h2>
+                                        <p>{{ listen.description }}</p> </a>
+                                </figure>
+                            {% endfor %}
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<!-- End PORTFOLIO -->
 
+{% endblock %}
+
+{% block additional_js %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#help-main").click(function(){
+                startIntro();
+            });
+        });
+
+        function startIntro(){
+            setElementIdByXpath('//*[@id="portfolio"]/div/div/div/section/div/figure[1]/a/img', 'firstvideo');
+
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    {
+                        element: '#logo',
+                        intro: "Capego is an innovative solution to improve your english learning an spelling skills by " +
+                                "using small fragments of movies and tv shows."
+                    },
+                    {% if not user.is_authenticated %}
+                    {
+                        element: '#nologgedin',
+                        intro: "You can use Capego without any registration but if you want your progress to be tracked, " +
+                                "you need to login by clicking here."
+                    },
+                    {% endif %}
+                    {
+                        element: '#beginner',
+                        intro: "Filter the difficulty of the videos by pressing the 'Beginner', 'Intermediate' or 'Advanced' links."
+                    },
+                    {
+                        element: '#firstvideo',
+                        intro: "Click on any video an start learning!."
+                    }
+                ]
+            });
+
+            intro.start();
+        }
+    </script>
 {% endblock %}
 

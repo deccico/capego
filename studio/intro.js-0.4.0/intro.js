@@ -106,6 +106,10 @@
         if (e.keyCode === 27 && self._options.exitOnEsc == true) {
           //escape key pressed, exit the intro
           _exitIntro.call(self, targetElm);
+          //check if any callback is defined
+          if (self._introExitCallback != undefined) {
+            self._introExitCallback.call(self);
+          }
         } else if(e.keyCode === 37) {
           //left arrow
           _previousStep.call(self);
@@ -159,6 +163,10 @@
    * @method _nextStep
    */
   function _nextStep() {
+    if (typeof (this._introBeforeChangeCallback) !== 'undefined') {
+      this._introBeforeChangeCallback.call(this, this._targetElement);
+    }
+
     if (typeof (this._currentStep) === 'undefined') {
       this._currentStep = 0;
     } else {
@@ -187,6 +195,10 @@
   function _previousStep() {
     if (this._currentStep === 0) {
       return false;
+    }
+
+    if (typeof (this._introBeforeChangeCallback) !== 'undefined') {
+      this._introBeforeChangeCallback.call(this, this._targetElement);
     }
 
     _showElement.call(this, this._introItems[--this._currentStep]);
@@ -235,10 +247,6 @@
     }
     //set the step to zero
     this._currentStep = undefined;
-    //check if any callback is defined
-    if (this._introExitCallback != undefined) {
-      this._introExitCallback.call(this);
-    }
   }
 
   /**
@@ -431,6 +439,11 @@
         if (self._introItems.length - 1 == self._currentStep && typeof (self._introCompleteCallback) === 'function') {
           self._introCompleteCallback.call(self);
         }
+
+        if (self._introItems.length - 1 != self._currentStep && typeof (self._introExitCallback) === 'function') {
+          self._introExitCallback.call(self);
+        }
+
         _exitIntro.call(self, self._targetElement);
       };
 
@@ -593,6 +606,10 @@
       if(self._options.exitOnOverlayClick == true) {
         _exitIntro.call(self, targetElm);
       }
+      //check if any callback is defined
+      if (self._introExitCallback != undefined) {
+        self._introExitCallback.call(self);
+      }
     };
 
     setTimeout(function() {
@@ -701,6 +718,14 @@
     },
     exit: function() {
       _exitIntro.call(this, this._targetElement);
+    },
+    onbeforechange: function(providedCallback) {
+      if (typeof (providedCallback) === 'function') {
+        this._introBeforeChangeCallback = providedCallback;
+      } else {
+        throw new Error('Provided callback for onbeforechange was not a function');
+      }
+      return this;
     },
     onchange: function(providedCallback) {
       if (typeof (providedCallback) === 'function') {

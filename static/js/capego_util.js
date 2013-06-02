@@ -198,4 +198,28 @@ function initPlay(video_id){
     sendUserActivities(video_id);
 }
 
+function getElementByXPath(path) {
+  result = document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+  return result.singleNodeValue;
+}
 
+
+function setElementIdByXpath(xpath, id_name){
+    if (document.getElementById(id_name) == null){
+        e = getElementByXPath(xpath);
+        if (e != null){
+            e.id = id_name;
+        }
+    }
+}
+
+function remove(id)
+{
+    return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+}
+
+function removeIfFunctionDoesNotExist(f, id_name){
+    if (eval("typeof " + f) == "undefined") {
+        remove(id_name)
+    }
+}
