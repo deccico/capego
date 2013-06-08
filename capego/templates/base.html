@@ -34,6 +34,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_PREFIX }}ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_PREFIX }}ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="{{ STATIC_PREFIX }}ico/apple-touch-icon-57-precomposed.png">
+{% block additional_header %}{% endblock %}
 </head>
 
 <body {% block onload_function %}{% endblock %}>
@@ -122,6 +123,7 @@
 	<script src="{{ STATIC_PREFIX }}js/capego_util.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
 	<script src="{{ STATIC_PREFIX }}js/intro.min.js"></script>
+    <script src="http://api.flattr.com/js/0.6/load.js"></script>
     {% block additional_js %}{% endblock %}
 
     <script>
