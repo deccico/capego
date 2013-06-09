@@ -42,14 +42,13 @@ class Formatter():
             btn_next_word = 'onclick="send_correction(getXmlHttp(),%s,%s,%s,true,%s,%s)">' % (span_id_text, dialog_id_text, span_correct_id_text, listener_id, btn_suggest)
             character = characters[d[0]]
             html_output += """
-                            <tr><td>%s<strong>%s:</strong></td><td>
+                            <tr><td><strong>%s:</strong></td><td>
                             <button id="%s" tabIndex="-1" class="small-btn" 
                             title="Help me with the next word" %s
                             <i class="icon-eye-open"></i></button>
-                            </div></td>
+                            </td>
                             <td>%s</td></tr>
-                            """ % ('<div style="float:left;width:50%;">',
-                                   character,
+                            """ % (character,
                                    btn_suggest,
                                    btn_next_word,
                                    """
