@@ -71,7 +71,7 @@
 							<li><a href="/contact/about"><p>about</p></a></li>
 							<li><a href="/contact/"><p>contact</p></a></li>
 							<li><a href="/contact/donate/"><p>donate</p></a></li>
-							<li><a href="#" id="help-main"><p>Tutorial</p></a></li>
+							<li><a href="#" id="help-main" rel="popover"><p>Tutorial</p></a></li>
 						</ul>
 					</div>
                     {% block heading %}
@@ -151,6 +151,11 @@
         }
 
         removeIfFunctionDoesNotExist("startIntro", "help-main");
+
+        $(function ()
+        { $("#help-main").popover({placement:'bottom', trigger: 'hover',
+            content: "Use this tutorial to learn more about how to use Capego."});
+        });
 
     </script>
 

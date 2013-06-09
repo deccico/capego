@@ -20,8 +20,8 @@
 					<ul class="thumbnails m-media-container">
 						<li class="span10">
 							<div class="well">Please enter the dialog of each
-								character in the right column and then press the 'Submit'
-								button to get your answers corrected.</div>
+								character in the right column. To get your answers corrected, you can hit enter after
+                                each word (recommended) or press the 'Submit' button at the end.</div>
 						</li>
 					</ul>
 				</div>
@@ -41,7 +41,7 @@
 
         function startIntro(){
             var intro = introJs();
-            setElementIdByXpath('//*[@id="dialog"]/tbody/tr/td[1]/div[1]/strong', 'firstcharacter');
+            setElementIdByXpath('//*[@id="dialog"]/tbody/tr[1]/td[1]/strong', 'firstcharacter');
             intro.setOptions({
                 steps: [
                     {
@@ -55,8 +55,19 @@
                     },
                     {
                         element: '#line_id1',
-                        intro: "Tip: whenever you hear a number, please type the letters, " +
+                        intro: "Tip 1: Whenever you hear a number, please type the letters, " +
                                 "not the digits. For example 'one thousand' and not '1 thousand'."
+                    },
+                    {
+                        element: '#line_id1',
+                        intro: "Tip 2: You don't need to type signs like ('.,!?') or respect uppercase or lowercase " +
+                                "letters. Capego will correct them for you. You only need to get the words (and the spelling) " +
+                                "right."
+                    },
+                    {
+                        element: '#line_id1',
+                        intro: "Tip 3: Contraction can be written in either way. So 'Don't = Do not' But if you " +
+                                "type: \"don't\", please remember the apostrophe! :)"
                     },
                     {
                         element: '#line_id1',
@@ -106,5 +117,8 @@
 
             intro.start();
         }
+
     </script>
+
+
 {% endblock %}
