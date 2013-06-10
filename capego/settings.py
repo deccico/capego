@@ -128,13 +128,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'social_auth',
     'auth',
-	'listener',
+    'listener',
     'contact',
     'user_data',
 )
 
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
+#prepare log directory
+log_dir = SITE_ROOT + os.sep + 'log' 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -165,7 +167,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': SITE_ROOT + os.sep + 'log' + os.sep + APP_NAME + ".log"
+            'filename': log_dir + os.sep + APP_NAME + ".log"
         },
         'mail_admins': {
             'level': 'ERROR',
