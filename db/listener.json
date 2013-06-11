@@ -17,7 +17,7 @@
         "language": 1, "title": "Where it belongs", "url": "http://player.vimeo.com/video/65368589?badge=0",
         "level": 1, "length": 10,
         "dialog":
-        "[[\"Mother\"], [0, \"You're coming home right now Clyde and you are putting the toilet seat down, where it belongs.\"], [0,\"Let's go!\"]]",
+        "[[\"Mother\"], [0, \"You're coming home right now Clyde and you are putting the toilet seat down, where it belongs. Let's go!\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 3, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
@@ -30,25 +30,25 @@
         "language": 1, "title": "Long queue", "url": "http://player.vimeo.com/video/65368587?badge=0",
         "level": 2, "length": 20,
         "dialog":
-        "[[\"Cartman\", \"Officer\", \"Person\"], [0, \"This is unbelievable. Stupid toilet safety administration.\"], [0, \"You can't even take a crap at IHOP without a forty minute line.\"], [1,\"shoes off, belts off. Sharp objects go in the plastic tray.\"], [2,\"This is inhuman.\"], [1,\"Shut up, sir.\"]]",
+        "[[\"Cartman\", \"Officer\", \"Person\"], [0, \"This is unbelievable. Stupid toilet safety administration. You can't even take a crap at IHOP without a forty minute line.\"], [1,\"Shoes off, belts off. Sharp objects go in the plastic tray.\"], [2,\"This is inhumane.\"], [1,\"Shut up, sir.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 5, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "That's embarassing", "url": "http://player.vimeo.com/video/65368586?badge=0",
         "level": 2, "length": 19, "dialog":
-        "[[\"Butters\"], [0, \"Wait a minute. You're suppose to poop in a toilet facing out? \"], [0, \"But I thought you sit on the toilet this way, so you have that nice little shelf for your comic book and your chocolate milk.\"], [0, \"Because then you got the flusher right here.\"], [0, \"No? Oh geez, that's embarassing.\"]]",
+        "[[\"Butters\"], [0, \"Wait a minute. You're supposed to poop in a toilet facing out? But I thought you sit on the toilet this way, so you have that nice little shelf for your comic book and your chocolate milk. Because then you got the flusher right here. No? Oh geez, that's embarassing.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 6, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Sue somebody", "url": "http://player.vimeo.com/video/65368584?badge=0",
         "level": 3, "length": 20, "dialog":
-        "[[\"Stan\", \"Kyle\", \"Lawyer\"], [0, \"We keep trying to tell him maybe this all isn't his fault.\"], [0, \"Maybe the people who made the toilet are to blame for what happened.\"], [1, \"So we were just wondering...\"], [1, \"if we could sue somebody.\"], [2, \"You can always sue somebody.\"], [1, \"All right, you see, Clyde.\"], [1, \"Okay, we wanna help him sue whoever invented the toilet.\"], [2, \"You got it.\"]]",
+        "[[\"Stan\", \"Kyle\", \"Lawyer\"], [0, \"We keep trying to tell him maybe this all isn't his fault. Maybe the people who made the toilet are to blame for what happened.\"], [1,\" So we were just wondering... if we could sue somebody.\"], [2, \"You can always sue somebody.\"], [1, \"All right, you see, Clyde. Okay, we wanna help him sue whoever invented the toilet.\"], [2, \"You got it.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 7, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Contingency basis", "url": "http://player.vimeo.com/video/65368468?badge=0",
         "level": 1, "length": 5, "dialog":
-        "[[\"Bart\", \"Hutz\"], [0,\"So you don't work on a contingency basis?\"], [0,\"No, money down!.\"]]",
+        "[[\"Bart\", \"Hutz\"], [0,\"So you don't work on a contingency basis?\"], [1,\"No, money down!.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 8, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
@@ -67,13 +67,13 @@
     {"pk": 10, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Money to make", "url": "http://player.vimeo.com/video/65368463?badge=0",
         "level": 2, "length": 10, "dialog":
-        "[[\"Lawyer\", \"Stan\"], [0, \"Doors and windows are locked.\"], [0, \"You boys have your five hundred in cash ready?\"], [1, \"Yeah.\"], [0, \"Alright. Then I've got this big bowl set here, to catch all the money we are about to make.\"]]",
+        "[[\"Lawyer\", \"Stan\"], [0, \"Doors and windows are locked. You boys have your five hundred in cash ready?\"], [1, \"Yeah.\"], [0, \"Alright. Then I've got this big bowl set here, to catch all the money we are about to make.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 11, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Inventing things", "url": "http://player.vimeo.com/video/65368462?badge=0",
         "level": 3, "length": 30, "dialog":
-        "[[\"Lawyer\", \"Spirit\"], [0, \"What is your name, spirit?\"], [1, \"Burns. Jimmy Burns. What's it to you? Who are you, mugs?\"], [0, \"That's how people talked in the past.\"], [0, \"We have a claim against a John Harrington. Do you know him spirit?\"], [1, \"Well, maybe I do and maybe I don't.\"], [1, \"Might need a little something something to jar my memory.\"], [0, \"We got to grease him. Put a hundred in the box.\"], [1, \"Oh yeah, Harrington. I know him.\"], [1, \"Always going around inventing things.\"]]",
+        "[[\"Lawyer\", \"Spirit\"], [0, \"What is your name, spirit?\"], [1, \"Burns. Jimmy Burns. What's it to you? Who are you, mugs?\"], [0, \"That's how people talked in the past. We have a claim against a John Harrington. Do you know him spirit?\"], [1, \"Well, maybe I do and maybe I don't. Might need a little something something to jar my memory.\"], [0, \"We got to grease him. Put a hundred in the box.\"], [1, \"Oh yeah, Harrington. I know him. Always going around inventing things.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
 
@@ -86,13 +86,13 @@
     {"pk": 13, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "Government out", "url": "http://player.vimeo.com/video/65368415?badge=0",
         "level": 2, "length": 11, "dialog":
-        "[[\"Cartman\"], [0, \"Exactly how long are we going to sit around as our freedoms are stripped away one by one.\"], [0, \"Is time for us to stand together and say, we want the government out of our bathrooms.\"]]",
+        "[[\"Cartman\"], [0, \"Exactly how long are we going to sit around as our freedoms are stripped away one by one. Is time for us to stand together and say, we want the government out of our bathrooms.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}},
 
     {"pk": 14, "model": "listener.listener", "fields": {"update_date": "2013-01-28T01:06:03.323Z", "description": "",
         "language": 1, "title": "A suance", "url": "http://player.vimeo.com/video/65368414?badge=0",
         "level": 3, "length": 28, "dialog":
-        "[[\"Lawyer\", \"Stan\", \"Kyle\", \"Jimmy\"], [0, \"I'll be asking all of you to have a very open mind and a willingness to face your fears.\"], [0, \"I warn you boys.\"], [0, \"A suance can be very... expensive.\"], [1, \"How expensive?\"], [0, \"How much do you have?\"], [2, \"Clyde got three thousand dollars from his mom's life insurance.\"], [0, \"Wow! That's exactly how much a suance costs.\"], [3, \"Wow, that's weird.\"]]",
+        "[[\"Lawyer\", \"Stan\", \"Kyle\", \"Jimmy\"], [0, \"I'll be asking all of you to have a very open mind and a willingness to face your fears. I warn you boys. A suance can be very... expensive.\"], [1, \"How expensive?\"], [0, \"How much do you have?\"], [2, \"Clyde got three thousand dollars from his mom's life insurance.\"], [0, \"Wow! That's exactly how much a suance costs.\"], [3, \"Wow, that's weird.\"]]",
         "pub_date": "2013-01-27T11:09:04.532Z"}}
 ]
 
