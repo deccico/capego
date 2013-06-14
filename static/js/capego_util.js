@@ -85,6 +85,7 @@ function correct_data(e, span_ctrl, input_ctrl, span_correct_ctrl, id, btn_sugge
 
 function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word, id, btn_suggest)
 {
+    //alert(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_correct_next_word, id, btn_suggest)
 	if (typeof input_ctrl=='undefined' || input_ctrl==null){
 		   return;
 	}

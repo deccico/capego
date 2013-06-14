@@ -25,7 +25,8 @@ class Formatter():
         html_output = """<table class="table table-striped table-condensed" id="dialog">
             <thead>
                 <tr>
-                    <th>Character </th>
+                    <th>Character</th>
+                    <th></th>
                     <th>Text</th>
                     <th></th>
                 </tr>
@@ -54,11 +55,10 @@ class Formatter():
                                    """
                                    <span id="%s">
                                    <span id="%s"></span>
-                                   <input id="%s" type="text" 
+                                   <textarea id="%s"
                                    onkeyup="correct_data(event,%s,%s,%s,%s,%s)"
-                                   class="span11 search-query" 
-                                   placeholder="Please enter %s dialog line here">
-                                   </input></button></span>""" 
+                                   class="span11 search-query"
+                                   placeholder="Please enter %s dialog line here"></textarea></button></span>"""
                                    % (span_id_text,
                                       span_correct_id_text, 
                                       dialog_id_text, 
@@ -104,11 +104,9 @@ class Formatter():
                 corrected_id_text = "%s%s" % (self.SPAN_CORRECT_PREFIX, dialog_id)
                 input_text = " ".join(w[1] for w in line[i:]).strip()
                 html_out += """
-                            <input id="%s" type="text" onkeyup="correct_data(event,%s,%s,%s,%s,%s)"
-                            class="span11 search-query" 
-                            placeholder = "Please enter the rest of the dialog here."
-                            value="%s">
-                            </input>
+                            <textarea id="%s" onkeyup="correct_data(event,%s,%s,%s,%s,%s)"
+                            class="span11 search-query"
+                            placeholder = "Please enter the rest of the dialog here.">%s</textarea>
                             """  % (dialog_id_text, 
                                     span_id_text, 
                                     dialog_id_text,
