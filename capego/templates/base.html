@@ -80,7 +80,7 @@
 							<li><a href="/contact/about"><p>about</p></a></li>
 							<li><a href="/contact/"><p>contact</p></a></li>
 							<li><a href="/contact/donate/"><p>donate</p></a></li>
-							<li><a href="#" id="help-main" rel="popover"><p>Tutorial</p></a></li>
+							<li><a href="#" id="help-main" rel="popover"><p id="tutorial">Tutorial</p></a></li>
 						</ul>
 					</div>
                     {% block heading %}
@@ -132,9 +132,18 @@
 	<script src="{{ STATIC_PREFIX }}js/capego_util.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
 	<script src="{{ STATIC_PREFIX }}js/intro.min.js"></script>
+
     {% block additional_js %}{% endblock %}
 
     <script>
+        $(document).ready(function(){
+            {% block on_ready %}
+            {% endblock %}
+            $("#help-main").click(
+                    function(){startIntro();}
+            );
+        });
+
         function doINeedToSend(description){
             v = localStorage.getItem(description);
             if (v !== null && v == "true") {
@@ -158,13 +167,43 @@
             {% endif %}
         }
 
-        removeIfFunctionDoesNotExist("startIntro", "help-main");
-
         $(function ()
         { $("#help-main").popover({placement:'bottom', trigger: 'hover',
             content: "Use this tutorial to learn more about how to use Capego."});
         });
 
+        function startIntro(){
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    {% block tutorial_steps %}
+                    {
+                        element: '#logo',
+                        intro: "Capego is an innovative solution to improve your english listening and spelling " +
+                                "skills by using small fragments of movies and tv shows."
+                    },
+                    {% if not user.is_authenticated %}
+                    {
+                        element: '#nologgedin',
+                        intro: "You can use Capego without any registration but if you want your progress to be tracked, " +
+                                "you need to login by clicking here."
+                    },
+                    {% endif %}
+                    {% endblock %}
+                    {% block tutorial_local_steps %}
+                    {
+                        element: '#tutorial',
+                        intro: "Each Capego section will show different tutorials."
+                    },
+                    {
+                        element: '#logo',
+                        intro: "Whenever you are ready, look for a video and start learning!"
+                    }
+                    {% endblock %}
+                ]
+            });
+            intro.start();
+        }
     </script>
 
 </body>

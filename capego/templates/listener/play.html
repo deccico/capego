@@ -31,19 +31,11 @@
 </div>
 {% endblock %}
 
-{% block additional_js %}
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#help-main").click(function(){
-                startIntro();
-            });
-        });
+{% block on_ready %}
+    setElementIdByXpath('//*[@id="dialog"]/tbody/tr[1]/td[1]/strong', 'firstcharacter');
+{% endblock %}
 
-        function startIntro(){
-            var intro = introJs();
-            setElementIdByXpath('//*[@id="dialog"]/tbody/tr[1]/td[1]/strong', 'firstcharacter');
-            intro.setOptions({
-                steps: [
+{% block tutorial_steps %}
                     {
                         element: '#video',
                         intro: "First, play the video. You can watch it and pause it as many times as you need."
@@ -112,13 +104,7 @@
                         intro: "Pressing this button will correct the whole dialog. This is not necessary if you " +
                                 "already pressed 'enter' on each line."
                     },
-                ]
-            });
+{% endblock %}
 
-            intro.start();
-        }
-
-    </script>
-
-
+{% block tutorial_local_steps %}
 {% endblock %}
