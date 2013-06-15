@@ -4,7 +4,6 @@ from local_settings import *
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
-DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 APP_NAME = "Capego"
 
