@@ -1,4 +1,4 @@
-//common
+//common--------------------------------------------------------------------------------
 var constants = {
     "Solve video": 1,
     "Visit video": 2,
@@ -48,7 +48,75 @@ $.ajaxSetup({
     }
 });
 
-//play specific
+function setElementIdByXpath(xpath, id_name){
+    if (document.getElementById(id_name) == null){
+        e = getElementByXPath(xpath);
+        if (e != null){
+            e.id = id_name;
+        }
+    }
+}
+
+function remove(id)
+{
+    return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+}
+
+function removeIfFunctionDoesNotExist(f, id_name){
+    if (eval("typeof " + f) == "undefined") {
+        remove(id_name)
+    }
+}
+
+function doSomethingAfterSomeSeconds(seconds, f){
+    var ms = seconds * 1000;
+    setTimeout(f, ms);
+}
+
+function sendActivity(activity_code, desc){
+    $.ajax({
+        type: "POST",
+        url: "/user/register_activity/",
+        beforeSend: function(xhr) {
+            return doINeedToSend(desc);
+        },
+        data: { activity_code: activity_code, description: desc, csrfmiddlewaretoken: csrftoken }
+    }).done(function(msg) {
+            analyseResponseActivityMessage(msg, desc);
+        });
+}
+
+function analyseResponseActivityMessage(msg, desc){
+    if (msg.length < 1)
+        return;
+    obj = JSON && JSON.parse(msg) || $.parseJSON(msg);
+    if (obj != null) obj = obj[0];
+    //this is to avoid sending the same events
+    if (obj.status){
+        localStorage.setItem(desc, "true");
+    }
+}
+
+function getElementByXPath(path) {
+  result = document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+  return result.singleNodeValue;
+}
+
+// newsletter specific----------------------------------------------------------------------
+$(document).ready(function() {
+    $('#subscribe-form').submit(function() {
+        $(this).ajaxSubmit({success: showResponse});  //newsletter specific
+        // always return false to prevent standard browser submit and page navigation
+        return false;
+    });
+});
+
+function showResponse(responseText, statusText, xhr, $form){
+    $('#newsletter_msg').html(responseText);
+    document.getElementById('email').value="";
+}
+
+//play specific----------------------------------------------------------------------------------
 function getXmlHttp(){
 	var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -145,51 +213,6 @@ function correct_everything(num_dialogs, id)
 	}		
 }
 
-// newsletter specific
-$(document).ready(function() {
-    $('#subscribe-form').submit(function() {
-        $(this).ajaxSubmit({success: showResponse});  //newsletter specific
-        // always return false to prevent standard browser submit and page navigation
-        return false;
-    });
-});
-
-function showResponse(responseText, statusText, xhr, $form){
-    $('#newsletter_msg').html(responseText);
-    document.getElementById('email').value="";
-}
-
-//common
-function doSomethingAfterSomeSeconds(seconds, f){
-    var ms = seconds * 1000;
-    setTimeout(f, ms);
-}
-
-function sendActivity(activity_code, desc){
-    $.ajax({
-        type: "POST",
-        url: "/user/register_activity/",
-        beforeSend: function(xhr) {
-            return doINeedToSend(desc);
-        },
-        data: { activity_code: activity_code, description: desc, csrfmiddlewaretoken: csrftoken }
-    }).done(function(msg) {
-            analyseResponseActivityMessage(msg, desc);
-        });
-}
-
-function analyseResponseActivityMessage(msg, desc){
-    if (msg.length < 1)
-        return;
-    obj = JSON && JSON.parse(msg) || $.parseJSON(msg);
-    if (obj != null) obj = obj[0];
-    //this is to avoid sending the same events
-    if (obj.status){
-        localStorage.setItem(desc, "true");
-    }
-}
-
-//play specific
 function focusOnInput()
 {
     document.getElementById("line_id1").focus();
@@ -198,30 +221,13 @@ function focusOnInput()
 function initPlay(video_id){
     focusOnInput();
     sendUserActivities(video_id);
+    resizePlayer();
 }
 
-function getElementByXPath(path) {
-  result = document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-  return result.singleNodeValue;
-}
+function resizePlayer(){
+    video_div = document.getElementById("video");
 
-
-function setElementIdByXpath(xpath, id_name){
-    if (document.getElementById(id_name) == null){
-        e = getElementByXPath(xpath);
-        if (e != null){
-            e.id = id_name;
-        }
-    }
-}
-
-function remove(id)
-{
-    return (elem=document.getElementById(id)).parentNode.removeChild(elem);
-}
-
-function removeIfFunctionDoesNotExist(f, id_name){
-    if (eval("typeof " + f) == "undefined") {
-        remove(id_name)
-    }
+    video = document.getElementById("video_play");
+    video.width = video_div.offsetWidth;
+    video.height = video_div.offsetWidth * 343 / 457;  //proportional to the original size
 }
