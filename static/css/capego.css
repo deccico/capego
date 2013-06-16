@@ -58,3 +58,7 @@
 .ok{
     color: limegreen;
 }
+
+.minimum_width{
+    width: 1px;
+}

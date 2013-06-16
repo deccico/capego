@@ -25,10 +25,9 @@ class Formatter():
         html_output = """<table class="table table-striped table-condensed" id="dialog">
             <thead>
                 <tr>
-                    <th>Character</th>
-                    <th></th>
+                    <th class="minimum_width">Character</th>
+                    <th class="minimum_width"></th>
                     <th>Text</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -121,4 +120,3 @@ class Formatter():
             html_out += "</span>"
         html_out += "</div>"
         return html_out
-    
