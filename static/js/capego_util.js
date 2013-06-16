@@ -220,8 +220,8 @@ function focusOnInput()
 
 function initPlay(video_id){
     focusOnInput();
-    sendUserActivities(video_id);
     resizePlayer();
+    sendUserActivities(video_id);
 }
 
 function resizePlayer(){
