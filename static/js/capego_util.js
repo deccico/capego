@@ -160,7 +160,7 @@ function send_correction(xmlhttp, span_ctrl, input_ctrl, span_correct_ctrl, is_c
 	input_text = span_correct_ctrl.innerHTML + input_ctrl.value.replace("?","");
     input_text = input_text.replace(/(\r\n|\n|\r)/gm," ");
     if (is_correct_next_word && input_text.length < 1)
-		input_text = "*****";
+		input_text = " ";
 	if (input_text.length < 1)
 		return;
 	var url_check = (is_correct_next_word? "../get_next_word/":

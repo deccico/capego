@@ -135,7 +135,7 @@ class Corrector():
         good_one = good_one.split()
         for i in range(len(out)):
             if not out[i][0]:
-                out[i] = [True, self.get_good_word(good_one[i])]
+                out.insert(i, [True, self.get_good_word(good_one[i])])
                 break
         is_correct = out[-1][0] and len(out) == len(good_one)
         if not is_correct:
