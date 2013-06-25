@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="form">
-      <div class="container">
-        <div class="row">        
-            <div class="span8" >
-            <h3>Contact Form</h3>
-            {{ message|safe }}
-            <form action="/contact/message/" method="post" id="contact-form">
-            {% csrf_token %}
-            <fieldset>
-            <div class="row"> 
-                        <div class="holder span8"><div class="message"><div class="top"></div><div class="contents"><div id="alert"></div></div><div class="bottom"></div></div></div>
-                        <div class="field span8"><input type="text" value="" class="input-text m-wrap m-ctrl-large" id="name" name="name" placeholder="Your Name"/></div>
-                        <div class="field span8"><input type="text" value="" class="input-text m-wrap m-ctrl-large" id="email" name="email" placeholder="Your Email Address"/></div>
-                        <div class="field span8"><textarea  class="input-textarea m-wrap m-ctrl-large" id="message" name="message" placeholder="Your Message" ></textarea></div>
-                        <div class="field span8"><input type="submit" class="m-btn green" value="Submit" /></div></div>
-                    </fieldset>
+        <div class="container">
+            <div class="row">
+                <div class="span6" >
+                    <h3>Email and social networks</h3>
+                    <p>E-mail: <a href="maitlo:info@capego.com">info@capego.com</a></p>
+                    <p>&nbsp</p>
+                    <ul class="contactlinks">
+                        <li><a target="_blank" href="https://twitter.com/Capego_lang"><i class="icon-twitter-sign
+                        icon-large"></i>Twitter</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/pages/Capego/193301227460977"><i
+                                class="icon-facebook-sign icon-large"></i>Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="span6">
+                    <h3>Contact Form</h3>
+                    {{ message|safe }}
+                    <form action="/contact/message/" method="post" id="contact-form">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="row">
+                                <div class="holder span8"><div class="message"><div class="top"></div><div class="contents"><div id="alert"></div></div><div class="bottom"></div></div></div>
+                                <div class="field span8"><input type="text" value="" class="input-text m-wrap m-ctrl-large" id="name" name="name" placeholder="Your Name"/></div>
+                                <div class="field span8"><input type="text" value="" class="input-text m-wrap m-ctrl-large" id="email" name="email" placeholder="Your Email Address"/></div>
+                                <div class="field span8"><textarea  class="input-textarea m-wrap m-ctrl-large" id="message" name="message" placeholder="Your Message" ></textarea></div>
+                                <div class="field span8"><input type="submit" class="m-btn green" value="Submit" /></div></div>
+                        </fieldset>
                     </form>
-          </div>
-          <div class="span4">
-            <h3>Social Networks</h3>
-              <ul class="contactlinks">
-                <li><a href="#"><i class="icon-twitter-sign icon-large"></i>Twitter</a></li>
-                <li><a href="#"><i class="icon-facebook-sign icon-large"></i>Facebook</a></li>
-                <li><a href="#"><i class="icon-google-plus-sign icon-large"></i>Google +</a></li>
-              </ul>
-              <h3>Contact info</h3>
-              <p>
-                Email: info@capego.com<br>
-                Web: capego.com</p>
-          </div>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 {% endblock %}

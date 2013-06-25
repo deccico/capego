@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
     <div class="row-fluid section" id="portfolio">
         <div class="row-fluid section">
             <div class="container">
-
                 <div class="explain">
-
                     <h2>English language learning</h2>
-                    <p class="intro">Improve your listening and spelling with your favourite videos.</p>
+                    <p class="intro">Improve your english listening and spelling with your favourite videos.</p>
                     <nav class="primary m-btn-group toggle-buttons clearfix">
                         <ul>
                             <li><a href="{{ STATIC_PREFIX }}#" class="m-btn selected"
@@ -22,7 +19,6 @@
                                    data-filter=".Advanced">Advanced</a></li>
                         </ul>
                     </nav>
-
                     <section class="clearfix">
                         <div class="portfolio">
                             {% for listen in latest_listener_list %}
@@ -39,7 +35,6 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block on_ready %}
